@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 20:41:36 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/03 21:20:54 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/04 14:18:57 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/04 15:02:54 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+int		ft_isalpha(int c)
+{
+	unsigned char target;
 
-#include <string.h>
-#endif
+	target = c;
+	if ((target >= 'a' && target <= 'z') || (target >= 'A' && target <= 'Z'))
+		return (1);
+	else
+		return (0);
+}

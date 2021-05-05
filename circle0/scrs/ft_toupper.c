@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 17:56:02 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/03 21:26:45 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/04 15:22:46 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/04 15:46:23 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memcpy(void *dest, const void *src, size_t len)
+int		ft_toupper(int c)
 {
-	unsigned char	*temp;
-	unsigned char	*s;
+	unsigned char target;
 
-	*temp = dest;
-	*s = src;
-
-	while (len--)
-		*temp++ = *s++;
-	return (dest);
+	target = c;
+	if (target >= 'a' && target <= 'z')
+		return (target - 32);
+	else
+		return (target);
 }

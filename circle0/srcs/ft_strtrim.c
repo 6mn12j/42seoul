@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/06 18:08:43 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 01:18:44 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/07 23:05:09 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/08 06:45:34 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t i;
+	size_t			i;
+	size_t			j;
+	char			*temp;
 
 	i = 0;
-	if (n == 0)
+	j = ft_strlen(s1);
+
+	if (!s1 || !set)
 		return (0);
-	while (i < n && (s1[i] && s2[i]))
-	{
-		if (((unsigned char*)s1)[i] != ((unsigned char*)s2)[i])
-			return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
+	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
-	}
-	if (i == n && n != 0)
-		i--;
-	return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
+	while (s1[j] && ft_strrchr(set, s1[j]) && i < j)
+		j--;
+
+	if (i == j)
+		j++;
+		printf("%zu set: %s!\n",j,set);
+	if (!(temp = malloc(sizeof(char) * (j - i + 1))))
+		return (0);
+	ft_memmove(temp, &s1[i], j - i);
+	return (temp);
+}
+ int		main(void)
+{
+	printf("%s",ft_strtrim(" aa v  "," "));
 }

@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 17:56:02 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 01:06:44 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/07 01:09:35 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/07 16:24:14 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*temp;
-	unsigned char	*s;
-
-	if (dest == src)
-		return (dest);
-	temp = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	while (len--)
-		*temp++ = *s++;
-
-	return (dest);
+	write(fd, &c, 1);
 }

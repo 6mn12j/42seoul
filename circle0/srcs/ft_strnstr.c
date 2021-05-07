@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 18:43:28 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/06 21:26:56 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/08 05:29:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (!*little)
 		return ((char *)big);
-	while (i < len && big[i])
+	while (big[i] && i < len)
 	{
 		j = 0;
 		if (big[i] == little[j])

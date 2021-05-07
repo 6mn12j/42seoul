@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 17:56:02 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 01:06:44 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/07 16:54:46 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/07 17:05:13 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t len)
+void	int_to_char(int num, int fd)
 {
-	unsigned char	*temp;
-	unsigned char	*s;
+	int fin;
 
-	if (dest == src)
-		return (dest);
-	temp = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	while (len--)
-		*temp++ = *s++;
+	fin = num % 10;
+	if (num == 0)
+		return ;
+	num = num / 10;
+	int_to_char(num, fd);
+	ft_putchar_fd(fin + '0', fd);
+}
 
-	return (dest);
+void	ft_putnbr_fd(int n, int fd)
+{
+	long long num;
+	long long fin;
+
+	num = n;
+	if (num < 0)
+	{
+		ft_putchar_fd(fd, '-');
+		num *= -1;
+	}
+	fin = num % 10;
+	int_to_char(num / 10, fd);
+	ft_putchar_fd(fin + '0', fd);
 }

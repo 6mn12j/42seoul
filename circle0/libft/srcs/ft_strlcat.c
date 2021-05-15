@@ -6,13 +6,13 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 22:00:57 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/06 22:29:10 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:30:35 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int		ft_strlcat(char *dest, const char *src, size_t size)
+size_t		ft_strlcat(char *dest, const char *src, size_t size)
 {
 	unsigned int destlen;
 	unsigned int srclen;

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 21:09:47 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 22:34:28 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:19:56 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*temp;
 
 	i = 0;
-	if (!s)
+	if (!s || !f)
 		return (0);
 	len = ft_strlen(s);
 	if (!(temp = malloc(sizeof(char) * len + 1)))

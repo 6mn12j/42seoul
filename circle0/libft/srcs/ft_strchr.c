@@ -6,9 +6,11 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 23:25:56 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/04 23:35:51 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:29:59 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -25,5 +27,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (s[i] == target)
 		return ((char*)(s + i));
-	return (0);
+	return (NULL);
 }

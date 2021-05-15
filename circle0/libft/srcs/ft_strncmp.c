@@ -6,12 +6,11 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 18:08:43 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 01:18:44 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/10 14:13:14 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {

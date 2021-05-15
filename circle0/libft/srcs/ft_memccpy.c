@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 12:02:07 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/06 21:36:27 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:10:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t len)
 			return (&dest[++i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

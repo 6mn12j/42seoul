@@ -6,12 +6,11 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 22:36:14 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/09 00:26:48 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/10 14:10:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	get_len(int n)
 {

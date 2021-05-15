@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 16:54:46 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 22:50:22 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:12:16 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			ft_putnbr_fd(int n, int fd)
 	long long num;
 	long long fin;
 
+	if (fd < 0)
+		return ;
 	num = n;
 	if (num < 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 22:43:21 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/10 02:06:04 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/12 10:40:10 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			return (0);
 		}
 		ft_lstadd_back(&temp, curr);
-		curr = lst->next;
-		lst = curr;
+		lst = lst->next;
 	}
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 15:29:47 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/08 20:53:46 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:12:28 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	if (!str)
+	if (!str || fd < 0)
 		return ;
 	while (*str)
 	{

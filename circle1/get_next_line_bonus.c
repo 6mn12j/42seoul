@@ -14,6 +14,12 @@
 #include <limits.h> //OPEN MAX = 256
 
 #define BUFFER_SIZE 10000
+void	ft_free(char *str)
+{
+	if (str != NULL)
+		free(str);
+	str = 0;
+}
 
 char *ft_update()
 {
@@ -21,6 +27,28 @@ char *ft_update()
 		free(backup[fd]);
 	return ()
 }
+
+void ft_free(char *str)
+{
+	if(!str)
+		free(str);
+	str = 0;
+}
+
+int *find_gnl(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str)
+	{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 
 int		get_next_line(int fd, char **line)
 {
@@ -37,9 +65,9 @@ int		get_next_line(int fd, char **line)
 		i = 0;
 		buf[nbytes] = 0;
 		temp = ft_strdup(buf);
-		free(buf);
+		ft_free(buf);
 		backup[fd] = ft_strjoin(temp, backup[fd]);
-		free(temp);
+		ft_free(temp);
 		while (backup[fd][i] != '\n' && backup[fd][i])
 			i++;
 		if (backup[fd][i] == '\n') //백업의 중간에 개행이 있는경우 ...........만 ..............
@@ -65,6 +93,7 @@ int		get_next_line(int fd, char **line)
 		if(backup[fd][i + 1])
 			//백업 업데이트 성공시 리턴1  . ? 아니면 마이너스 1
 		else
+			ft_free(backup[fd]);
 			//백업 프리 하고  끝내
 	}
 	else

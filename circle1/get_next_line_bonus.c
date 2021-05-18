@@ -5,123 +5,134 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/18 01:53:42 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/18 16:34:57 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/19 01:50:16 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <limits.h> //OPEN MAX = 256
 
-#define BUFFER_SIZE 10000
-void	ft_free(char *str)
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 10000
+# endif
+
+
+char	*my_strchr(const char *s, int c)
 {
-	if (str != NULL)
-		free(str);
-	str = 0;
+	unsigned char	target;
+	int				i;
+
+	target = (unsigned char)c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == target)
+			return ((char*)(s + i));
+		i++;
+	}
+	if (s[i] == target)
+		return ((char*)(s + i));
+	return (NULL);
 }
 
-char *ft_update()
-{
-	ft_strdup(&backup[fd] + i + 1);
-		free(backup[fd]);
-	return ()
-}
-
-void ft_free(char *str)
-{
-	if(!str)
-		free(str);
-	str = 0;
-}
-
-int *find_gnl(char *str)
+int		my_free(char *str)
 {
 	int i;
 
 	i = 0;
-	while (str[i] && str)
+	if (!str)
+		free(str);
+	str = 0;
+	return (-1);
+}
+
+int	my_read_line(int fd, char **backup)
+{
+	int i;
+
+	i = 0;
+	while (backup[fd][i])
 	{
-		if (str[i] == '\n')
+		if (backup[fd][i] == '\n')
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-
 int		get_next_line(int fd, char **line)
 {
 	static char	*backup[OPEN_MAX + 1];
-	int			i;
-	int			nbytes;
-	char		buf[BUFFER_SIZE + 1];
 	char		*temp;
+	char		buf[BUFFER_SIZE + 1];
+	int			nbytes;
+	int			i;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
+	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
 		return (-1);
 	while ((nbytes = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		i = 0;
 		buf[nbytes] = 0;
-		temp = ft_strdup(buf);
-		ft_free(buf);
-		backup[fd] = ft_strjoin(temp, backup[fd]);
-		ft_free(temp);
-		while (backup[fd][i] != '\n' && backup[fd][i])
-			i++;
-		if (backup[fd][i] == '\n') //백업의 중간에 개행이 있는경우 ...........만 ..............
+		temp = backup[fd];
+		backup[fd] = my_strjoin(backup[fd], buf);
+		my_free(temp);
+		if(!backup[fd])
+			return (my_free(temp));
+		if ((i = my_read_line(fd, backup)) >= 0)
 		{
-			*line = substr(backup[fd], 0, i - 1);
-			backup[fd] = ft_update;
-			if (!backup[fd])
-				return (-1);
-			else
+			backup[fd][i] = 0;
+			*line = my_substr(backup[fd], 0 , i);
+			temp = backup[fd];
+			if (backup[fd][i + 1])
+			{
+				if(!(backup[fd] = my_strdup(backup[fd] + i + 1)))
+					return (my_free(backup[fd]));
 				return (1);
+			}
+			else
+				return (-my_free(backup[fd]));
 		}
-		// 개행이 없는경우엔 그냥 와일로 넘겨
-		//개행을 만나면 라인에 넣고 버퍼를 업데이트 해줘야됨 (라인에 넣은 후에 애들로)
 	}
-
-	//EOF 읽고 내려옴
-	i = 0;
-	while (backup[fd][i] != '\n' && backup[fd][i])
-			i++;
-	if (backup[fd][i] == '\n')
+	if (nbytes == -1)
+		return (-1);
+	if (backup[fd]) // 여기서도 개행 검사.
 	{
-		 // line에 넣어
-		if(backup[fd][i + 1])
-			//백업 업데이트 성공시 리턴1  . ? 아니면 마이너스 1
-		else
-			ft_free(backup[fd]);
-			//백업 프리 하고  끝내
+		if ((i = my_read_line(fd, backup)) >= 0)
+		{
+			backup[fd][i] = 0;
+			*line = my_substr(backup[fd], 0 , i);
+			temp = backup[fd];
+			if (backup[fd][i + 1])
+			{
+				if(!(backup[fd] = my_strdup(backup[fd] + i + 1)))
+					return (my_free(backup[fd]));
+				return (1);
+			}
+			else
+				return (-my_free(backup[fd]));
+		}
+		*line = my_strdup(backup[fd]);
+		return (my_free(backup[fd]));
 	}
-	else
-	{
-		*line = substr(backup[fd], 0, i - 1);
-		free(backup[fd]);
-		if (!line)
-			return (-1);
-		else
-			return (0);
-	}
-	//버퍼사이즈만큼 읽어서 갖다 붙혀 그다음에 개행을 확인해 그런데 개행이있따 ? 그러면 이제 라인에 개행전까지 넣고 개행후값을 어디다가 옮겨서 그 버퍼를 free
+	*line =my_strdup(""); // backup이 없는데 eof.
+	my_free(backup[fd]);
+	return (0);
 }
-/*
-ASDFASDFASDF \N ASDFFASDFASDF
-*/
 int main(void)
 {
 	char *line = 0;
 	int ret;
 	int fd;
-	fd = open("your_file_name", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
+	//ret = get_next_line(fd, &line);
+
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		printf("%s\\n", line);
+		printf("%s\n", line);
 		free(line);
 	}
-	printf("%s\\n", line);
+
+	printf("%s\n", line);
 	free(line);
 	return (0);
 }

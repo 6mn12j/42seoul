@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/19 01:39:22 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/19 21:30:05 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char		*my_strdup(const char *s1)
 	size_t		i;
 
 	i = 0;
-	//printf("dup start\n");
 	if (!(temp = (char *)malloc(sizeof(char) * (my_strlen(s1) + 1))))
 		return (NULL);
 	while (i < my_strlen(s1))

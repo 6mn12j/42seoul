@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 16:34:57 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/19 01:50:16 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/19 22:24:11 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,9 @@
 # define BUFFER_SIZE 10000
 # endif
 
-
-char	*my_strchr(const char *s, int c)
-{
-	unsigned char	target;
-	int				i;
-
-	target = (unsigned char)c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == target)
-			return ((char*)(s + i));
-		i++;
-	}
-	if (s[i] == target)
-		return ((char*)(s + i));
-	return (NULL);
-}
+#ifndef OPEN_MAX
+# define OPEN_MAX 256
+# endif
 
 int		my_free(char *str)
 {
@@ -77,7 +62,7 @@ int		get_next_line(int fd, char **line)
 		backup[fd] = my_strjoin(backup[fd], buf);
 		my_free(temp);
 		if(!backup[fd])
-			return (my_free(temp));
+			return (-1);
 		if ((i = my_read_line(fd, backup)) >= 0)
 		{
 			backup[fd][i] = 0;
@@ -118,6 +103,7 @@ int		get_next_line(int fd, char **line)
 	my_free(backup[fd]);
 	return (0);
 }
+
 int main(void)
 {
 	char *line = 0;
@@ -131,7 +117,6 @@ int main(void)
 		printf("%s\n", line);
 		free(line);
 	}
-
 	printf("%s\n", line);
 	free(line);
 	return (0);

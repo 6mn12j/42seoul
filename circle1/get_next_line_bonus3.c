@@ -20,12 +20,53 @@
 # define OPEN_MAX 256
 # endif
 
+int		*ft_strchr(const char *s, int c)
+{
+	unsigned char target;
+	int i;
+
+	target = (unsigned char)c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == target)
+			return (i);
+		i++;
+	}
+	if (s[i] == target)
+		return (i);
+	return (0);
+}
+
 int		my_free(char *str)
 {
 	if(!str)
 		free(str);
 	str = 0;
-	return (-1);
+	return (1);
+}
+
+int		my_read_line(char **backup, int fd, char **line ,int i)
+{
+	char *temp;
+
+	backup[fd][i] = 0;
+	if (backup[fd])
+	{
+		*line = my_substr(backup[fd], 0, i);
+		temp = backup[fd];
+		if (backup[fd + 1])
+		{
+			backup[fd] = my_strdup(backup[fd] + i + 1);
+			if (!backup[fd])
+				return (my_free(temp));
+		}
+		else
+			return (my_free(temp));
+	}
+	*line = my_strdup(""); //backup이 없는데 eof
+	my_free(backup[fd]);
+	return (0);
 }
 
 int		get_next_line_bonus3(int fd, char **line)
@@ -43,12 +84,14 @@ int		get_next_line_bonus3(int fd, char **line)
 		buf[nbytes]=0;
 		temp = backup[fd];
 		backup[fd] = my_strjoin(backup[fd], buf);
+		free(temp);
 		if (!backup[fd])
 			return (-1);
-		my_free(temp);
-		if ()
-
+		if ((i = my_strchar(backup[fd], '\n')))
+			my_read_line(backup[fd], fd, line, i);
 	}
-
-	return (my_read_line(backup[fd], fd, line));
+	if(nbytes < 0)
+		return (-1);
+	i = my_strchr(backup[fd], '\n');
+	return (my_read_line(backup[fd], fd, line, i));
 }

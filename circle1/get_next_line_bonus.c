@@ -96,8 +96,8 @@ int		get_next_line(int fd, char **line)
 			else
 				return (-my_free(backup[fd]));
 		}
-		*line = my_strdup(backup[fd]);
-		return (my_free(backup[fd]));
+		//*line = my_strdup(backup[fd]);
+		//return (my_free(backup[fd]));
 	}
 	*line =my_strdup(""); // backup이 없는데 eof.
 	my_free(backup[fd]);

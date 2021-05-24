@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:10:59 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/24 20:57:11 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/24 23:21:32 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int				get_next_line(int fd, char **line)
 	char		*temp;
 	int			nbytes;
 
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
 	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
 		return (my_free(buf) * -1);
 	if (!backup[fd])

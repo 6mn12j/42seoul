@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/21 01:41:09 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/05/24 14:23:13 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ char		*my_strjoin(char const *s1, char const *s2)
 	size_t			s1_len;
 	size_t			s2_len;
 	char			*temp;
+
 	if (!s1 && !s2)
 		return (0);
-
 	s1_len = my_strlen(s1);
 	s2_len = my_strlen(s2);
 	if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))

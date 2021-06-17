@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/16 13:40:15 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/16 22:07:10 by minjupar         ###   ########.fr       */
+/*   Created: 2021/05/04 14:28:04 by minjupar          #+#    #+#             */
+/*   Updated: 2021/05/04 15:09:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #ifndef FT_PRINTF_H
- # define FT_PRINTF_H
-
- //#include <unistd.h>
- #include <stdarg.h>
- #include <stdio.h>
-
- typedef struct ft_flag
- {
-	 int minus;
-	 int width;
-	 int precision;
-	 int temp;
-	 int zero;
-	 int star;
-	 int flag;
-	 int return_value;
- };
-#endif
+int		ft_isdigit(int num)
+{
+	if (num >= '0' && num <= '9')
+		return (1);
+	else
+		return (0);
+}

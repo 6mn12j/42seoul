@@ -6,26 +6,25 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 13:40:15 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/16 22:07:10 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/18 18:40:53 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #ifndef FT_PRINTF_H
  # define FT_PRINTF_H
 
- //#include <unistd.h>
+ #include <unistd.h>
  #include <stdarg.h>
+ #include <stdlib.h>
  #include <stdio.h>
 
- typedef struct ft_flag
+struct ft_flag
  {
+	 int star;
+	 int zero;
 	 int minus;
 	 int width;
 	 int precision;
-	 int temp;
-	 int zero;
-	 int star;
-	 int flag;
 	 int return_value;
  };
 #endif

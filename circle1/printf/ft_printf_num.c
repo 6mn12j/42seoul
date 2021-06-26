@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_num.c                                     :+:      :+:    :+:   */
+/*   ft_printf_num.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:16:44 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/26 15:18:12 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:24:40 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 
 int		find_maxlength(t_flag *f, int value)
 {
+	// printf("pre:%d\n",f->precision);
+	// printf("pre_v:%d\n",f->precision_value);
 	int result;
+	int	is_minus;
 
-	result = 0;
+	is_minus = 0;
 	if (value < 0)
 	{
-		result ++;
+		is_minus = 1;
 		value *= -1;
 	}
 	if (f->precision && f->precision_value > digitlen(value))
-		result += f->precision_value;
+		result = f->precision_value + is_minus;
+	else if (f->zero == 1 && !f->precision && !f->minus)
+		result = f->width >= digitlen(value) + is_minus ?
+f->width : digitlen(value) + is_minus;
 	else
-		result += digitlen(value);
+		result = digitlen(value) + is_minus;
 
 	return (result);
 }
@@ -42,9 +48,8 @@ void	make_width(char **backup, t_flag *f, int width_len)
 	width_space[width_len] = '\0';
 
 	while (i < width_len)
-	{
 		width_space[i++] = ' ';
-	}
+
 	if (f->minus)
 		*backup = ft_strjoin(*backup, width_space);
 	else
@@ -66,10 +71,12 @@ int		ft_printf_d(t_flag *f, va_list ap)
 
 	v = va_arg(ap, int);
 	length = find_maxlength(f, v);
+	if (f->precision && f->precision_value == 0 && v == 0)
+		length = 0;
 	if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
 		return (-1);
 	backup[length] = '\0';
-	if (f->precision)
+	if (f->precision || f->zero)
 		ft_memset(backup, '0', length);
 	int i;
 	if (v < 0)
@@ -87,14 +94,10 @@ int		ft_printf_d(t_flag *f, va_list ap)
 	if (width_len > 0)
 		make_width(&backup, f, width_len);
 
-	int j;
-
-	j = 0;
 	while (*backup)
 	{
-		write(1, backup, 1);
+		f->return_value += write(1, backup, 1);
 		backup++;
-		f->return_value++;
 	}
 	return (1);
 }

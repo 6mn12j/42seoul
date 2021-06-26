@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:44:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/26 15:16:36 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:07:29 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int		digitlen(int value)
 	int		l;
 
 	l = 0;
+	if (!value)
+		return (1);
 	while (value)
 	{
 		value = value / 10;

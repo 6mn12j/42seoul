@@ -110,4 +110,58 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
 	return (i);
 }
 
+void	handle_base(int nbr, int base)
+{
+	char c;
+
+	if (nbr == 0)
+		return ;
+	handle_base(nbr / base, base);
+	c = nbr % base + '0';
+	write(1, &c, 1);
+}
+
+int		str_len(char *base)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (base[i])
+	{
+		j = i + 1;
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (-1);
+			j++;
+		}
+		if (base[i] == '+' || base[j] == '-')
+			return (-1);
+		i++;
+	}
+	return (i);
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		i;
+	char	c;
+
+	i = str_len(base);
+	if (nbr == -2147483648)
+	{
+		write(1, "-2147482648", 11);
+		return ;
+	}
+	else if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr -= 1;
+	}
+	handle_base(nbr / i, i);
+	c = (nbr % i) + '0';
+	write(1, &c, 1);
+}
+
 

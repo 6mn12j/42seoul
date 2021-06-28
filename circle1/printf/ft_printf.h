@@ -33,15 +33,18 @@ typedef struct s_flag
 
 int		digitlen(int value);
 int		is_spec(const char c);
-int		ft_printf_d(t_flag *f, va_list ap);
+int		ft_printf_num(t_flag *f, va_list *ap, char spec);
 void	init_flag(t_flag *f);
-int		find_maxlength(t_flag *f, int value);
+int		find_maxlength(t_flag *f, long long value);
 int		ft_printf(const char *format, ...);
 int		find_length(int length, int value, t_flag *f);
-int		get_flag_num(const char **format, va_list ap);
-int		handle_flag(const char **format, t_flag *f, va_list ap);
+int		str_len(char *base);
+int		get_flag_num(const char **format, va_list *ap);
+int		handle_flag(const char **format, t_flag *f, va_list *ap);
 void	clear_flag(t_flag *f);
 void	make_width(char **backup, t_flag *f, int width_len);
+void	ft_putnbr_base(int nbr, char *base);
+void	handle_base(int nbr, int base);
 
 int		ft_isdigit(char c);
 char	*ft_strjoin(char const *s1, char const *s2);

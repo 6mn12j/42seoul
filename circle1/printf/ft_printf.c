@@ -22,14 +22,15 @@ void	init_flag(t_flag *f)
 	f->spec = 0;
 }
 
-int		get_flag_num(const char **format, va_list ap)
+int		get_flag_num(const char **format, va_list *ap)
 {
 	int num;
 
 	num = 0;
 	if (**format == '*')
 	{
-		num = va_arg(ap, int);
+		num = va_arg(*ap, int);
+		//printf("num:%d\n",num);
 		(*format)++;
 	}
 	else if (ft_isdigit(**format))
@@ -43,10 +44,8 @@ int		get_flag_num(const char **format, va_list ap)
 	return (num);
 }
 
-int		handle_flag(const char **format, t_flag *f, va_list ap)
+int		handle_flag(const char **format, t_flag *f, va_list *ap)
 {
-
-
 	while (**format == '-' || **format == '0')
 	{
 		if (**format == '-')
@@ -55,7 +54,7 @@ int		handle_flag(const char **format, t_flag *f, va_list ap)
 			f->zero = 1;
 		(*format)++;
 	}
-	f->width = (get_flag_num(format, ap));
+	f->width = get_flag_num(format, ap);
 	if (f->width < 0)
 	{
 		f->width *= -1;
@@ -74,7 +73,7 @@ int		handle_flag(const char **format, t_flag *f, va_list ap)
 		}
 		else
 		{
-			f->precision_value = (get_flag_num(format, ap));
+			f->precision_value = get_flag_num(format, ap);
 		}
 	}
 	if (is_spec(**format))
@@ -118,20 +117,17 @@ int		ft_printf(const char *format, ...)
 		else if (*format == '%')
 		{
 			format++;
-			if (handle_flag(&format, &f, ap) == 1)
+			if (handle_flag(&format, &f, &ap) == 1)
 			{
 
 				clear_flag(&f);
-				if (*format == 'd')
-				 	ft_printf_d(&f, ap);
-				// else if (*format == 'i')
-				//  	ft_printf_i(&format, &f, ap);
+				if (*format == 'd' || *format == 'i' || *format == 'u')
+				 	ft_printf_num(&f, &ap, *format);
 				// else if (*format == 's')
 				// 	ft_printf_s(&format, &f, ap);
 				// else if (*format == 'c')
 				// 	ft_printf_c(&foramt ,&f, ap);
-				// else if (*format == 'u')
-				// 	ft_printf_u(&format, &f, ap);
+				
 				// else if (*format == 'x')
 				// 	ft_printf_x(&format, &f, ap);
 				// else if (*foramt == 'X')
@@ -142,5 +138,6 @@ int		ft_printf(const char *format, ...)
 				return (-1);
 		}
 	}
+	va_end(ap);
 	return (f.return_value);
 }

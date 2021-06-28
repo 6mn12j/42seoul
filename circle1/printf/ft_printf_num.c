@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-int		find_maxlength(t_flag *f, int value)
+int		find_maxlength(t_flag *f, long long value)
 {
 	// printf("pre:%d\n",f->precision);
 	// printf("pre_v:%d\n",f->precision_value);
-	int result;
+	long long result;
 	int	is_minus;
 
 	is_minus = 0;
@@ -40,11 +40,13 @@ void	make_width(char **backup, t_flag *f, int width_len)
 {
 	char *width_space;
 	char *tmp;
-	int i;
+	long long i;
 
 	i = 0;
 	tmp = *backup;
 	width_space = (char *)malloc(sizeof(char) * (width_len + 1));
+	if (!width_space)
+		return ;
 	width_space[width_len] = '\0';
 
 	while (i < width_len)
@@ -54,6 +56,8 @@ void	make_width(char **backup, t_flag *f, int width_len)
 		*backup = ft_strjoin(*backup, width_space);
 	else
 		*backup = ft_strjoin(width_space, *backup);
+	if (!backup)
+		return ;
 	free(tmp);
 	tmp = 0;
 	free(width_space);
@@ -62,19 +66,24 @@ void	make_width(char **backup, t_flag *f, int width_len)
 }
 
 
-int		ft_printf_d(t_flag *f, va_list ap)
+int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 {
-	int v;
-	int length;
-	int width_len;
+	long long v;
+	long long length;
+	long long width_len;
 	char *backup;
 
-	v = va_arg(ap, int);
+	v = 0;
+	if (spec == 'd' || spec == 'i')
+		v = va_arg(*ap, int);
+	else if (spec == 'u')
+		v = (unsigned int)va_arg(*ap, unsigned int);
+	//printf("v:%d\n",v);
 	length = find_maxlength(f, v);
 	if (f->precision && f->precision_value == 0 && v == 0)
 		length = 0;
 	if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
-		return (-1);
+		return (0);
 	backup[length] = '\0';
 	if (f->precision || f->zero)
 		ft_memset(backup, '0', length);

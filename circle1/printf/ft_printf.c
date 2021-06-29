@@ -93,7 +93,9 @@ void	clear_flag(t_flag *f)
 		f->zero = -1;
 	if (f->precision == 1 && f->zero)
 		f->zero = -1;
-
+	//printf("precision_v:%d\n",f->precision_value);
+	//printf("minus:%d\n",f->minus);
+	//printf("zero:%d\n",f->zero);
 	return ;
 }
 

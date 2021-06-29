@@ -2,9 +2,19 @@
 
 int		main(void)
 {
-	unsigned int u = -161;
+	unsigned int u = 161;
+	unsigned int uu = -161;
+	long long a = uu;
 	
-
+	printf("unsignedint:%u\n",u);
+	ft_printf("ft_unsignedint:%u\n",u);
+	printf("------------------\n");
+	printf("-unsignedint:%u\n",uu);
+	ft_printf("ft_-unsignedint:%u\n",uu);
+	printf("------------------\n");
+	printf("|%-4.*u|\n",-4,u);
+	ft_printf("|%-4.*u|\n",-4,u);
+	printf("------------------\n");
 	printf("|%-4.u|\n", u);
 	ft_printf("|%-4.u|\n", u);
 	printf("-------------\n");
@@ -96,6 +106,9 @@ int		main(void)
 	// printf("|%04d|\n",3);
 	// ft_printf("|%04d|\n",3);
 	// printf("--------------------\n");
+	// printf("|%04.-6d|\n",3);
+	// ft_printf("|%04.-6d|\n",3);
+	// printf("--------------------\n");
 	// printf("|%04d|\n",123);
 	// ft_printf("|%04d|\n",123);
 	// printf("--------------------\n");
@@ -158,6 +171,15 @@ int		main(void)
 	// printf("--------------------\n");
 	// printf("|%d,,%d,,|\n",13,12);
 	// ft_printf("|%d,,%d,,|\n",13,12);
+	// printf("--------------------\n");
+	// printf("|%10.-5d|\n",6);
+	// ft_printf("|%10.-5d|\n",6);
+	// printf("--------------------\n");
+	// printf("|%10.-5d|\n",-6);
+	// ft_printf("|%10.-5d|\n",-6);
+	// printf("--------------------\n");
+	// printf("|%10.5d|\n",-6);
+	// ft_printf("|%10.5d|\n",-6);
 
 
 }

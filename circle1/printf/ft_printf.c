@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:47:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/26 20:28:55 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:42:00 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		get_flag_num(const char **format, va_list *ap)
 	if (**format == '*')
 	{
 		num = va_arg(*ap, int);
-		//printf("num:%d\n",num);
 		(*format)++;
 	}
 	else if (ft_isdigit(**format))
@@ -121,15 +120,14 @@ int		ft_printf(const char *format, ...)
 			format++;
 			if (handle_flag(&format, &f, &ap) == 1)
 			{
-
 				clear_flag(&f);
-				if (*format == 'd' || *format == 'i' || *format == 'u')
+				if (*format == 'd' || *format == 'i' || *format == 'u' || *format == 'x' || *format == 'X')
 				 	ft_printf_num(&f, &ap, *format);
 				// else if (*format == 's')
 				// 	ft_printf_s(&format, &f, ap);
 				// else if (*format == 'c')
 				// 	ft_printf_c(&foramt ,&f, ap);
-				
+
 				// else if (*format == 'x')
 				// 	ft_printf_x(&format, &f, ap);
 				// else if (*foramt == 'X')

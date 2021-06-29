@@ -2,58 +2,102 @@
 
 int		main(void)
 {
-	unsigned int u = 161;
-	unsigned int uu = -161;
-	long long a = uu;
-	
-	printf("unsignedint:%u\n",u);
-	ft_printf("ft_unsignedint:%u\n",u);
+	unsigned int x = 4294967161;
+	printf("|%-4.x|\n",x);
+	ft_printf("|%-4.x|\n",x);
+
 	printf("------------------\n");
-	printf("-unsignedint:%u\n",uu);
-	ft_printf("ft_-unsignedint:%u\n",uu);
+	printf("|%-4.*x|\n",-4,x);
+	ft_printf("|%-4.*x|\n",-4,x);
 	printf("------------------\n");
-	printf("|%-4.*u|\n",-4,u);
-	ft_printf("|%-4.*u|\n",-4,u);
-	printf("------------------\n");
-	printf("|%-4.u|\n", u);
-	ft_printf("|%-4.u|\n", u);
+	printf("|%-4.x|\n", x);
+	ft_printf("|%-4.x|\n", x);
 	printf("-------------\n");
-	printf("|%-4.*u|\n",-4, u);
-	ft_printf("|%-4.*u|\n",-4, u);
+	printf("|%-4.*x|\n",-4, x);
+	ft_printf("|%-4.*x|\n",-4, x);
 
 	 printf("--------------------\n");
-	ft_printf("%4u\n", u);
-	printf("%4u\n", u);
+	ft_printf("%4x\n", x);
+	printf("%4x\n", x);
 	printf("--------------------\n");
-	printf("|%04u|\n",u);
-	ft_printf("|%04u|\n",u);
+	printf("|%04x|\n",x);
+	ft_printf("|%04x|\n",x);
 	printf("--------------------\n");
-	printf("|%04u|\n",123);
-	ft_printf("|%04u|\n",123);
+	printf("|%04x|\n",123);
+	ft_printf("|%04x|\n",123);
 	printf("--------------------\n");
-	printf("|%010u|\n",u);
-	ft_printf("|%010u|\n",u);
+	printf("|%010x|\n",x);
+	ft_printf("|%010x|\n",x);
 	printf("--------------------\n");
-	printf("|%04.u|\n",u);
-	ft_printf("|%04.u|\n",u);
+	printf("|%04.x|\n",x);
+	ft_printf("|%04.x|\n",x);
 	printf("--------------------\n");
-	printf("|%010u|\n",u);
-	ft_printf("|%010u|\n",u);
+	printf("|%010x|\n",x);
+	ft_printf("|%010x|\n",x);
 	printf("--------------------\n");
-	printf("|%-04u|\n",u);
-	ft_printf("|%-04u|\n",u);
+	printf("|%-04x|\n",x);
+	ft_printf("|%-04x|\n",x);
 	printf("--------------------\n");
-		printf("|%-010.3u|\n",u);
-	ft_printf("|%-010.3u|\n",u);
+		printf("|%-010.3x|\n",x);
+	ft_printf("|%-010.3x|\n",x);
 	printf("--------------------\n");
-	printf("|%-010.3u|\n",u);
-	ft_printf("|%-010.3u|\n",u);
+	printf("|%-010.3x|\n",x);
+	ft_printf("|%-010.3x|\n",x);
 	printf("--------------------\n");
-	printf("|%*.*u|\n",3,2,u);
-	ft_printf("|%*.*u|\n",3,2,u);
+	printf("|%*.*x|\n",3,2,x);
+	ft_printf("|%*.*x|\n",3,2,x);
 	printf("--------------------\n");
-	printf("|%u,,%u,,|\n",13,u);
-	ft_printf("|%u,,%u,,|\n",13,u);
+	printf("|%x,,%x,,|\n",13,x);
+	ft_printf("|%x,,%x,,|\n",13,x);
+
+	// printf("unsignedint:%u\n",u);
+	// ft_printf("ft_unsignedint:%u\n",u);
+	// printf("------------------\n");
+	// printf("-unsignedint:%u\n",uu);
+	// ft_printf("ft_-unsignedint:%u\n",uu);
+	// printf("------------------\n");
+	// printf("|%-4.*u|\n",-4,u);
+	// ft_printf("|%-4.*u|\n",-4,u);
+	// printf("------------------\n");
+	// printf("|%-4.u|\n", u);
+	// ft_printf("|%-4.u|\n", u);
+	// printf("-------------\n");
+	// printf("|%-4.*u|\n",-4, u);
+	// ft_printf("|%-4.*u|\n",-4, u);
+
+	//  printf("--------------------\n");
+	// ft_printf("%4u\n", u);
+	// printf("%4u\n", u);
+	// printf("--------------------\n");
+	// printf("|%04u|\n",u);
+	// ft_printf("|%04u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%04u|\n",123);
+	// ft_printf("|%04u|\n",123);
+	// printf("--------------------\n");
+	// printf("|%010u|\n",u);
+	// ft_printf("|%010u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%04.u|\n",u);
+	// ft_printf("|%04.u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%010u|\n",u);
+	// ft_printf("|%010u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%-04u|\n",u);
+	// ft_printf("|%-04u|\n",u);
+	// printf("--------------------\n");
+	// 	printf("|%-010.3u|\n",u);
+	// ft_printf("|%-010.3u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%-010.3u|\n",u);
+	// ft_printf("|%-010.3u|\n",u);
+	// printf("--------------------\n");
+	// printf("|%*.*u|\n",3,2,u);
+	// ft_printf("|%*.*u|\n",3,2,u);
+	// printf("--------------------\n");
+	// printf("|%u,,%u,,|\n",13,u);
+	// ft_printf("|%u,,%u,,|\n",13,u);
 
 	// printf("|%-4.i|\n", i);
 	// ft_printf("|%-4.i|\n", i);
@@ -180,6 +224,11 @@ int		main(void)
 	// printf("--------------------\n");
 	// printf("|%10.5d|\n",-6);
 	// ft_printf("|%10.5d|\n",-6);
+
+	x = 12;
+	//printf("\n10 nputnbr_base\n");
+	ft_putnbr_base(x,"0123456789ABCDEF");
+	//printf("%x",x);
 
 
 }

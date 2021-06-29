@@ -6,7 +6,7 @@ ft_printf.c\
 ft_printf_num.c\
 ft_printf_utils1.c)
 
-
+INCLUDE = ft_printf.h
 OBJS = $(SRCS:.c=.o)
 
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c -o  $@ $<
 
 $(NAME): $(OBJS)
 	ar rc $@ $^

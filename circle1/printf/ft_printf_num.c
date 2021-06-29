@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:16:44 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/26 20:24:40 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/29 21:31:13 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ int		find_maxlength(t_flag *f, long long value)
 {
 	// printf("pre:%d\n",f->precision);
 	// printf("pre_v:%d\n",f->precision_value);
-	long long result;
-	int	is_minus;
+	int result;
+	int is_minus;
 
 	is_minus = 0;
-	//printf("value:%lld\n",value);
+	//printf("maxlength_value:%lld\n",value);
 	//printf("widht:%d\n",f->width);
 	if (value < 0)
 	{
 		is_minus = 1;
 		value *= -1;
 	}
-	if (f->precision && f->precision_value + is_minus > digitlen(value) + is_minus)
+	if (f->precision && f->precision_value + is_minus > (int)ft_digitlen(value) + is_minus)
 		result = f->precision_value + is_minus;
 	else if (f->zero == 1 && !f->precision && !f->minus)
-		result = f->width >= digitlen(value) + is_minus ?
-f->width : digitlen(value) + is_minus;
+		result = f->width >= (int)ft_digitlen(value) + is_minus ?
+f->width : (int)ft_digitlen(value) + is_minus;
 	else
-		result = digitlen(value) + is_minus;
+		result = (int)ft_digitlen(value) + is_minus;
 	//printf("result:%lld\n",result);
-	//printf("digitlen:%d\n",digitlen(value));
+	//printf("ft_digitlen:%d\n",ft_digitlen(value));
 	return (result);
 }
 
@@ -46,7 +46,7 @@ int		my_free(char *str)
 	return (1);
 }
 
-void	make_width(char **backup, t_flag *f, int width_len)
+int		make_width(char **backup, t_flag *f, int width_len)
 {
 	char *width_space;
 	char *tmp;
@@ -56,28 +56,26 @@ void	make_width(char **backup, t_flag *f, int width_len)
 	tmp = *backup;
 	width_space = (char *)malloc(sizeof(char) * (width_len + 1));
 	if (!width_space)
-		return ;
+		return (0);
 	width_space[width_len] = '\0';
-
 	while (i < width_len)
 		width_space[i++] = ' ';
-
 	if (f->minus)
 		*backup = ft_strjoin(*backup, width_space);
 	else
 		*backup = ft_strjoin(width_space, *backup);
 	if (!backup)
-		return ;
+		return (0);
 	my_free(tmp);
 	my_free(width_space);
-	
-	return ;
-}
 
+	return (1);
+}
 
 int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 {
 	long long v;
+	long long temp;
 	long long length;
 	long long width_len;
 	char *backup;
@@ -87,7 +85,14 @@ int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 		v = va_arg(*ap, int);
 	else if (spec == 'u')
 		v = va_arg(*ap, unsigned int);
-	//printf("v:%d\n",v);
+	else if (spec == 'x' || spec == 'X')
+	{
+		v = va_arg(*ap, unsigned int);
+		temp = v;
+		//printf("\nvalue1:%lld\n",temp);
+		ft_putnbr_base(v, "0123456789abcdef");
+		//printf("\nvalue2:%lld",temp);
+	}
 	length = find_maxlength(f, v);
 	if (f->precision && f->precision_value == 0 && v == 0)
 		length = 0;

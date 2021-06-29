@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:44:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/26 20:07:29 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:26:07 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	*ft_bzero(void *dest, size_t len)
 	return (ft_memset(dest, 0, len));
 }
 
-int		digitlen(int value)
+size_t		ft_digitlen(long long value)
 {
-	int		l;
+	size_t	l;
 
 	l = 0;
 	if (!value)
@@ -110,58 +110,43 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
 	return (i);
 }
 
-void	handle_base(int nbr, int base)
+// void	ft_putnbr_base(long long *nbr, char *base)
+// {
+// 	int		i;
+// 	char	c;
+
+// 	i = 16;
+// 	while (nbr)
+// 	{
+// 		if (nbr == 0)
+// 		return ;
+// 		c = base[nbr % i];
+// 		write(1, &c, 1);
+// 		nbr = nbr / i;
+// 	}
+// 	return ;
+// }
+
+
+void	handle_base(long long  nbr, char *base)
 {
 	char c;
 
 	if (nbr == 0)
 		return ;
-	handle_base(nbr / base, base);
-	c = nbr % base + '0';
+	handle_base(nbr / 16, base);
+	c = base[nbr % 16];
 	write(1, &c, 1);
+	return ;
 }
 
-int		str_len(char *base)
+void	ft_putnbr_base(long long  nbr, char *base)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (base[i])
-	{
-		j = i + 1;
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (-1);
-			j++;
-		}
-		if (base[i] == '+' || base[j] == '-')
-			return (-1);
-		i++;
-	}
-	return (i);
-}
-
-void	ft_putnbr_base(int nbr, char *base)
-{
-	int		i;
 	char	c;
 
-	i = str_len(base);
-	if (nbr == -2147483648)
-	{
-		write(1, "-2147482648", 11);
-		return ;
-	}
-	else if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr -= 1;
-	}
-	handle_base(nbr / i, i);
-	c = (nbr % i) + '0';
+	handle_base(nbr / 16, base);
+	c = base[nbr % 16];
 	write(1, &c, 1);
+
+	return ;
 }
-
-

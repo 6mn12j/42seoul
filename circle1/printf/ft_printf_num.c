@@ -27,13 +27,13 @@ int		find_maxlength(t_flag *f, long long value)
 		is_minus = 1;
 		value *= -1;
 	}
-	if (f->precision && f->precision_value + is_minus > (int)ft_digitlen(value) + is_minus)
+	if (f->precision && f->precision_value + is_minus > value + is_minus)
 		result = f->precision_value + is_minus;
 	else if (f->zero == 1 && !f->precision && !f->minus)
-		result = f->width >= (int)ft_digitlen(value) + is_minus ?
-f->width : (int)ft_digitlen(value) + is_minus;
+		result = f->width >= value + is_minus ?
+f->width : value + is_minus;
 	else
-		result = (int)ft_digitlen(value) + is_minus;
+		result = value + is_minus;
 	//printf("result:%lld\n",result);
 	//printf("ft_digitlen:%d\n",ft_digitlen(value));
 	return (result);
@@ -75,7 +75,7 @@ int		make_width(char **backup, t_flag *f, int width_len)
 int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 {
 	long long v;
-	long long temp;
+	char* temp;
 	long long length;
 	long long width_len;
 	char *backup;
@@ -88,11 +88,12 @@ int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 	else if (spec == 'x' || spec == 'X')
 	{
 		v = va_arg(*ap, unsigned int);
-		temp = v;
 		//printf("\nvalue1:%lld\n",temp);
-		ft_putnbr_base(v, "0123456789abcdef");
+		temp = ft_putnbr_base(v, "0123456789abcdef");
+		printf("\n temp:%s\n", temp);
 		//printf("\nvalue2:%lld",temp);
 	}
+	v = spec == 'x' || spec == 'X' ? ft_strlen(temp) : ft_digitlen(v);
 	length = find_maxlength(f, v);
 	if (f->precision && f->precision_value == 0 && v == 0)
 		length = 0;

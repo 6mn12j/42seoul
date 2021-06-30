@@ -48,12 +48,13 @@ int		ft_isdigit(char c);
 int		str_len(char *base);
 int		handle_hex(long long num);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
 
 void	*ft_memset(void *dest, int value, size_t len);
 void	*ft_bzero(void *dest, size_t len);
 void	*ft_calloc(size_t count, size_t size);
-void	ft_putnbr_base(long long  nbr, char *base);
-void	handle_base(long long  nbr, char *base);
+char	*ft_putnbr_base(long long  nbr, char *base);
+size_t		ft_strlcat(char *dest, const char *src, size_t size);
 size_t		ft_strlen(const char *str);
 size_t		ft_digitlen(long long value);
 size_t	ft_strlcpy(char *dest, char const *src, size_t size);

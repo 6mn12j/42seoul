@@ -61,6 +61,23 @@ size_t		ft_digitlen(long long value)
 	return (l);
 }
 
+char	*ft_strdup(const char *s1)
+{
+	char		*temp;
+	size_t		i;
+
+	i = 0;
+	if (!(temp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (NULL);
+	while (i < ft_strlen(s1))
+	{
+		temp[i] = ((char*)s1)[i];
+		i++;
+	}
+	temp[i] = 0;
+	return (temp);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t			s1_len;
@@ -126,27 +143,60 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
 // 	}
 // 	return ;
 // }
-
-
-void	handle_base(long long  nbr, char *base)
+size_t		ft_strlcat(char *dest, const char *src, size_t size)
 {
-	char c;
+	unsigned int destlen;
+	unsigned int srclen;
+	unsigned int result;
+	unsigned int i;
 
-	if (nbr == 0)
-		return ;
-	handle_base(nbr / 16, base);
-	c = base[nbr % 16];
-	write(1, &c, 1);
-	return ;
+	printf("strlcat dest:%ssrc:%s\n",dest,src);
+	destlen = ft_strlen(dest);
+	srclen = ft_strlen((char *)src);
+	result = 0;
+	i = 0;
+	if (size < destlen)
+		return (srclen + size);
+	else
+	{
+		while (src[i] && destlen + i + 1 < size)
+		{
+			dest[destlen + i] = src[i];
+			i++;
+		}
+		dest[destlen + i] = '\0';
+		return (destlen + srclen);
+	}
 }
 
-void	ft_putnbr_base(long long  nbr, char *base)
+char	*ft_putnbr_base(long long  nbr, char *base)
 {
-	char	c;
+	char *str;
+	int		i;
+	long long		count;
 
-	handle_base(nbr / 16, base);
-	c = base[nbr % 16];
-	write(1, &c, 1);
-
-	return ;
+	str = base;
+	//str이 있어 
+	//str temp
+	//str i+ 1 만큼 할당
+	//c가져다 붙혀
+	//할당 하면 프리
+	i = 0;
+	count = nbr;
+	while (count)
+	{
+		if (count == 0)
+			break;
+		count = count /16;
+		i++;
+	}
+	str = (char*)malloc(sizeof(char) + (i));
+	str[i]='\0';
+	while (i)
+	{
+		str[--i] = base[nbr%16];
+		nbr = nbr/16;
+	}
+	
+	return (str);
 }

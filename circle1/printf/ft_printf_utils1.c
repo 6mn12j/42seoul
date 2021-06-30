@@ -53,8 +53,8 @@ size_t		ft_digitlen(long long value)
 	l = 0;
 	if (!value)
 		return (1);
-	if (value<0)
-		l++;
+	// if (value<0)
+	// 	l++;
 	while (value)
 	{
 		value = value / 10;
@@ -86,6 +86,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t			s2_len;
 	char			*temp;
 
+	//printf("s1:%s\ns2:%s\n",s1,s2);
 	if (!s1 || !s2)
 		return (0);
 	s1_len = ft_strlen(s1);
@@ -93,7 +94,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
 		return (0);
 	ft_strlcpy(temp, s1, s1_len + 1);
+	//printf("temp:%s\n",temp);
 	ft_strlcpy(&temp[s1_len], s2, s2_len + 1);
+	//printf("temp:%s\n",temp);
 	return (temp);
 }
 
@@ -110,7 +113,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_strlcpy(char *dest, char const *src, size_t size)
+void	ft_strrcpy(char *dest, char const *src, size_t size)
 {
 	size_t i;
 	size_t dest_len;
@@ -118,8 +121,8 @@ void	ft_strlcpy(char *dest, char const *src, size_t size)
 
 	src_len = ft_strlen(src);
 	dest_len = ft_strlen(dest);
-	printf("\nsrc:%zu dest:%zu\n",src_len, dest_len);
-	printf("src:%s dest:%s\n",src, dest);
+	//printf("\nsrc:%zu dest:%zu\n",src_len, dest_len);
+	//printf("src:%s dest:%s\n",src, dest);
 	i = 0;
 	if (!dest || !src)
 		return ;
@@ -128,11 +131,28 @@ void	ft_strlcpy(char *dest, char const *src, size_t size)
 		dest[--dest_len] = src[--src_len];
 		i++;
 	}
-	// if (size > 0)
-	// 	dest[i] = '\0';
+	//printf("dest:|%s|\n",dest);
 
 	return ;
 }
+
+size_t	ft_strlcpy(char *dest, char const *src, size_t size)
+{
+	size_t i;
+	i = 0;
+	if (!dest || !src)
+		return (0);
+	while (i + 1 < size && src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (size > 0)
+		dest[i] = '\0';
+	while (src[i])
+		i++;
+ 	return (i);
+ }
 
 
 
@@ -145,6 +165,13 @@ char	*ft_putnbr_base(long long  nbr, char *base)
 	str = base;
 	i = 0;
 	count = nbr;
+	if (nbr == 0)
+	{
+		str = (char*)malloc(sizeof(char) * 2);
+		str[0]='0';
+		str[1]='\0';
+		return (str);
+	}
 	while (count)
 	{
 		if (count == 0)
@@ -152,7 +179,7 @@ char	*ft_putnbr_base(long long  nbr, char *base)
 		count = count / 16;
 		i++;
 	}
-	str = (char*)malloc(sizeof(char) + (i));
+	str = (char*)malloc(sizeof(char) * (i + 1));
 	str[i]='\0';
 	while (i)
 	{

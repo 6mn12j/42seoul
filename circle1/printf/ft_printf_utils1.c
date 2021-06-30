@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:44:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/29 20:26:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:47:26 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ size_t		ft_digitlen(long long value)
 	l = 0;
 	if (!value)
 		return (1);
+	if (value<0)
+		l++;
 	while (value)
 	{
 		value = value / 10;
@@ -108,66 +110,31 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dest, char const *src, size_t size)
+void	ft_strlcpy(char *dest, char const *src, size_t size)
 {
 	size_t i;
+	size_t dest_len;
+	size_t src_len;
 
+	src_len = ft_strlen(src);
+	dest_len = ft_strlen(dest);
+	printf("\nsrc:%zu dest:%zu\n",src_len, dest_len);
+	printf("src:%s dest:%s\n",src, dest);
 	i = 0;
 	if (!dest || !src)
-		return (0);
-	while (i + 1 < size && src[i])
+		return ;
+	while (src_len >= 0 && i < size)
 	{
-		dest[i] = src[i];
+		dest[--dest_len] = src[--src_len];
 		i++;
 	}
-	if (size > 0)
-		dest[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	// if (size > 0)
+	// 	dest[i] = '\0';
+
+	return ;
 }
 
-// void	ft_putnbr_base(long long *nbr, char *base)
-// {
-// 	int		i;
-// 	char	c;
 
-// 	i = 16;
-// 	while (nbr)
-// 	{
-// 		if (nbr == 0)
-// 		return ;
-// 		c = base[nbr % i];
-// 		write(1, &c, 1);
-// 		nbr = nbr / i;
-// 	}
-// 	return ;
-// }
-size_t		ft_strlcat(char *dest, const char *src, size_t size)
-{
-	unsigned int destlen;
-	unsigned int srclen;
-	unsigned int result;
-	unsigned int i;
-
-	printf("strlcat dest:%ssrc:%s\n",dest,src);
-	destlen = ft_strlen(dest);
-	srclen = ft_strlen((char *)src);
-	result = 0;
-	i = 0;
-	if (size < destlen)
-		return (srclen + size);
-	else
-	{
-		while (src[i] && destlen + i + 1 < size)
-		{
-			dest[destlen + i] = src[i];
-			i++;
-		}
-		dest[destlen + i] = '\0';
-		return (destlen + srclen);
-	}
-}
 
 char	*ft_putnbr_base(long long  nbr, char *base)
 {
@@ -176,27 +143,21 @@ char	*ft_putnbr_base(long long  nbr, char *base)
 	long long		count;
 
 	str = base;
-	//str이 있어 
-	//str temp
-	//str i+ 1 만큼 할당
-	//c가져다 붙혀
-	//할당 하면 프리
 	i = 0;
 	count = nbr;
 	while (count)
 	{
 		if (count == 0)
 			break;
-		count = count /16;
+		count = count / 16;
 		i++;
 	}
 	str = (char*)malloc(sizeof(char) + (i));
 	str[i]='\0';
 	while (i)
 	{
-		str[--i] = base[nbr%16];
-		nbr = nbr/16;
+		str[--i] = base[nbr % 16];
+		nbr = nbr / 16;
 	}
-	
 	return (str);
 }

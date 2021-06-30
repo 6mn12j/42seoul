@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 13:40:15 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/29 20:21:31 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/06/30 20:33:18 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ int		str_len(char *base);
 int		handle_hex(long long num);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
-
+char	*ft_itoa(int n);
 void	*ft_memset(void *dest, int value, size_t len);
 void	*ft_bzero(void *dest, size_t len);
 void	*ft_calloc(size_t count, size_t size);
+void	ft_strlcpy(char *dest, char const *src, size_t size);
 char	*ft_putnbr_base(long long  nbr, char *base);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 size_t		ft_strlen(const char *str);
 size_t		ft_digitlen(long long value);
-size_t	ft_strlcpy(char *dest, char const *src, size_t size);
+
 #endif

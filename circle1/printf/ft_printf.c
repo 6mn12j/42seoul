@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:47:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/29 18:42:00 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:33:18 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,13 @@ int		handle_flag(const char **format, t_flag *f, va_list *ap)
 				(*format)++;
 		}
 		else
-		{
 			f->precision_value = get_flag_num(format, ap);
-		}
 	}
 	if (is_spec(**format))
 	{
 		f->spec = **format;
 		return (1);
 	}
-
 	return (-1);
 }
 
@@ -92,9 +89,6 @@ void	clear_flag(t_flag *f)
 		f->zero = -1;
 	if (f->precision == 1 && f->zero)
 		f->zero = -1;
-	//printf("precision_v:%d\n",f->precision_value);
-	//printf("minus:%d\n",f->minus);
-	//printf("zero:%d\n",f->zero);
 	return ;
 }
 
@@ -108,7 +102,6 @@ int		ft_printf(const char *format, ...)
 	while (*format)
 	{
 		init_flag(&f);
-
 		if (*format != '%')
 		{
 			f.return_value += write(1, format, 1);
@@ -121,18 +114,13 @@ int		ft_printf(const char *format, ...)
 			if (handle_flag(&format, &f, &ap) == 1)
 			{
 				clear_flag(&f);
-				if (*format == 'd' || *format == 'i' || *format == 'u' || *format == 'x' || *format == 'X')
+				if (*format == 'd' || *format == 'i' || *format == 'u' ||
+				*format == 'x' || *format == 'X' || *format == 'p')
 				 	ft_printf_num(&f, &ap, *format);
-				// else if (*format == 's')
-				// 	ft_printf_s(&format, &f, ap);
-				// else if (*format == 'c')
-				// 	ft_printf_c(&foramt ,&f, ap);
-
-				// else if (*format == 'x')
-				// 	ft_printf_x(&format, &f, ap);
-				// else if (*foramt == 'X')
-				// 	ft_printf_X(&format &f,ap);
-				format++;
+				else if (*format == 's')
+					ft_printf_s(&format, &f, ap);
+				else if (*format == 'c')
+					ft_printf_c(&foramt, &f, ap);
 			}
 			else
 				return (-1);

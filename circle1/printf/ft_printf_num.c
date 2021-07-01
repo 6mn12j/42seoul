@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:16:44 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 18:28:30 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:57:41 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 	{
 		backup = ft_strjoin("0x", backup);
 		length += 2;
-
+	}
 	width_len = f->width - length;
 	if (width_len > 0)
 		make_width(&backup, f, width_len);

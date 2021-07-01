@@ -118,11 +118,19 @@ int		ft_printf(const char *format, ...)
 				*format == 'x' || *format == 'X' || *format == 'p')
 				 	ft_printf_num(&f, &ap, *format);
 				else if (*format == 's')
-					ft_printf_string(&f, &ap, *format);
+				{
+					ft_printf_string(&f, va_arg(ap, char *));
+				}
 				else if (*format == 'c')
-					{
-						ft_printf_string(&f, &ap, *format);
-					}
+				{
+						char arr[2];
+						f.spec = 'c';
+						arr[0] = va_arg(ap, int);
+						arr[1] = '\0';
+						ft_printf_string(&f, arr);
+						
+						//ft_printf_string_c(&f,va_arg(ap, int));
+				}
 				++format;
 			}
 			else

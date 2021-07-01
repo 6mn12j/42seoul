@@ -34,7 +34,8 @@ typedef struct s_flag
 
 int		is_spec(const char c);
 int		ft_printf_num(t_flag *f, va_list *ap, char spec);
-int		ft_printf_string(t_flag *f, va_list *ap, char spec);
+int		ft_printf_string(t_flag *f, char *v);
+int		ft_printf_string_c(t_flag *f, char v);
 void	init_flag(t_flag *f);
 int		find_maxlength(t_flag *f, long long value, int is_minus);
 int		ft_printf(const char *format, ...);
@@ -49,7 +50,7 @@ int		ft_isdigit(char c);
 int		str_len(char *base);
 int		handle_hex(long long num);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strncat(char *dest, char *src, unsigned int nb);
+char	*ft_strncat(char *dest, char *src, unsigned int nb); //안씀
 char	*ft_strdup(const char *s1);
 char	*ft_itoa(long long n);
 void	*ft_memset(void *dest, int value, size_t len);

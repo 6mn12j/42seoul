@@ -4,6 +4,7 @@ NAME = libftprintf.a
 SRCS = $(addprefix ${SRC_DIR},\
 ft_printf.c\
 ft_printf_num.c\
+ft_printf_string.c\
 ft_printf_utils1.c)
 
 INCLUDE = ft_printf.h

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 15:16:44 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 18:57:41 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:53:17 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ int		ft_printf_num(t_flag *f, va_list *ap, char spec)
 		v = (unsigned long long)va_arg(*ap, void*);
 		temp = ft_putnbr_base(v, "0123456789abcdef");
 	}
-
 	is_minus = v < 0 ? 1 : 0;
 	num_len = ft_strlen(temp);
 	length = find_maxlength(f, num_len, is_minus);

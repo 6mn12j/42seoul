@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 13:40:15 by minjupar          #+#    #+#             */
-/*   Updated: 2021/06/30 20:33:18 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/01 19:59:23 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_flag
 
 int		is_spec(const char c);
 int		ft_printf_num(t_flag *f, va_list *ap, char spec);
+int		ft_printf_string(t_flag *f, va_list *ap, char spec);
 void	init_flag(t_flag *f);
 int		find_maxlength(t_flag *f, long long value, int is_minus);
 int		ft_printf(const char *format, ...);

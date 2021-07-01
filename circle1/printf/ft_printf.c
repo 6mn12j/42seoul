@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:47:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 19:00:09 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/01 20:02:46 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ int		ft_printf(const char *format, ...)
 				if (*format == 'd' || *format == 'i' || *format == 'u' ||
 				*format == 'x' || *format == 'X' || *format == 'p')
 				 	ft_printf_num(&f, &ap, *format);
-				// else if (*format == 's')
-				// 	ft_printf_s(&format, &f, ap);
+				else if (*format == 's')
+					ft_printf_string(&f, &ap, *format);
 				// else if (*format == 'c')
 				// 	ft_printf_c(&foramt, &f, ap);
 				++format;

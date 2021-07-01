@@ -119,8 +119,10 @@ int		ft_printf(const char *format, ...)
 				 	ft_printf_num(&f, &ap, *format);
 				else if (*format == 's')
 					ft_printf_string(&f, &ap, *format);
-				// else if (*format == 'c')
-				// 	ft_printf_c(&foramt, &f, ap);
+				else if (*format == 'c')
+					{
+						ft_printf_string(&f, &ap, *format);
+					}
 				++format;
 			}
 			else

@@ -2,7 +2,7 @@
 
 int		main(void)
 {
-	char *abc = "abc";
+	char *abc = NULL;
 	printf("|%s|\n",abc);
 	ft_printf("|%s|\n",abc);
 	printf("-----------------\n");

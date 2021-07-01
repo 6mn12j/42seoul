@@ -49,6 +49,7 @@ int		ft_isdigit(char c);
 int		str_len(char *base);
 int		handle_hex(long long num);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
 char	*ft_strdup(const char *s1);
 char	*ft_itoa(long long n);
 void	*ft_memset(void *dest, int value, size_t len);

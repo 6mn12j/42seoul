@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:44:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 19:02:05 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 16:04:14 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	ft_strrcpy(char *dest, char const *src, size_t size)
 		dest[--dest_len] = src[--src_len];
 		i++;
 	}
-	
+
 	return ;
 }
 
@@ -179,20 +179,3 @@ char	*ft_putnbr_base(long long  nbr, char *base)
 	return (str);
 }
 
-char		*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int i;
-	unsigned int j;
-
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0' && j < nb)
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
-}

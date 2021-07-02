@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:47:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 20:02:46 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 16:08:42 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,11 @@ int		handle_flag(const char **format, t_flag *f, va_list *ap)
 
 void	clear_flag(t_flag *f)
 {
+	if (f->spec == '%')
+		f->precision = 0;
 	if (f->precision_value < 0)
 		f->precision = 0;
-	if (f->minus && f->zero)
+	if (f->minus && f->zero && f->spec != '%')
 		f->zero = -1;
 	if (f->precision == 1 && f->zero)
 		f->zero = -1;
@@ -113,6 +115,7 @@ int		ft_printf(const char *format, ...)
 			format++;
 			if (handle_flag(&format, &f, &ap) == 1)
 			{
+				f.spec = *format;
 				clear_flag(&f);
 				if (*format == 'd' || *format == 'i' || *format == 'u' ||
 				*format == 'x' || *format == 'X' || *format == 'p')
@@ -121,16 +124,11 @@ int		ft_printf(const char *format, ...)
 				{
 					ft_printf_string(&f, va_arg(ap, char *));
 				}
-				else if (*format == 'c')
-				{
-						char arr[2];
-						f.spec = 'c';
-						arr[0] = va_arg(ap, int);
-						arr[1] = '\0';
-						ft_printf_string(&f, arr);
-						
-						//ft_printf_string_c(&f,va_arg(ap, int));
-				}
+				else if (*format == 'c' )
+					ft_printf_string_c(&f, va_arg(ap, int));
+				else if (*format == '%')
+					ft_printf_string_c(&f, *format);
+
 				++format;
 			}
 			else

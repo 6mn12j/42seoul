@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 13:40:15 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/01 19:59:23 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 16:04:08 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		ft_isdigit(char c);
 int		str_len(char *base);
 int		handle_hex(long long num);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strncat(char *dest, char *src, unsigned int nb); //안씀
 char	*ft_strdup(const char *s1);
 char	*ft_itoa(long long n);
 void	*ft_memset(void *dest, int value, size_t len);

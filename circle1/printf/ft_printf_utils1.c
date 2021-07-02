@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 12:44:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/02 16:04:14 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 22:37:19 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
 {
 	size_t i;
 	i = 0;
-	if (!dest || !src)
-		return (0);
+	// if (!dest || !src)
+	// 	return (0);
 	while (i + 1 < size && src[i])
 	{
 		dest[i] = src[i];
@@ -146,20 +146,20 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
  	return (i);
  }
 
-char	*ft_putnbr_base(long long  nbr, char *base)
+char	*ft_putnbr_base(unsigned long long  nbr, char *base)
 {
 	char *str;
 	int		i;
 	long long		count;
 
 	str = base;
-	i = 0;
 	count = nbr;
+	i = 0;
 	if (nbr == 0)
 	{
 		str = (char*)malloc(sizeof(char) * 2);
-		str[0]='0';
-		str[1]='\0';
+		str[0] = '0';
+		str[1] = '\0';
 		return (str);
 	}
 	while (count)
@@ -170,7 +170,7 @@ char	*ft_putnbr_base(long long  nbr, char *base)
 		i++;
 	}
 	str = (char*)malloc(sizeof(char) * (i + 1));
-	str[i]='\0';
+	str[i] = '\0';
 	while (i)
 	{
 		str[--i] = base[nbr % 16];

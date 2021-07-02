@@ -1,0 +1,296 @@
+
+------------------------------
+|        string.c            |
+|                            |
+------------------------------
+
+make: `libftprintf.a' is up to date.
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        number.c            |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        char.c              |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        unsigned_int.c      |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        hexa.c              |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        percent.c           |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+
+[1;32m[ OK ] - All GOOD
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+------------------------------
+|        pointer.c           |
+|                            |
+------------------------------
+
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf.o ft_printf.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_num.o ft_printf_num.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_string.o ft_printf_string.c
+gcc -Wall -Wextra -Werror -I ft_printf.h -c -o  ft_printf_utils1.o ft_printf_utils1.c
+ar rc libftprintf.a ft_printf.o ft_printf_num.o ft_printf_string.o ft_printf_utils1.o
+1 [0x7ffee99ff980]18					      |	1 [0x7ffeeecc6980]18
+1.1 [0x7ffee99ff980]20					      |	1.1 [0x7ffeeecc6980]20
+3 ! [0x7ffee99ff980]20					      |	3 ! [0x7ffeeecc6980]20
+3.4 ![0x7ffee99ff980]21					      |	3.4 ![0x7ffeeecc6980]21
+5 [0x7ffee99ff980]18					      |	5 [0x7ffeeecc6980]18
+10 [0x7ffee99ff980                                            |	10 [0x7ffeeecc6980                                           
+10 [0x7ffee99ff980]19					      |	10 [0x7ffeeecc6980]19
+10 [0x7ffee99ff980]19					      |	10 [0x7ffeeecc6980]19
+10 [0x7ffee99ff980]19					      |	10 [0x7ffeeecc6980]19
+10 [0x7ffee99ff980]19					      |	10 [0x7ffeeecc6980]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee99ff984]18					      |	1 [0x7ffeeecc6984]18
+1.1 [0x7ffee99ff984]20					      |	1.1 [0x7ffeeecc6984]20
+3 ! [0x7ffee99ff984]20					      |	3 ! [0x7ffeeecc6984]20
+3.4 ![0x7ffee99ff984]21					      |	3.4 ![0x7ffeeecc6984]21
+5 [0x7ffee99ff984]18					      |	5 [0x7ffeeecc6984]18
+10 [0x7ffee99ff984                                            |	10 [0x7ffeeecc6984                                           
+10 [0x7ffee99ff984]19					      |	10 [0x7ffeeecc6984]19
+10 [0x7ffee99ff984]19					      |	10 [0x7ffeeecc6984]19
+10 [0x7ffee99ff984]19					      |	10 [0x7ffeeecc6984]19
+10 [0x7ffee99ff984]19					      |	10 [0x7ffeeecc6984]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee99ff988]18					      |	1 [0x7ffeeecc6988]18
+1.1 [0x7ffee99ff988]20					      |	1.1 [0x7ffeeecc6988]20
+3 ! [0x7ffee99ff988]20					      |	3 ! [0x7ffeeecc6988]20
+3.4 ![0x7ffee99ff988]21					      |	3.4 ![0x7ffeeecc6988]21
+5 [0x7ffee99ff988]18					      |	5 [0x7ffeeecc6988]18
+10 [0x7ffee99ff988                                            |	10 [0x7ffeeecc6988                                           
+10 [0x7ffee99ff988]19					      |	10 [0x7ffeeecc6988]19
+10 [0x7ffee99ff988]19					      |	10 [0x7ffeeecc6988]19
+10 [0x7ffee99ff988]19					      |	10 [0x7ffeeecc6988]19
+10 [0x7ffee99ff988]19					      |	10 [0x7ffeeecc6988]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee99ff98c]18					      |	1 [0x7ffeeecc698c]18
+1.1 [0x7ffee99ff98c]20					      |	1.1 [0x7ffeeecc698c]20
+3 ! [0x7ffee99ff98c]20					      |	3 ! [0x7ffeeecc698c]20
+3.4 ![0x7ffee99ff98c]21					      |	3.4 ![0x7ffeeecc698c]21
+5 [0x7ffee99ff98c]18					      |	5 [0x7ffeeecc698c]18
+10 [0x7ffee99ff98c                                            |	10 [0x7ffeeecc698c                                           
+10 [0x7ffee99ff98c]19					      |	10 [0x7ffeeecc698c]19
+10 [0x7ffee99ff98c]19					      |	10 [0x7ffeeecc698c]19
+10 [0x7ffee99ff98c]19					      |	10 [0x7ffeeecc698c]19
+10 [0x7ffee99ff98c]19					      |	10 [0x7ffeeecc698c]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee99ff990]18					      |	1 [0x7ffeeecc6990]18
+1.1 [0x7ffee99ff990]20					      |	1.1 [0x7ffeeecc6990]20
+3 ! [0x7ffee99ff990]20					      |	3 ! [0x7ffeeecc6990]20
+3.4 ![0x7ffee99ff990]21					      |	3.4 ![0x7ffeeecc6990]21
+5 [0x7ffee99ff990]18					      |	5 [0x7ffeeecc6990]18
+10 [0x7ffee99ff990                                            |	10 [0x7ffeeecc6990                                           
+10 [0x7ffee99ff990]19					      |	10 [0x7ffeeecc6990]19
+10 [0x7ffee99ff990]19					      |	10 [0x7ffeeecc6990]19
+10 [0x7ffee99ff990]19					      |	10 [0x7ffeeecc6990]19
+10 [0x7ffee99ff990]19					      |	10 [0x7ffeeecc6990]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+ 							      |
+ 							      |
+ 							      |
+ 							      |
+ PRINTF							      |	 FT_PRINTF
+------------------------------------------------------------------------------------------------------------------------------
+[1;32m
+[ KO ] But it's ok, it is the pointer test, you have to compare the results by yourself
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./ft_printf_num.o ./ft_printf_string.o ./ft_printf_utils1.o
+rm -f libftprintf.a
+######### 42TESTERS-PRINTF ##########
+#####42TESTS-PRINTF#####
+#########PFT##########
+Test 647 (moul_star_2) : FAILED.$
+    First line of code: {return test("%% *.5i 42 == |% *.5i|$
+", 4, 42);}$
+      expected output : "% *.5i 42 == | 00042|$
+"$
+      your output     : "% *.5i 42 == |00042|$
+"$
+      expected (nonprintable as hex) : "% *.5i 42 == | 00042|\x0a"$
+      actual   (nonprintable as hex) : "% *.5i 42 == |00042|\x0a"$
+$
+Test 4192 (notintsubject_o_neg_prec_star_01) : FAILED.$
+    First line of code: {return test("%.*o", -3, 12345);}$
+      expected output : "30071"$
+      your output     : ""$
+      expected (nonprintable as hex) : "30071"$
+      actual   (nonprintable as hex) : ""$
+$
+Test 4193 (notintsubject_o_neg_prec_star_02) : FAILED.$
+    First line of code: {return test("%.*o", -1, 12345);}$
+      expected output : "30071"$
+      your output     : ""$
+      expected (nonprintable as hex) : "30071"$
+      actual   (nonprintable as hex) : ""$
+$
+Test 4194 (notintsubject_o_neg_prec_star_03) : FAILED.$
+    First line of code: {return test("%.*o", -1, 0);}$
+      expected output : "0"$
+      your output     : ""$
+      expected (nonprintable as hex) : "0"$
+      actual   (nonprintable as hex) : ""$
+$
+#########PFT_2019##########
+WARNING: The return values reported here may be bugged on some systems.$
+          See https://github.com/gavinfielder/pft/issues/11$
+          Run in non-fork mode (-X) to ensure accurate return value$
+          reporting, set IGNORE_RETURN_VALUE=1 in options-config.ini,$
+          or run test_pipes.sh to see if your system has this bug.$
+          This bug does not affect the pass/fail result of a test, nor$
+          the function output--only the reported return value.$
+$
+$
+Test 130 (s_undefbehav_0_width_9) : FAILED.$
+    First line of code: {return test("%09s", s_hidden);}$
+      expected return value : 9$
+      your return value     : 9$
+      expected output : "000hi low"$
+      your output     : "   hi low"$
+      expected (nonprintable as hex) : "000hi low"$
+      actual   (nonprintable as hex) : "   hi low"$
+$
+######### printf_lover_v2 ##########
+######### printf-tester ##########
+######### ft_printf_test ##########
+- [OUTPUT] ft_printf("%5.i", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-5.i", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.0u", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.u", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.0X", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.X", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-5.0X", 0)
+   expected: "     "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-102p%-91p%00*.32%" ,(void*)17383623580121946936lu,(void*)6825043625903153404lu,-125)
+   expected: "0xf13f098b3245db38                                                                                    0x5eb76d04628060fc                                                                         %                                                                                                                            "
+   actual:   "0x13f098b3245db38                                                                                     0x5eb76d04628060fc                                                                         %                                                                                                                            "
+
+- [OUTPUT] ft_printf("%29p%0151.162x%---53.46u%-139.26X" ,(void*)17894711340605174765lu,1565093748u,662758369u,3536629372u)
+   expected: "           0xf856c9276eecf3ed00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005d496f740000000000000000000000000000000000000662758369       000000000000000000D2CCAE7C                                                                                                                 "
+   actual:   "            0x856c9276eecf3ed00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005d496f740000000000000000000000000000000000000662758369       000000000000000000D2CCAE7C                                                                                                                 "
+
+######### Test-42 ##########

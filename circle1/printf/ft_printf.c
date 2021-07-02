@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 17:47:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/02 16:08:42 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 21:48:56 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ int		get_flag_num(const char **format, va_list *ap)
 
 int		handle_flag(const char **format, t_flag *f, va_list *ap)
 {
+	if (**format == ' ')
+		(*format)++;
 	while (**format == '-' || **format == '0')
 	{
+		if (**format == ' ')
+			(*format)++;
 		if (**format == '-')
 			f->minus = 1;
 		else if (**format == '0')
@@ -113,27 +117,27 @@ int		ft_printf(const char *format, ...)
 		else if (*format == '%')
 		{
 			format++;
+			f.spec = *format;
 			if (handle_flag(&format, &f, &ap) == 1)
 			{
 				f.spec = *format;
 				clear_flag(&f);
 				if (*format == 'd' || *format == 'i' || *format == 'u' ||
-				*format == 'x' || *format == 'X' || *format == 'p')
-				 	ft_printf_num(&f, &ap, *format);
+				*format == 'x' || *format == 'X')
+					ft_printf_num(&f, &ap);
+				else if (*format == 'p')
+					ft_printf_num_p(&f, &ap);
 				else if (*format == 's')
-				{
 					ft_printf_string(&f, va_arg(ap, char *));
-				}
-				else if (*format == 'c' )
+				else if (*format == 'c')
 					ft_printf_string_c(&f, va_arg(ap, int));
 				else if (*format == '%')
 					ft_printf_string_c(&f, *format);
-
 				++format;
 			}
-			else
-				return (-1);
 		}
+		if (!f.spec)
+			return (0);
 	}
 	va_end(ap);
 	return (f.return_value);

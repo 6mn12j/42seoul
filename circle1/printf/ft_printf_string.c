@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 19:54:22 by minjupar          #+#    #+#             */
-/*   Updated: 2021/07/02 16:15:14 by minjupar         ###   ########.fr       */
+/*   Updated: 2021/07/02 22:37:08 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ int		ft_printf_string(t_flag *f, char *v)
 	length = find_strmaxlength(f, str_len);
 	if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
 		return (0);
+	if (f->spec == 's' && f->zero && !f->minus)
+		ft_memset(backup, '0', length);
 	backup[length] = '\0';
-	f->spec == 'c' ? backup[0] = v[0] : ft_strlcpy(backup, v, length + 1);
+	//printf("backup:%s\n",backup);
+	ft_strlcpy(backup, v, length + 1);
 	if (f->width - length > 0)
 		make_width(&backup, f, f->width - length);
 	f->return_value += write(1, backup, ft_strlen(backup));
+	my_free(&backup);
 	return (1);
 }
 

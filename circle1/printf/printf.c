@@ -3,28 +3,67 @@
 int		main(void)
 {
 
+// printf("-----------------\n");
+// 	printf("printf:|%%09|\n");
+// 	ft_printf("ft    :|%%09|\n");
+// printf("-----------------\n");
+// 	printf("%09s\n","hi low");
+// 	ft_printf("%09s\n","hi low");
+// 	printf("-----------------\n");
+// 	printf("-%09s\n","hi low");
+// 	ft_printf("-%09s\n","hi low");
+// 	printf("-----------------\n");
+// 	printf("%03s\n","hi low");
+// 	ft_printf("%03s\n","hi low");
 
+//  ft_printf("|%5.i|\n", 0);
+//  printf("|%5.i|\n", 0);
+//  	printf("-----------------\n");
+//  ft_printf("|%-5.i|\n", 0);
+//   printf("|%-5.i|\n", 0);
+
+  	printf("-----------------\n");
+ ft_printf("|%5.0d|\n", 0);
+ printf("|%5.0d|\n", 0);
+  	printf("-----------------\n");
+ ft_printf("|%-5.u|\n", 0);
+  printf("|%-5.u|\n", 0);
+  	printf("-----------------\n");
+ ft_printf("|%5.x|\n", 0);
+ printf("|%5.x|\n", 0);
+  	printf("-----------------\n");
+ ft_printf("|%-5.0X|\n", 0);
+  printf("|%-5.0X|\n", 0);
+  printf("-----------------\n");
+ ft_printf("|%-5.X|\n", 0);
+  printf("|%-5.X|\n", 0);
+  	printf("-----------------\n");
+//  ft_printf("|%-102p%-91p%00*.32%|\n" ,(void*)17383623580121946936lu,(void*)6825043625903153404lu,-125);
+//   printf("|%-102p%-91p%00*.32%|\n" ,(void*)17383623580121946936lu,(void*)6825043625903153404lu,-125);
+//   	printf("-----------------\n");
+// ft_printf("|%29p%0151.162x%---53.46u%-139.26X|\n" ,(void*)17894711340605174765lu,1565093748u,662758369u,3536629372u);
+// printf("|%29p%0151.162x%---53.46u%-139.26X|\n" ,(void*)17894711340605174765lu,1565093748u,662758369u,3536629372u);
 	//%% Tests
-	printf("%%\n");
-	ft_printf("%%\n");
-	printf("-----------------\n");
-	printf("%5%\n");
-	ft_printf("%5%\n");
-	printf("-----------------\n");
-	printf("%-5%\n");
-	ft_printf("%-5%\n");
-	printf("-----------------\n");
-	printf("%05%\n");
-	ft_printf("%05%\n");
-	printf("-----------------\n");
-	printf("%-05%\n");
-	ft_printf("%-05%\n");
-	printf("-----------------\n");
-	printf("%-05%\n");
-	ft_printf("%-05%\n");
-	printf("-----------------\n");
-	printf("%0-05%\n");
-	ft_printf("%0-05%\n");
+	// printf("%%\n");
+	// ft_printf("%%\n");
+	// printf("-----------------\n");
+	// printf("%5%\n");
+	// ft_printf("%5%\n");
+	// printf("-----------------\n");
+	// printf("%-5%\n");
+	// ft_printf("%-5%\n");
+	// printf("-----------------\n");
+	// printf("%05%\n");
+	// ft_printf("%05%\n");
+	// printf("-----------------\n");
+	// printf("%-05%\n");
+	// ft_printf("%-05%\n");
+	// printf("-----------------\n");
+	// printf("%-05%\n");
+	// ft_printf("%-05%\n");
+	// printf("-----------------\n");
+	// printf("%0-05%\n");
+	// ft_printf("%0-05%\n");
 
 	// char *abc = NULL;
 	// printf("|%s|\n",abc);

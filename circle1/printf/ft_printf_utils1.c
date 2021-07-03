@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+extern int m_cnt;
+extern int f_cnt;
 int		ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -78,28 +79,16 @@ char	*ft_strdup(const char *s1)
 	return (temp);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t			s1_len;
-	size_t			s2_len;
-	char			*temp;
 
-	if (!s1 || !s2)
-		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
-		return (0);
-	ft_strlcpy(temp, s1, s1_len + 1);
-	ft_strlcpy(&temp[s1_len], s2, s2_len + 1);
-	return (temp);
-}
 
 size_t		ft_strlen(const char *str)
 {
 	size_t i;
-
+	//printf("len str: |%p|\n",str);
+	if (!str)
+		return (0);
 	i = 0;
+	
 	while (*str)
 	{
 		str++;
@@ -132,8 +121,8 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
 {
 	size_t i;
 	i = 0;
-	// if (!dest || !src)
-	// 	return (0);
+	if (!dest || !src)
+	 	return (0);
 	while (i + 1 < size && src[i])
 	{
 		dest[i] = src[i];
@@ -146,36 +135,5 @@ size_t	ft_strlcpy(char *dest, char const *src, size_t size)
  	return (i);
  }
 
-char	*ft_putnbr_base(unsigned long long  nbr, char *base)
-{
-	char *str;
-	int		i;
-	long long		count;
 
-	str = base;
-	count = nbr;
-	i = 0;
-	if (nbr == 0)
-	{
-		str = (char*)malloc(sizeof(char) * 2);
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
-	while (count)
-	{
-		if (count == 0)
-			break;
-		count = count / 16;
-		i++;
-	}
-	str = (char*)malloc(sizeof(char) * (i + 1));
-	str[i] = '\0';
-	while (i)
-	{
-		str[--i] = base[nbr % 16];
-		nbr = nbr / 16;
-	}
-	return (str);
-}
 

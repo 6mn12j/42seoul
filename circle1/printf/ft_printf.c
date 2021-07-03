@@ -12,6 +12,9 @@
 
 #include "ft_printf.h"
 
+int m_cnt;
+int f_cnt;
+
 void	init_flag(t_flag *f)
 {
 	f->zero = -1;
@@ -20,6 +23,7 @@ void	init_flag(t_flag *f)
 	f->precision = 0;
 	f->precision_value = 0;
 	f->spec = 0;
+	f->is_minus = 0;
 }
 
 int		get_flag_num(const char **format, va_list *ap)
@@ -105,6 +109,8 @@ int		ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	f.return_value = 0;
+	m_cnt = 0;
+	f_cnt = 0;
 	while (*format)
 	{
 		init_flag(&f);
@@ -122,23 +128,24 @@ int		ft_printf(const char *format, ...)
 			{
 				f.spec = *format;
 				clear_flag(&f);
-				if (*format == 'd' || *format == 'i' || *format == 'u' ||
-				*format == 'x' || *format == 'X')
+				if (f.spec == 'd' || f.spec == 'i' || f.spec == 'u' ||
+				f.spec == 'x' || f.spec == 'X' || f.spec =='p')
 					ft_printf_num(&f, &ap);
-				else if (*format == 'p')
-					ft_printf_num_p(&f, &ap);
-				else if (*format == 's')
+				else if (f.spec == 'p')
+					ft_printf_num(&f, &ap);
+				else if (f.spec == 's')
 					ft_printf_string(&f, va_arg(ap, char *));
-				else if (*format == 'c')
+				else if (f.spec == 'c')
 					ft_printf_string_c(&f, va_arg(ap, int));
-				else if (*format == '%')
-					ft_printf_string_c(&f, *format);
+				else if (f.spec == '%')
+					ft_printf_string_c(&f, f.spec);
 				++format;
 			}
 		}
 		if (!f.spec)
 			return (0);
 	}
+	//printf("mallodc:%d free:%d\n",m_cnt, f_cnt);
 	va_end(ap);
 	return (f.return_value);
 }

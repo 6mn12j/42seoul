@@ -16,14 +16,11 @@ extern int f_cnt;
 int		find_maxlength(t_flag *f, long long value)
 {
 	int		result;
-	//printf("%lld\n",value);
 	value = f->spec == 'p' ? value + 2 : value ;
 	if (f->precision && f->precision_value + f->is_minus > value + f->is_minus)
 		result = f->precision_value + f->is_minus;
 	else if (f->zero == 1 && !f->precision && !f->minus)
 		result = f->width >= value + f->is_minus ? f->width : value + f->is_minus;
-	// else if (value == 0 || f->width)
-	// 	result = f->width;
 	else
 		result = value + f->is_minus;
 	return (result);
@@ -36,7 +33,6 @@ int		my_free(char **str)
 		free(*str);
 		*str = 0;
 		f_cnt++;
-		//printf("free:%d\n",f_cnt);
 	}
 	return (1);
 }
@@ -51,7 +47,6 @@ char	*ft_putnbr_base(unsigned long long  nbr, char *base)
 	i = 0;
 	if (nbr == 0)
 	{
-		// str = (char*)malloc(sizeof(char) * 2);
 		str = my_alloc(1);
 		str[0] = '0';
 		str[1] = '\0';
@@ -64,8 +59,6 @@ char	*ft_putnbr_base(unsigned long long  nbr, char *base)
 		num = num / 16;
 		i++;
 	}
-	//printf("i: %d\n",i);
-
 	str = my_alloc(i);
 	str[i] = '\0';
 	while (nbr)
@@ -109,7 +102,6 @@ int		make_width(char **backup, t_flag *f, int width_len)
 	long long i;
 	i = 0;
 	tmp = *backup;
-	// width_space = (char *)malloc(sizeof(char) * (width_len + 1));
 	width_space = my_alloc(width_len);
 	if (!width_space)
 		return (0);
@@ -122,7 +114,6 @@ int		make_width(char **backup, t_flag *f, int width_len)
 		*backup = ft_strjoin(width_space, *backup);
 	if (!backup)
 		return (0);
-	//printf("m%df%d backup:|%s| %p",m_cnt,f_cnt,*backup,*backup);
 	my_free(&tmp);
 	my_free(&width_space);
 	return (1);
@@ -146,8 +137,8 @@ char	*ft_itoa(long long n, t_flag *f)
 		len = 1;
 	else
 		len = ft_digitlen(num);
-	// if (!(temp = malloc(sizeof(char) * len + 1)))
-	if (!(temp = my_alloc(len)))
+
+	if (!(temp = malloc(sizeof(char) * len + 1)))
 		return (0);
 	temp[len] = '\0';
 	while (len > 0)
@@ -183,9 +174,14 @@ int		ft_printf_num(t_flag *f, va_list *ap)
 	temp = get_value(f, ap);
 	length = find_maxlength(f, ft_strlen(temp));
 	if (f->spec == 'p' && f->precision && f->precision_value == 0 && *temp == '0')
+	{
 		length = 2;
-	else if (f->precision && f->precision_value == 0 && *temp == '0')
+		temp[0] = '\0';
+	}
+	else if (f->precision && f->precision_value == 0 && *temp == '0') {
 		length = 0;
+		temp[0] = '\0';
+	}
 	if (!(backup = my_alloc(length)))
 		return (0);
 	if (f->precision || f->zero)

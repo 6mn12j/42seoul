@@ -68,3 +68,4 @@ size_t		ft_digitlen(long long value);
 char	*my_alloc(int len);
 
 #endif
+

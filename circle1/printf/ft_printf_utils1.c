@@ -52,7 +52,7 @@ size_t		ft_digitlen(long long value)
 	size_t	l;
 
 	l = 0;
-	if (!value)
+	if (value == 0)
 		return (1);
 	while (value)
 	{

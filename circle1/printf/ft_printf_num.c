@@ -45,7 +45,7 @@ char	*ft_putnbr_base(unsigned long long  nbr, char *base)
 {
 	char *str;
 	int		i;
-	long long		num;
+	unsigned long long		num;
 
 	num = nbr;
 	i = 0;
@@ -65,13 +65,11 @@ char	*ft_putnbr_base(unsigned long long  nbr, char *base)
 		i++;
 	}
 	//printf("i: %d\n",i);
-	// str = (char*)malloc(sizeof(char) * (i + 1));
+
 	str = my_alloc(i);
 	str[i] = '\0';
 	while (nbr)
 	{
-		if (i < 0)
-			break ;
 		str[--i] = base[nbr % 16];
 		nbr = nbr / 16;
 	}
@@ -86,19 +84,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (0);
-	//printf("join0 m:%d f:%d temp:|%s| %p",m_cnt,f_cnt,temp,temp);
 	s1_len = ft_strlen(s1);
-	//printf("join0 m:%d f:%d s1:|%s|%p s2:|%s|%p",m_cnt,f_cnt,s1,s1,s2,s2);
 	s2_len = ft_strlen(s2);
-//	printf("join1 s1:%zu s2:%zu\n",s1_len, s2_len);
-	// if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
 	if (!(dest = my_alloc(s1_len + s2_len)))
 		return (0);
 	dest[s1_len + s2_len] = '\0';
-	//printf("join2 m:%d f:%d temp:|%s| %p",m_cnt,f_cnt,dest,dest);
 	ft_strlcpy(dest, s1, s1_len + 1);
 	ft_strlcpy(&dest[s1_len], s2, s2_len + 1);
-	//printf("koin3 m:%d f:%d temp:|%s| %p",m_cnt,f_cnt,temp,temp);
 	return (dest);
 }
 
@@ -106,9 +98,6 @@ char	*my_alloc(int len)
 {
 	m_cnt++;
 	char * dest;
-	//printf("malloc:%d\n",m_cnt);
-	//printf("mlloc_len:%d\n",len);
-	//printf("malloc:%p\n",dest);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	return (dest);
 }
@@ -147,11 +136,11 @@ char	*ft_itoa(long long n, t_flag *f)
 
 	num = n;
 	len = 0;
-
 	if (num < 0)
 	{
 		len = ft_digitlen(num);
 		num = num * -1;
+		f->is_minus = 1;
 	}
 	else if (num == 0)
 		len = 1;
@@ -166,196 +155,57 @@ char	*ft_itoa(long long n, t_flag *f)
 		temp[--len] = (num % 10) + '0';
 		num = num / 10;
 	}
-	if (n < 0)
-		f->is_minus = 1;
+
 	return (temp);
 }
 
-// int		ft_printf_num(t_flag *f, va_list *ap)
-// {
-// 	int		num_len;
-// 	int		is_minus;
-// 	long long v;
-// 	long long length;
-// 	long long width_len;
-// 	char *temp;
-// 	char *backup;
-
-// 	v = 0;
-// 	if (f->spec == 'd' || f->spec == 'i')
-// 	{
-// 		v = va_arg(*ap, int);
-// 		temp = ft_itoa(v);
-// 	}
-// 	else if (f->spec == 'u')
-// 	{
-// 		v = va_arg(*ap, unsigned int);
-// 		temp = ft_itoa(v);
-// 	}
-// 	else if (f->spec == 'x')
-// 	{
-// 		v = va_arg(*ap, unsigned int);
-// 		temp = ft_putnbr_base(v, "0123456789abcdef");
-// 	}
-// 	else if (f->spec == 'X')
-// 	{
-// 		v = va_arg(*ap, unsigned int);
-// 		temp = ft_putnbr_base(v, "0123456789ABCDEF");
-// 	}
-// 	is_minus = v < 0 ? 1 : 0;
-// 	num_len = ft_strlen(temp);
-// 	length = find_maxlength(f, num_len, is_minus);
-// 	if (f->precision && f->precision_value == 0 && v == 0)
-// 		length = 0;
-// 	if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
-// 		return (0);
-// 	if (f->precision || f->zero)
-// 		ft_memset(backup, '0', length);
-// 	backup[length] = '\0';
-// 	if (v < 0)
-// 	{
-// 		backup[0] = '-';
-// 		v = v * -1;
-// 	}
-// 	if (backup[0] == '-')
-// 		ft_strrcpy(backup, temp, ft_strlen(temp) - 1);
-// 	else
-// 		ft_strrcpy(backup, temp, ft_strlen(temp));
-// 	//my_free(temp);
-// 	// if (f->spec == 'p')
-// 	// {
-// 	// 	temp = backup;
-// 	// 	backup = ft_strjoin("0x", backup);
-// 	// 	length += 2;
-// 	// 	my_free(&temp);
-// 	// }
-// 	width_len = f->width - length;
-// 	if (width_len > 0)
-// 		make_width(&backup, f, width_len);
-// 	f->return_value += write(1, backup, ft_strlen(backup));
-// 	my_free(&backup);
-// 	return (1);
-// }
+char	*get_value(t_flag *f, va_list *ap)
+{
+	if (f->spec == 'd' || f->spec == 'i')
+		return (ft_itoa(va_arg(*ap, int), f));
+	else if (f->spec == 'u')
+		return (ft_itoa(va_arg(*ap, unsigned int), f));
+	else if (f->spec == 'x')
+		return (ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789abcdef"));
+	else if (f->spec == 'X')
+		return(ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789ABCDEF"));
+	else if (f->spec == 'p')
+		return (ft_putnbr_base((unsigned long long)va_arg(*ap, void*),"0123456789abcdef"));
+	return ("");
+}
 
 int		ft_printf_num(t_flag *f, va_list *ap)
 {
 	long long length;
-	long long width_len;
 	char *temp;
 	char *backup;
 
-	temp = 0;
-	if (f->spec == 'd' || f->spec == 'i')
-		temp = ft_itoa(va_arg(*ap, int), f);
-	else if (f->spec == 'u')
-		temp = ft_itoa(va_arg(*ap, unsigned int), f);
-	else if (f->spec == 'x')
-		temp =ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789abcdef");
-	else if (f->spec == 'X')
-		temp = ft_putnbr_base(va_arg(*ap, unsigned int), "0123456789ABCDEF");
-	else if (f->spec == 'p')
-		temp = ft_putnbr_base((unsigned long long)va_arg(*ap, void*),"0123456789abcdef");
+	temp = get_value(f, ap);
 	length = find_maxlength(f, ft_strlen(temp));
-	if (f->precision && f->precision_value == 0 && *temp == '0')
+	if (f->spec == 'p' && f->precision && f->precision_value == 0 && *temp == '0')
+		length = 2;
+	else if (f->precision && f->precision_value == 0 && *temp == '0')
 		length = 0;
-	//printf("length:%lld\n",length);
-	//printf("temp:%s\n",temp);
-	// if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
 	if (!(backup = my_alloc(length)))
 		return (0);
 	if (f->precision || f->zero)
 		ft_memset(backup, '0', length);
-	//printf("!1 backup:%p\n",backup);
+	backup[length] = '\0';
 	if (f->is_minus)
 		backup[0] = '-';
-	backup[length] = '\0';
-
-//	printf("!2 backup:|%s|%p\n",backup, backup);
-//	printf("temp:|%s|%p\n",temp,temp);
 	if (backup[0] == '-')
 		ft_strrcpy(backup, temp, ft_strlen(temp));
 	else
 		ft_strrcpy(backup, temp, ft_strlen(temp));
-//	printf("backup:|%s| temp:|%s| %zu\n",backup,temp,ft_strlen(temp));
 	if (f->spec == 'p')
 	{
 		backup[0] = '0';
 		backup[1] = 'x';
 	}
-//	printf("backup:|%s|\n",backup);
-	//printf("!3 backup:%p\n",backup);
-//	my_free(&temp);
-	// if (f->spec == 'p')
-	// {
-	// 	temp = backup;
-	// 	backup = ft_strjoin("0x", backup);
-	// 	length += 2;
-	// 	my_free(&temp);
-	// }
-//	printf("!4 backup:%s backup:%p width:%d\n", backup, backup, f->width);
-	if (f->spec == 'p' && f->precision && f->precision_value == 0 && *temp == '0')
-		length = 2;
-	width_len = f->width - length;
-	if (width_len > 0)
-		make_width(&backup, f, width_len);
-	//printf("!5 backup:%p\n",backup);
+	if (f->width - length> 0)
+		make_width(&backup, f, f->width - length);
 	f->return_value += write(1, backup, ft_strlen(backup));
 	my_free(&temp);
 	my_free(&backup);
-	//printf("free:%d mlloc:%d\n",f_cnt, m_cnt);
 	return (1);
 }
-
-
-
-// int		ft_printf_num_p(t_flag *f, va_list *ap)
-// {
-// 	int					num_len;
-// 	//int					is_minus;
-// 	unsigned long long	v;
-// 	long long			length;
-// 	long long			width_len;
-// 	char				*temp;
-// 	char				*backup;
-
-// 	v = (unsigned long long)va_arg(*ap, void*);
-// 	temp = ft_putnbr_base(v, "0123456789abcdef");
-// //	is_minus = v < 0 ? 1 : 0;
-// 	num_len = ft_strlen(temp);
-
-// 	length = find_maxlength(f, num_len);
-// 	if (f->precision && f->precision_value == 0 && v == 0)
-// 		length = 0;
-// 	if (!(backup = (char *)malloc(sizeof(char) * (length + 1))))
-// 		return (0);
-// 	if (f->precision || f->zero)
-// 		ft_memset(backup, '0', length);
-	
-// 	backup[length] = '\0';
-// 	if (v < 0)
-// 	{
-// 		backup[0] = '-';
-// 		v = v * -1;
-// 	}
-// 	if (backup[0] == '-')
-// 		ft_strrcpy(backup, temp, ft_strlen(temp) - 1);
-// 	else
-// 		ft_strrcpy(backup, temp, ft_strlen(temp));
-// 	my_free(&temp);
-// 	if (f->spec == 'p')
-// 	{
-// 		temp = backup;
-// 		backup = ft_strjoin("0x", backup);
-// 		length += 2;
-// 		my_free(&temp);
-// 	}
-// 	width_len = f->width - length;
-// 	if (width_len > 0)
-// 		make_width(&backup, f, width_len);
-// 	if (f->is_minus)
-// 		backup[0] = '-';
-// 	f->return_value += write(1, backup, ft_strlen(backup));
-// 	my_free(&backup);
-
-// 	return (1);
-// }

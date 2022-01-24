@@ -12,28 +12,46 @@
 
 #include "minitalk.h"
 
-void handle_siguser2()
+static void signal_handler(int signal)
 {
+	static int bit;
+	static char c;
 
-}
-void handle_siguser1()
-{
+	
+	if(signal == SIGUSR2){
+		c |= 1; 
+		if (bit < 7)
+			c <<= 1;
 
-}
-int main () {
+	}else if (signal == SIGUSR1){
+		c |= 0; 
+		if (bit < 7)
+			c <<= 1;
 
-
-	int pid = getpid();
-
-	write(1,"server PID : ",13);
-	ft_putnbr_fd(pid,1);
-
-	sigaction(SIGUSR1,handle_siguser1);
-	sigaction(SIGUSR2,handle_siguser2);
-
-	while(1){
-		pause()
 	}
+	
+	bit++;
+	if( bit == 8)
+	{
+		ft_putchar_fd(c,1);
+		bit = 0;
+		c = '\n';
+		
+	}
+	
+	return ;
+}
 
-	return 1;
+
+int main (void) {
+	
+	ft_putstr_fd("[server PID] : ",1);
+	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
+
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
+	while (1)
+		pause();
+	
 }

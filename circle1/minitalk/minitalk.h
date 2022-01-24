@@ -16,7 +16,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
-#include <stdlib.h>
 
 typedef struct s_info
 {
@@ -25,12 +24,10 @@ typedef struct s_info
 	char* message;
 }				t_info;
 
-int			ft_atoi(const char *str);
-void			ft_putnbr_fd(int n, int fd);
-void			ft_putchar_fd(char c, int fd);
-size_t		ft_strlen(const char *str);
-
-
-
+int		ft_atoi(const char *str);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *str, int fd);
+size_t	ft_strlen(const char *str);
 
 #endif

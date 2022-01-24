@@ -19,6 +19,17 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
+void	ft_putstr_fd(char *str, int fd)
+{
+	if (!str || fd < 0)
+		return ;
+	while (*str)
+	{
+		ft_putchar_fd(*str, fd);
+		str++;
+	}
+}
+
 static void		int_to_char(int num, int fd)
 {
 	int fin;
@@ -111,30 +122,5 @@ int			ft_atoi(const char *str)
 	return ((int)(result * sign));
 }
 
-char			*ft_itoa(int n)
-{
-	long long	num;
-	char		*temp;
-	size_t		len;
 
-	num = n;
-	len = 0;
-	if (num <= 0)
-	{
-		len = ft_strlen(num) + 1;
-		num = num * -1;
-	}
-	else
-		len = ft_strlen(num);
-	if (!(temp = malloc(sizeof(char) * len + 1)))
-		return (0);
-	temp[len] = '\0';
-	while (len > 0)
-	{
-		temp[--len] = (num % 10) + '0';
-		num = num / 10;
-	}
-	if (n < 0)
-		temp[0] = '-';
-	return (temp);
-}
+

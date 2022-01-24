@@ -19,20 +19,9 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
-void	ft_putstr_fd(char *str, int fd)
+static void	int_to_char(int num, int fd)
 {
-	if (!str || fd < 0)
-		return ;
-	while (*str)
-	{
-		ft_putchar_fd(*str, fd);
-		str++;
-	}
-}
-
-static void		int_to_char(int num, int fd)
-{
-	int fin;
+	int	fin;
 
 	fin = num % 10;
 	if (num == 0)
@@ -42,10 +31,10 @@ static void		int_to_char(int num, int fd)
 	ft_putchar_fd(fin + '0', fd);
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	long long num;
-	long long fin;
+	long long	num;
+	long long	fin;
 
 	if (fd < 0)
 		return ;
@@ -60,31 +49,6 @@ void			ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd(fin + '0', fd);
 }
 
-static int	is_space(char *c)
-{
-	if (*c == '\t'
-			|| *c == '\n'
-			|| *c == '\v'
-			|| *c == '\f'
-			|| *c == '\r'
-			|| *c == ' ')
-		return (1);
-	return (0);
-}
-
-size_t		ft_strlen(const char *str)
-{
-	size_t i;
-
-	i = 0;
-	while (*str)
-	{
-		str++;
-		i++;
-	}
-	return (i);
-}
-
 static int	ft_isdigit(int num)
 {
 	if (num >= '0' && num <= '9')
@@ -93,34 +57,21 @@ static int	ft_isdigit(int num)
 		return (0);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
-	int			sign;
-	long long	result;
 	char		*temp;
+	long long	result;
 
-	temp = (char*)str;
-	sign = 1;
+	temp = (char *)str;
 	result = 0;
 	i = 0;
-	while (is_space(&temp[i]))
-		i++;
-	if (temp[i] == '-' || temp[i] == '+')
-		sign = temp[i++] == '-' ? -1 : 1;
-	if(!ft_isdigit(temp[i]))
+	if (!ft_isdigit(temp[i]))
 		return (-1);
 	while (ft_isdigit(temp[i]))
 	{
 		result = (result * 10) + (temp[i] - '0');
-		if (sign * result < -2147483648)
-			return (0);
-		else if (sign * result > 2147483647)
-			return (-1);
 		i++;
 	}
-	return ((int)(result * sign));
+	return ((int)(result));
 }
-
-
-

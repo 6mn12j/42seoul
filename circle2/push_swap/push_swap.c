@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/24 19:56:33 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/25 02:35:29 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_isdigit(int num)
 		return (0);
 }
 
-static int	is_space(char c)
+int	is_space(char c)
 {
 	if (c == '\t'
 		|| c == '\n'
@@ -32,44 +32,71 @@ static int	is_space(char c)
 	return (0);
 }
 
-int	simple_atoi(const char *str)
+static int	find_sign(const char data)
+{
+	if (data == '-')
+		return (-1);
+	else if (data == '+')
+		return (1);
+	return (1);
+}
+
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			sign;
-	char		*temp;
 	long long	result;
 
-	temp = (char *)str;
-	result = 0;
 	i = 0;
+	result = 0;
 	sign = 1;
-	while (is_space(temp[i]))
+	while (is_space(str[i]))
 		i++;
-	if (temp[i] == '-' || temp[i] == '+')
-		sign = temp[i++] == '-' ? -1 : 1;
-	if (temp[i] == '-' || temp[i] == '+' || !ft_isdigit(temp[i]))
+	if (str[i] == '-' || str[i] == '+')
+		sign = find_sign(str[i++]);
+	if (!ft_isdigit(str[i]))
+		error();
+	while (ft_isdigit(str[i]))
 	{
-		printf("error\n");
-		exit(0);
-	}
-	while (ft_isdigit(temp[i]))
-	{
-		result = (result * 10) + (temp[i] - '0');
+		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
+	if ((sign == -1 && result > 2147483648)
+		|| (sign == 1 && result > 2147483647))
+		error();
 	return ((int)(sign * result));
 }
 
-int	valid_input(char *argv, t_list *p_list)
+int	set_list_a(char *str, t_list *p_list)
 {
 	t_listnode	temp;
 
-	temp.data = simple_atoi(argv);
+	temp.data = ft_atoi(str);
 	if (temp.data)
-		add_element(p_list, 0, temp);
+		add_element(p_list, p_list->current_element_count, temp);
 	else
-		return (-1);
+		error();
 	return (1);
+}
+
+void handle_argument(char *argv, t_list *list_a)
+{
+	char *test;
+	int j = 0;
+
+	test = ft_strtrim(argv, " ");
+	if (test)
+	{
+		while (test[j])
+		{
+			test = ft_strtrim(test," ");
+			while (is_space(test[j]))
+				j++;
+			set_list_a(&test[j++],list_a);
+		}
+	}
+	else
+		set_list_a(argv,list_a);
 }
 
 void	display(t_list *pList)
@@ -85,11 +112,8 @@ void	display(t_list *pList)
 
 		for (int i = 0 ; i < pList->current_element_count; i++)
 		{
-				printf("display3\n");
-
 			pPreNode = pPreNode->p_right ;
 			printf("%d ", pPreNode->data);
 		}
 		printf("\n");
 }
-

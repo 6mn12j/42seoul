@@ -6,24 +6,34 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/24 19:53:11 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:54:07 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-
-size_t		ft_strlen(const char *str)
+void error()
 {
-	size_t i;
+	printf("error");
+	exit(1);
+}
 
+char	*ft_strchr(const char *s, int c)
+{
+	unsigned char	target;
+	int				i;
+
+	target = (unsigned char)c;
 	i = 0;
-	while (*str)
+	while (s[i])
 	{
-		str++;
+		if (s[i] == target)
+			return ((char*)(s + i));
 		i++;
 	}
-	return (i);
+	if (s[i] == target)
+		return ((char*)(s + i));
+	return (NULL);
 }
 
 char	*ft_strrchr(const char *s, int c)
@@ -42,4 +52,17 @@ char	*ft_strrchr(const char *s, int c)
 	if (s[i] == target)
 		return ((char *)(s + i));
 	return (NULL);
+}
+
+size_t		ft_strlen(const char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (*str)
+	{
+		str++;
+		i++;
+	}
+	return (i);
 }

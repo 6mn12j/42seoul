@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/24 19:54:06 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/25 02:18:50 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_listType
 
 typedef struct s_allType
 {
-	t_list	*a_list;
-	t_list	*b_list;
+	t_list	*list_a;
+	t_list	*list_b;
 	int		*arr;
 }			t_all;
 
@@ -53,8 +53,14 @@ void		cleart_list(t_list *pList);
 t_list		*create_list(void);
 t_listnode	*get_element(t_list *pList, int position);
 void		display(t_list *pList);
-int			valid_input(char *argv, t_list *p_list);
+int			set_list_a(char *argv, t_list *p_list);
+void handle_argument(char *argv,t_list *list_a);
 int			main(int argc, char *argv[]);
+void error();
+
+int	is_space(char c);
+size_t		ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-int	handle_argument(char *argv, t_list *p_list);
+char	*ft_strtrim(char const *s1, char const *set);
 #endif

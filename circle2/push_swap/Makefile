@@ -6,44 +6,46 @@
 #    By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/04 12:47:42 by minjupar          #+#    #+#              #
-#    Updated: 2021/07/04 14:01:23 by minjupar         ###   ########.fr        #
+#    Updated: 2022/02/27 05:14:15 by minjupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -Iinclude
+NAME = push_swap
 
-SERVER = server
-CLIENT = client
+PUSH_SWAP_SRCS = src/push_swap/main.c \
+					src/push_swap/utils/command.c \
+					src/push_swap/utils/command2.c \
+					src/push_swap/utils/error.c \
+					src/push_swap/utils/push_utils.c \
+					src/push_swap/utils/push_utils2.c \
+					src/push_swap/doublylist/doublylist.c \
+					src/push_swap/doublylist/doublylist2.c \
 
-INCLUDES = minitalk.h
+LIBFT_SRCS = src/libft/ft_strtrim.c \
+					src/libft/libft.c \
 
-SERVER_SRCS = server.c utils.c 
-CLIENT_SRCS = client.c utils.c 
 
-OBJ_SERVER = $(SERVER_SRCS:.c=.o)
-OBJ_CLIENT = $(CLIENT_SRCS:.c=.o)
-
+OBJ_PUSH_SWAP = $(PUSH_SWAP_SRCS:.c=.o)
+OBJ_LIBFT = $(LIBFT_SRCS:.c=.o)
 
 .PHONY: all
-all: $(SERVER) $(CLIENT)
+all:  $(NAME)
 
-$(SERVER): $(OBJ_SERVER)
-	$(CC) $(CFLAGS) -o $(SERVER) $(OBJ_SERVER)
-
-$(CLIENT): $(OBJ_CLIENT) 
-	$(CC) $(CFLAGS) -o $(CLIENT) $(OBJ_CLIENT)
+$(NAME): $(OBJ_PUSH_SWAP) $(OBJ_LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_PUSH_SWAP) $(OBJ_LIBFT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJ_CLIENT) $(OBJ_SERVER)
+	rm -rf $(OBJ_PUSH_SWAP)  $(OBJ_LIBFT)
 
 .PHONY: fclean
 fclean: clean
-	rm -rf $(CLIENT) $(SERVER)
+	rm -rf $(NAME) $(OBJ_LIBFT)
 
 .PHONY: re
 re: fclean all

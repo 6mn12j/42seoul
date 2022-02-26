@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 14:30:56 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/12 12:10:01 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/27 04:06:24 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			ft_atoi(const char *str)
 		i++;
 	if (temp[i] == '-' || temp[i] == '+')
 		sign = temp[i++] == '-' ? -1 : 1;
-	while (ft_isdigit(temp[i]))
+	while (is_digit(temp[i]))
 	{
 		result = (result * 10) + (temp[i] - '0');
 		if (sign * result < -2147483648)

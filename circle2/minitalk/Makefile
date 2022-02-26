@@ -6,45 +6,44 @@
 #    By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/04 12:47:42 by minjupar          #+#    #+#              #
-#    Updated: 2022/02/27 04:33:21 by minjupar         ###   ########.fr        #
+#    Updated: 2022/02/27 04:32:34 by minjupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
-SRC_DIR = ./
-NAME = libftprintf.a
-
-SRCS = $(addprefix ${SRC_DIR},\
-ft_printf.c\
-ft_printf_num.c\
-ft_printf_string.c\
-ft_printf_utils1.c\
-ft_printf_utils2.c\
-ft_printf_utils3.c)
-
-INCLUDE = ft_printf.h
-OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+SERVER = server
+CLIENT = client
+
+INCLUDES = minitalk.h
+
+SERVER_SRCS = server.c utils.c
+CLIENT_SRCS = client.c utils.c
+
+OBJ_SERVER = $(SERVER_SRCS:.c=.o)
+OBJ_CLIENT = $(CLIENT_SRCS:.c=.o)
+
+
 .PHONY: all
-all: $(NAME)
+all: $(SERVER) $(CLIENT)
+
+$(SERVER): $(OBJ_SERVER)
+	$(CC) $(CFLAGS) -o $(SERVER) $(OBJ_SERVER)
+
+$(CLIENT): $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) -o $(CLIENT) $(OBJ_CLIENT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c -o  $@ $<
-
-$(NAME): $(OBJS)
-	ar rc $@ $^
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -f $(NAME)
+	rm -rf $(OBJ_CLIENT) $(OBJ_SERVER)
 
 .PHONY: fclean
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(CLIENT) $(SERVER)
 
 .PHONY: re
 re: fclean all
-

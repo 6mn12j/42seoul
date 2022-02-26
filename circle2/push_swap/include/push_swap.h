@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/25 02:18:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/27 05:09:45 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ typedef struct s_allType
 {
 	t_list	*list_a;
 	t_list	*list_b;
-	int		*arr;
+	int *arr;
 }			t_all;
 
+//command
 void		r_ab(t_list *t_list);
 void		rr(t_list *a_list, t_list *b_list);
 void		rr_ab(t_list *t_list);
@@ -44,23 +45,30 @@ void		rrr(t_list *a_list, t_list *b_list);
 void		s_ab(t_list *t_list);
 void		ss(t_list *a_list, t_list *b_list);
 void		p_ab(t_list *start_list, t_list *target_list);
-void		displayt_list(t_list *pList);
+
+//doublylist
+void		display_listt_list(t_list *pList);
 int			get_list_length(t_list *pList);
 int			add_element(t_list *p_list, int position, t_listnode element);
 int			remove_element(t_list *pList, int position);
 void		deletet_list(t_list *pList);
 void		cleart_list(t_list *pList);
+void		display_list(t_list *pList);
 t_list		*create_list(void);
+t_listnode	*make_list_node(int data);
 t_listnode	*get_element(t_list *pList, int position);
-void		display(t_list *pList);
-int			set_list_a(char *argv, t_list *p_list);
-void handle_argument(char *argv,t_list *list_a);
-int			main(int argc, char *argv[]);
-void error();
 
-int	is_space(char c);
+//utils
+int			is_space(char c);
+int			is_digit(int num);
+int			ft_atoi(const char *str, t_all *all_list);
 size_t		ft_strlen(const char *str);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strrchr(const char *s, int c);
-char	*ft_strtrim(char const *s1, char const *set);
+char		*ft_strchr(const char *s, int c);
+char		*ft_strrchr(const char *s, int c);
+char		*ft_strtrim(char const *s1, char const *set);
+
+int			main(int argc, char *argv[]);
+void 		error(void);
+void 		handle_argument(char *argv, t_all *all_list);
+
 #endif

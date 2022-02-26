@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/24 19:37:47 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/02/27 05:04:03 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	add_element(t_list *p_list, int position, t_listnode element)
 	temp_node = &(p_list->header_node);
 	p_new_node->data = element.data;
 	i = 0;
-
 	while (i < position)
 	{
 		temp_node = temp_node->p_right;
@@ -67,4 +66,22 @@ t_listnode	*make_list_node(int data)
 		listnode->p_right = 0;
 	}
 	return (listnode);
+}
+
+void	display_list(t_list *pList)
+{
+	t_listnode	*pPreNode;
+
+	if (pList -> current_element_count == 0 )
+	{
+		printf("빈배열\n");
+		return ;
+	}
+		pPreNode = &(pList->header_node);
+		for (int i = 0; i < pList -> current_element_count; i++)
+		{
+			pPreNode = pPreNode->p_right ;
+			printf("%d ", pPreNode -> data);
+		}
+	printf("\n");
 }

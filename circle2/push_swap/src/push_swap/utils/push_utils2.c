@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/27 05:19:02 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:20:50 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void handle_add(t_all * all_list, int data)
 {
 	int current_count;
 
-	current_count = all_list->list_a->current_element_count;
+	current_count = all_list->list_a->current_node_count;
 	if ((data < -2147483648)|| (data > 2147483647))
 			error();
 	add_element(all_list->list_a, current_count, *make_list_node(data));

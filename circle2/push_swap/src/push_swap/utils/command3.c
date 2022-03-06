@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 18:51:39 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:52:14 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void	tA_to_B(t_all *all, int start_index, int end_index)
 	display_list(all->list_a);
 	display_list(all->list_b);
 	tB_to_A(all, small_index, big_index - 1);
-	return;
 	display_list(all->list_a);
 	display_list(all->list_b);
 	bB_to_A(all, start_index, small_index - 1);

@@ -6,7 +6,7 @@
 #    By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/04 12:47:42 by minjupar          #+#    #+#              #
-#    Updated: 2022/03/06 02:20:06 by minjupar         ###   ########.fr        #
+#    Updated: 2022/03/07 01:42:38 by minjupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ PUSH_SWAP_SRCS = src/push_swap/main.c \
 					src/push_swap/utils/push_utils2.c \
 					src/push_swap/doublylist/doublylist.c \
 					src/push_swap/doublylist/doublylist2.c \
+					src/push_swap/optimization/optimization1.c \
 
 LIBFT_SRCS = src/libft/ft_strtrim.c \
 					src/libft/libft.c \

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 02:26:42 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 01:43:28 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,10 @@ void	bB_to_A(t_all *all, int start_index, int end_index);
 int			main(int argc, char *argv[]);
 void 		error(void);
 void 		handle_argument(char *argv, t_all *all_list);
+int	find_pivot(int start_index, int end_index, int type);
 
+void	handle_three_tb(t_all *all, int start_index, int end_index);
+void	handle_three_ta(t_all *all, int start_index, int end_index);
 #endif
 
 #ifndef _COMMON_DEF_

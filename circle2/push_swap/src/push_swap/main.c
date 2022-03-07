@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 17:33:53 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:20:26 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void start_push_swap(t_all *all)
 		error();
 	for(int i = 0 ;i < all->list_a->current_node_count;i++)
 			printf("%d ",all->arr[i]);
-	printf("-----------\n");
 	if (all->list_a->current_node_count < 3)
 		handle_swap(all, 'a');
 	else
@@ -103,9 +102,7 @@ int main(int argc, char *argv[])
 
 	while (i < argc && argv[i])
 		handle_argument(argv[i++], all);
-	//printf("asc:%d\n",is_ascending(all->list_a,0,all->list_a->current_node_count-1));
 	start_push_swap(all);
-	printf("fin\n");
 	display_list(all->list_a);
 	display_list(all->list_b);
 

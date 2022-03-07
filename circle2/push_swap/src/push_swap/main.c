@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 20:31:36 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 05:41:01 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,35 +82,48 @@ void start_push_swap(t_all *all)
 {
 	if (arr_sort_duplicate(all))
 		error();
-	for(int i = 0; i < all->list_a->current_node_count; i++)
-		printf("%d ",all->arr[i]);
-		printf("\n---------------------\n");
 	if (all->list_a->current_node_count < 3)
 		handle_swap(all, 'a');
 	else
-		tA_to_B(all, 0, all->list_a->current_node_count-1);
+		top_a_to_b(all, 0, all->list_a->current_node_count-1);
+}
+
+void display(t_list *pList)
+{
+	if(pList->current_node_count == 0 )
+	{
+			printf("빈배열\n");
+			return;
+	}
+		t_listnode *pPreNode = 0;
+
+		pPreNode = &(pList->header_node);
+		for (int i = 0 ; i <pList->current_node_count;i++){
+			pPreNode = pPreNode->p_right ;
+			printf("%d ",pPreNode->data);
+
+		}
+		printf("\n");
+		//printf("headnode data: %d\n",pList->headerNode.data);
 }
 
 int main(int argc, char *argv[])
 {
 	t_all  *all;
+	int i;
 
 	all = (t_all *)malloc(sizeof(t_all));
 	init(all);
-	int i = 1;
+	i = 1;
 	if (argc < 2)
 		error();
-
 	while (i < argc && argv[i])
 		handle_argument(argv[i++], all);
 	start_push_swap(all);
-	//display_command(all->list_command);
-	printf("a\n ");
-	display_list(all->list_a);
-	printf("b\n ");
-	display_list(all->list_b);
+	display_command(all->list_command);
+	// display(all->list_a);
+	// display(all->list_b);
 
 	exit(0);
-
 	//system("leaks a.out");
 }

@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 19:26:49 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 04:13:40 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-void error()
-{
-	printf("Error\n");
-	exit(1);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -28,11 +22,11 @@ char	*ft_strchr(const char *s, int c)
 	while (s[i])
 	{
 		if (s[i] == target)
-			return ((char*)(s + i));
+			return ((char *)(s + i));
 		i++;
 	}
 	if (s[i] == target)
-		return ((char*)(s + i));
+		return ((char *)(s + i));
 	return (NULL);
 }
 
@@ -54,9 +48,9 @@ char	*ft_strrchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*str)
@@ -66,4 +60,3 @@ size_t		ft_strlen(const char *str)
 	}
 	return (i);
 }
-

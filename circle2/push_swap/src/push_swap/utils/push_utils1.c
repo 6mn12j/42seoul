@@ -6,27 +6,27 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 02:20:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 04:13:26 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void handle_argument(char *argv, t_all *all_list)
+void	handle_argument(char *argv, t_all *all_list)
 {
-	char *test;
+	char	*test;
 
 	test = ft_strtrim(argv, " ");
 	ft_atoi(test, all_list);
 }
 
-static void handle_add(t_all * all_list, int data)
+static	void	handle_add(t_all *all_list, int data)
 {
-	int current_count;
+	int	current_count;
 
 	current_count = all_list->list_a->current_node_count;
-	if ((data < -2147483648)|| (data > 2147483647))
-			error();
+	if ((data < -2147483648) || (data > 2147483647))
+		error();
 	add_element(all_list->list_a, current_count, *make_list_node(data));
 }
 
@@ -62,9 +62,26 @@ int	ft_atoi(const char *str, t_all *all_list)
 			i++;
 		}
 		handle_add(all_list, (int)(sign * result));
-		if(str[i] && !is_space(str[i]))
+		if (str[i] && !is_space(str[i]))
 			error();
 	}
 	return (1);
 }
 
+int	find_pivot(int start_index, int end_index, int type)
+{
+	int	small_index;
+	int	big_index;
+
+	if (end_index - start_index == 0)
+		return (start_index);
+	if (end_index - start_index < 2)
+		return (start_index + 1);
+	small_index = start_index + ((end_index - start_index) + 1) / 3;
+	big_index = ((end_index - small_index + 1) / 2) + small_index ;
+	if (type == SMALL)
+		return (small_index);
+	else if (type == BIG)
+		return (big_index);
+	return (0);
+}

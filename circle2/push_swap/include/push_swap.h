@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 18:58:28 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 05:13:25 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,14 @@ char		*ft_strtrim(char const *s1, char const *set);
 
 //push_swap
 void	handle_swap(t_all *all, char target);
-void	tA_to_B(t_all *all, int start_index, int end_index);
-void	bA_to_B(t_all *all, int start_index, int end_index);
-void	tB_to_A(t_all *all, int start_index, int end_index);
-void	bB_to_A(t_all *all, int start_index, int end_index);
-
+void	top_a_to_b(t_all *all, int start_index, int end_index);
+void	top_b_to_a(t_all *all, int start_index, int end_index);
+void	bottom_a_to_b(t_all *all, int start_index, int end_index);
+void	bottom_b_to_a(t_all *all, int start_index, int end_index);
+void	b_top_recur(t_all *all, int start_index, int end_index);
+void	a_top_recur(t_all *all, int start_index, int end_index);
+void	b_bottom_recur(t_all *all, int start_index, int end_index);
+void 	a_bottom_recur(t_all *all, int start_index, int end_index);
 int			main(int argc, char *argv[]);
 void 		error(void);
 void 		handle_argument(char *argv, t_all *all_list);

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 01:43:28 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:58:28 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		ss(t_all *all_list, t_list *a_list, t_list *b_list, char target);
 void		p_ab(t_all *all_list, t_list *start_list, t_list *target_list, char target);
 
 //doublylist
-void			display_listt_list(t_list *pList);
 int				get_list_length(t_list *pList);
 int				add_element(t_list *p_list, int position, t_listnode element);
 int				add_command(t_commandlist *p_list, int position, char *element);
@@ -69,6 +68,7 @@ int				remove_element(t_list *pList, int position);
 void			deletet_list(t_list *pList);
 void			cleart_list(t_list *pList);
 void			display_list(t_list *pList);
+void			display_command(t_commandlist *pList);
 t_list			*create_list(void);
 t_commandlist	*create_command_list(void);
 t_listnode		*make_list_node(int data);
@@ -79,6 +79,7 @@ int			is_ascending(t_list *list, int start_index, int end_index);
 int			is_descending(t_list *list, int start_index, int end_index);
 int			is_space(char c);
 int			is_digit(int num);
+void		ft_putstr_fd(char *str, int fd);
 int			ft_atoi(const char *str, t_all *all_list);
 size_t		ft_strlen(const char *str);
 char		*ft_strchr(const char *s, int c);

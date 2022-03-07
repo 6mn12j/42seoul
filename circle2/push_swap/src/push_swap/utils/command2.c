@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 17:20:02 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 19:44:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	s_ab(t_all *all_list, t_list *t_list, char target)
 	command_count = all_list->list_command->current_node_count;
 	if (!p_firstnode || !p_secondnode)
 	{
-		printf("error\n");
+		error();
 		return ;
 	}
 	add_element(t_list, 0, *p_secondnode);
 	remove_element(t_list, 2);
-	if (target=='a')
+	if (target == 'a')
 		add_command(all_list->list_command, command_count, "sa");
 	else if (target == 'b')
 		add_command(all_list->list_command, command_count, "sb");
@@ -40,8 +40,8 @@ void	ss(t_all *all_list, t_list *a_list, t_list *b_list, char target)
 	int			command_count;
 
 	command_count = all_list->list_command->current_node_count;
-	s_ab(all_list,a_list, target);
-	s_ab(all_list,b_list, target);
+	s_ab(all_list, a_list, target);
+	s_ab(all_list, b_list, target);
 	if (target == 's')
 		add_command(all_list->list_command, command_count, "ss");
 	return ;

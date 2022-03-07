@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 17:19:37 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:23:38 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	r_ab(t_all *all_list, t_list *t_list, char target)
 	t_listnode	*temp;
 	int			i;
 	int			command_count;
-
 
 	command_count = all_list->list_command->current_node_count;
 	i = 0;

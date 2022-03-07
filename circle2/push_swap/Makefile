@@ -6,7 +6,7 @@
 #    By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/04 12:47:42 by minjupar          #+#    #+#              #
-#    Updated: 2022/03/07 01:42:38 by minjupar         ###   ########.fr        #
+#    Updated: 2022/03/07 18:59:56 by minjupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ PUSH_SWAP_SRCS = src/push_swap/main.c \
 
 LIBFT_SRCS = src/libft/ft_strtrim.c \
 					src/libft/libft.c \
+					src/libft/ft_putstr.c
+
+PRINTF_SRCS = src/printf/ft_printf_string.c
 
 
 OBJ_PUSH_SWAP = $(PUSH_SWAP_SRCS:.c=.o)

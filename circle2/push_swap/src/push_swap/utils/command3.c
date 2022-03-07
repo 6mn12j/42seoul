@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 15:19:54 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 01:27:09 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int	find_pivot(int start_index, int end_index, int type)
 {
 	int	small_index;
 	int	big_index;
+	if (end_index - start_index == 0)
+		return start_index;
 	if (end_index - start_index < 2)
 		return (start_index + 1);
 	small_index = start_index + ((end_index - start_index) + 1) / 3;
 	big_index =  ((end_index - small_index + 1) / 2) + small_index ;
-	printf("pivot index: %d %d\n",small_index, big_index);
 	if (type == SMALL)
 		return (small_index);
 	else if (type == BIG)
@@ -31,7 +32,6 @@ int	find_pivot(int start_index, int end_index, int type)
 
 void	tA_to_B(t_all *all, int start_index, int end_index)
 {
-	printf("tA_to_B:%d %d\n",start_index,end_index);
 	int	i;
 	int temp;
 	int small_index;
@@ -39,7 +39,6 @@ void	tA_to_B(t_all *all, int start_index, int end_index)
 
 	small_index = find_pivot( start_index, end_index, SMALL);
 	big_index = find_pivot( start_index, end_index, BIG);
-	printf("here small:%d big:%d\n",small_index,big_index);
 	if (end_index - start_index < 3)
 	{
 		if (end_index - start_index == 0)
@@ -64,10 +63,13 @@ void	tA_to_B(t_all *all, int start_index, int end_index)
 		}
 	}
 	// 3 2 1
-	bA_to_B(all, big_index , end_index);
+	display_list(all->list_a);
+	display_list(all->list_b);
 
-
+	bA_to_B(all, big_index, end_index);
 	tB_to_A(all, small_index, big_index - 1);
+	display_list(all->list_a);
+	display_list(all->list_b);
 	i = 0;
 	while (i++ <= big_index - 1 - small_index)
 		p_ab(all, all->list_b, all->list_a, 'a');
@@ -77,13 +79,11 @@ void	tA_to_B(t_all *all, int start_index, int end_index)
 	while (i++ <= small_index - 1 - start_index)
 		p_ab(all, all->list_b, all->list_a, 'a');
 
-
 	return ;
 }
 
 void	bA_to_B(t_all *all, int start_index, int end_index)
 {
-	printf("bA_to_B:%d %d\n",start_index, end_index);
 	int	i;
 	int temp;
 	int small_index;
@@ -91,6 +91,9 @@ void	bA_to_B(t_all *all, int start_index, int end_index)
 
 	small_index = find_pivot( start_index, end_index, SMALL);
 	big_index = find_pivot( start_index, end_index, BIG);
+	printf("bA_to_B:%d %d\n",start_index,end_index);
+	printf("pivot:[%d]:%d [%d]:%d\n",small_index,all->arr[small_index] ,big_index,all->arr[big_index]);
+
 	i = 0;
 	if (end_index - start_index < 3)
 	{
@@ -105,7 +108,8 @@ void	bA_to_B(t_all *all, int start_index, int end_index)
 		return ;
 	}
 	i = 0;
-	while (i++ <=  end_index - start_index)
+	//3 a / 1  b 2
+	while (i++ <= end_index - start_index)
 	{
 		temp = get_node(all->list_a, all->list_a->current_node_count - 1)->data;
 		if (temp >= all->arr[big_index])
@@ -114,32 +118,37 @@ void	bA_to_B(t_all *all, int start_index, int end_index)
 		{
 			rr_ab(all, all->list_a, 'a'); //rra
 			p_ab(all, all->list_a, all->list_b, 'b');
-			if (temp < all->arr[small_index])
-				r_ab(all, all->list_b, 'b');
+			if (temp >= all->arr[small_index])
+				r_ab(all, all->list_b, 'b'); //rb
 		}
 	}
-	//A 1 2 3
-	bB_to_A(all, start_index, small_index - 1);
-	i = 0;
-	while (i++ <= small_index - start_index - 1)
-		p_ab(all, all->list_b, all->list_a, 'a');
-	i = 0;
-	while (i++ <= small_index - start_index - 1)
-		r_ab(all, all->list_a, 'a');
-
-	tB_to_A(all, small_index, big_index - 1);
-	i = 0;
-	while (i++ <= big_index - small_index - 1)
-		p_ab(all, all->list_b, all->list_a, 'a');
-	i = 0;
-	while (i++ <= big_index - small_index - 1)
-		r_ab(all, all->list_a, 'a');
+	display_list(all->list_a);
+	display_list(all->list_b);
+	//3 2 1
 
 	tA_to_B(all, big_index, end_index);
-	i = 0;
-	while (i++ <= end_index - big_index)
-		r_ab(all, all->list_a, 'a');
+	// i = 0;
+	// while (i++ <= end_index - big_index)
+	// 	r_ab(all, all->list_a, 'a');
+	display_list(all->list_a);
+	display_list(all->list_b);
 
+	bB_to_A(all, small_index, big_index - 1);
+	i = 0;
+	while (i++ <= big_index - 1 - small_index)
+		p_ab(all, all->list_b, all->list_a, 'a');
+
+
+	tB_to_A(all, start_index, small_index - 1);
+	i = 0;
+	while (i++ <= small_index - 1 - start_index)
+		p_ab(all, all->list_b, all->list_a, 'a');
+	// i = 0;
+	// while (i++ <= big_index - small_index - 1)
+	// 	r_ab(all, all->list_a, 'a');
+
+display_list(all->list_a);
+	display_list(all->list_b);
 	return ;
 }
 
@@ -149,10 +158,11 @@ void	tB_to_A(t_all *all, int start_index, int end_index)
 	int temp;
 	int small_index;
 	int big_index;
-	printf("tB_to_A:%d %d\n",start_index,end_index);
-	i = 0;
+
 	small_index = find_pivot( start_index, end_index, SMALL);
 	big_index = find_pivot( start_index, end_index, BIG);
+	printf("tB_to_A:%d %d\n",start_index,end_index);
+	printf("pivot:[%d]:%d [%d]:%d\n",small_index,all->arr[small_index] ,big_index,all->arr[big_index]);
 
 	if (end_index - start_index < 3)
 	{
@@ -164,6 +174,7 @@ void	tB_to_A(t_all *all, int start_index, int end_index)
 			handle_three_tb(all, start_index, end_index);
 		return ;
 	}
+	i = 0;
 	while (i++ <= end_index - start_index)
 	{
 		temp = get_node(all->list_b, 0)->data;
@@ -176,34 +187,45 @@ void	tB_to_A(t_all *all, int start_index, int end_index)
 				r_ab(all, all->list_a, 'a');
 		}
 	}
-	//B 1 2 3
-		printf("여기\n");
+	//1 2 3
+	display_list(all->list_a);
+	display_list(all->list_b);
+	printf("여기\n");
 	bA_to_B(all, start_index, small_index - 1);
 	i = 0;
+	display_list(all->list_a);
+	display_list(all->list_b);
 	while (i++ <= small_index - start_index - 1)
 		p_ab(all, all->list_a, all->list_b, 'b');
-
+	display_list(all->list_a);
+	display_list(all->list_b);
 	tA_to_B(all, small_index, big_index - 1);
+	display_list(all->list_a);
+	display_list(all->list_b);
 	i = 0;
 	while (i++ <= big_index - small_index - 1)
 		p_ab(all, all->list_a, all->list_b, 'b');
-
+	display_list(all->list_a);
+	display_list(all->list_b);
 	bB_to_A(all, big_index, end_index);
-	i = 0;
+	display_list(all->list_a);
+	display_list(all->list_b);
 	return ;
 }
 
 void	bB_to_A(t_all *all, int start_index, int end_index)
 {
-	printf("bB_toA:%d %d\n",start_index,end_index);
 	int	i;
 	int	temp;
 	int	small_index;
 	int	big_index;
-
-	i = 0;
 	small_index = find_pivot(start_index, end_index, SMALL);
 	big_index = find_pivot(start_index, end_index, BIG);
+	printf("bB_to_A:%d %d\n",start_index,end_index);
+	printf("pivot:[%d]:%d [%d]:%d\n",small_index,all->arr[small_index], big_index,all->arr[big_index]);
+    // 1개일때
+
+	i = 0;
 	if (end_index - start_index < 3)
 	{
 		while (i++ <= end_index - start_index)
@@ -216,40 +238,46 @@ void	bB_to_A(t_all *all, int start_index, int end_index)
 			handle_three_tb(all, start_index, end_index);
 		return ;
 	}
+
+	i = 0;
 	while (i++ <= end_index - start_index)
 	{
+		//3 a 2 / 1 b
 		temp = get_node(all->list_b, all->list_b->current_node_count - 1)->data;
-		if (temp >= all->arr[big_index])
+		if (temp < all->arr[small_index])
 			rr_ab(all, all->list_b, 'b'); //rrb
 		else
 		{
 			rr_ab(all, all->list_b, 'b'); //rrb
 			p_ab(all, all->list_b, all->list_a, 'a'); //pa
-			if (temp < all->arr[small_index])
+			if (temp < all->arr[big_index])
 				r_ab(all, all->list_a, 'a');
 		}
 	}
-	//B 3 2 1
-	tB_to_A(all, big_index , end_index);
-	i = 0;
-	while(i++ <= end_index - big_index)
-		r_ab(all, all->list_b, 'b');
+	display_list(all->list_a);
+	display_list(all->list_b);
 
-	tA_to_B(all, small_index , big_index - 1);
-	i = 0;
-	while (i++ <= big_index - small_index - 1)
+	//topB로보낸다
+	//1 2 3
+	tB_to_A(all, start_index, small_index -1);
+	//topB에 있으니까 넘기기만
+	bA_to_B(all, small_index, big_index - 1);
+	display_list(all->list_a);
+	display_list(all->list_b);
+	i = 0 ;
+	while (i++ <= big_index - 1 - small_index)
 		p_ab(all, all->list_a, all->list_b, 'b');
-	i = 0;
-	while (i++ <= big_index - small_index - 1)
-		r_ab(all, all->list_b, 'b');
+		// i = 0 ;
+	// while (i++ <= small_index - start_index- 1 )
+	// 	r_ab(all, all->list_b, 'b');
 
-	bA_to_B(all, start_index, small_index - 1);
-	i = 0 ;
-	while (i++ <= small_index - start_index - 1)
+	tA_to_B(all, big_index , end_index);
+	display_list(all->list_a);
+	display_list(all->list_b);
+	i = 0;
+	while (i++ <= end_index - big_index)
 		p_ab(all, all->list_a, all->list_b, 'b');
-	i = 0 ;
-	while (i++ <= small_index - start_index- 1 )
-		r_ab(all, all->list_b, 'b');
+
 	return ;
 }
 
@@ -300,9 +328,7 @@ void	handle_swap(t_all *all, char target)
 	if (target == 'a')
 	{
 		if(is_ascending(all->list_a, 0, all->list_a->current_node_count - 1))
-		{	printf("no swap\n");
 			return;
-		}
 		if (get_node(all->list_a, 0)->data > get_node(all->list_a, 1)->data)
 			s_ab(all, all->list_a, 'a');
 		return ;
@@ -310,9 +336,7 @@ void	handle_swap(t_all *all, char target)
 	else if (target == 'b')
 	{
 		if(is_descending(all->list_b, 0 ,all->list_b->current_node_count - 1))
-		{	printf("no swap\n");
 			return;
-		}
 		if (get_node(all->list_b, 0)->data < get_node(all->list_b, 1)->data)
 			s_ab(all, all->list_b, 'b');
 		return ;

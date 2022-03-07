@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/06 02:20:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/07 19:54:54 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,33 @@ t_listnode	*make_list_node(int data)
 	}
 	return (listnode);
 }
+void	display_command(t_commandlist *pList)
+{
+	t_command	*pPreNode;
+
+	if (pList -> current_node_count == 0 )
+	{
+		return ;
+	}
+		pPreNode = &(pList->header_node);
+		for (int i = 0; i < pList -> current_node_count; i++)
+		{
+			pPreNode = pPreNode->p_right ;
+			//ft_putstr_fd(pPreNode -> data,1);
+			printf("%s\n",pPreNode->data);
+
+		}
+
+}
+
 
 void	display_list(t_list *pList)
 {
 	t_listnode	*pPreNode;
 
 	if (pList -> current_node_count == 0 )
-	{
-		printf("빈배열\n");
 		return ;
-	}
+
 		pPreNode = &(pList->header_node);
 		for (int i = 0; i < pList -> current_node_count; i++)
 		{

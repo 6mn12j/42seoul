@@ -6,7 +6,7 @@
 #    By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/04 12:47:42 by minjupar          #+#    #+#              #
-#    Updated: 2022/03/08 04:20:12 by minjupar         ###   ########.fr        #
+#    Updated: 2022/03/08 18:41:26 by minjupar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ PUSH_SWAP_SRCS = src/push_swap/main.c \
 					src/push_swap/utils/error.c \
 					src/push_swap/utils/push_utils1.c \
 					src/push_swap/optimization/optimization1.c \
+					src/push_swap/optimization/optimization2.c \
 					src/push_swap/push_swap/a_to.c \
 					src/push_swap/push_swap/b_to.c \
 

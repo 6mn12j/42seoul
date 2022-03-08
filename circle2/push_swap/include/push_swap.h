@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 05:13:25 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:39:17 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,15 @@ char		*ft_strtrim(char const *s1, char const *set);
 //push_swap
 void	handle_swap(t_all *all, char target);
 void	top_a_to_b(t_all *all, int start_index, int end_index);
+void	first_top_a_to_b(t_all *all, int start_index, int end_index);
+
 void	top_b_to_a(t_all *all, int start_index, int end_index);
 void	bottom_a_to_b(t_all *all, int start_index, int end_index);
 void	bottom_b_to_a(t_all *all, int start_index, int end_index);
 void	b_top_recur(t_all *all, int start_index, int end_index);
 void	a_top_recur(t_all *all, int start_index, int end_index);
+void	a_first_top_recur(t_all *all, int start_index, int end_index);
+
 void	b_bottom_recur(t_all *all, int start_index, int end_index);
 void 	a_bottom_recur(t_all *all, int start_index, int end_index);
 int			main(int argc, char *argv[]);
@@ -104,6 +108,10 @@ int	find_pivot(int start_index, int end_index, int type);
 
 void	handle_three_tb(t_all *all, int start_index, int end_index);
 void	handle_three_ta(t_all *all, int start_index, int end_index);
+void	handle_only_three_tb(t_all *all, int start_index, int end_index);
+void	handle_only_three_ta(t_all *all, int start_index, int end_index);
+void 	handle_five(t_all *all);
+
 #endif
 
 #ifndef _COMMON_DEF_

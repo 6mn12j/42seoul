@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 05:41:01 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:44:58 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void init(t_all *all_list)
 	all_list->list_command = list_command;
 	return ;
 }
-
 
 void	bubble_sort(int *arr, int cnt)
 {
@@ -56,10 +55,11 @@ void	bubble_sort(int *arr, int cnt)
 	return ;
 }
 
-int arr_sort_duplicate(t_all *all)
+int	arr_sort_duplicate(t_all *all)
 {
-	t_listnode *temp;
-	int i;
+	t_listnode	*temp;
+	int			i;
+
 	i = 0;
 	temp = &(all->list_a->header_node);
 	all->arr = (int *)malloc(sizeof(int) * all->list_a->current_node_count);
@@ -70,9 +70,10 @@ int arr_sort_duplicate(t_all *all)
 	}
 	bubble_sort(all->arr, all->list_a->current_node_count);
 	i = 0;
-	while (i < all->list_a->current_node_count - 1){
+	while (i < all->list_a->current_node_count - 1)
+	{
         if (all->arr[i] == all->arr[i+1])
-			return 1;
+			return (1);
 		i++;
     }
 	return (0);
@@ -84,6 +85,8 @@ void start_push_swap(t_all *all)
 		error();
 	if (all->list_a->current_node_count < 3)
 		handle_swap(all, 'a');
+	else if(all->list_a->current_node_count == 5)
+		handle_five(all);
 	else
 		top_a_to_b(all, 0, all->list_a->current_node_count-1);
 }
@@ -119,6 +122,7 @@ int main(int argc, char *argv[])
 		error();
 	while (i < argc && argv[i])
 		handle_argument(argv[i++], all);
+
 	start_push_swap(all);
 	display_command(all->list_command);
 	// display(all->list_a);

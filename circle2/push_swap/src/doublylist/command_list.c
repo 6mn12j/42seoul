@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 05:21:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:53:29 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,22 @@ t_commandlist	*create_command_list(void)
 
 void	display_command(t_commandlist *pList)
 {
-	t_command *pPreNode;
-	char newline;
+	t_command	*pPreNode;
+	char		newline;
+	int			i;
 
-	newline='n';
-	if (pList -> current_node_count == 0 )
+	i = 0;
+	newline = 'n';
+	if (pList -> current_node_count == 0)
 	{
 		return ;
 	}
 	pPreNode = &(pList->header_node);
-	for (int i = 0; i < pList -> current_node_count; i++)
+	while (i < pList -> current_node_count)
 	{
 		pPreNode = pPreNode->p_right ;
 		ft_putstr_fd(pPreNode -> data, 1);
 		write(1, "\n", 1);
+		i++;
 	}
 }

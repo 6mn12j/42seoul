@@ -6,18 +6,17 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 19:50:31 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:45:18 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-
-void init(t_all *all_list)
+void	init(t_all *all_list)
 {
-	t_list *list_a;
-	t_list *list_b;
-	t_commandlist *list_command;
+	t_list			*list_a;
+	t_list			*list_b;
+	t_commandlist	*list_command;
 
 	all_list->arr = 0;
 	list_a = create_list();
@@ -72,31 +71,33 @@ int	arr_sort_duplicate(t_all *all)
 	i = 0;
 	while (i < all->list_a->current_node_count - 1)
 	{
-        if (all->arr[i] == all->arr[i+1])
+		if (all->arr[i] == all->arr[i+1])
 			return (1);
 		i++;
-    }
+	}
 	return (0);
 }
 
-void start_push_swap(t_all *all)
+void	start_push_swap(t_all *all)
 {
 	if (arr_sort_duplicate(all))
 		error();
+	if (is_ascending(all->list_a, 0, all->list_a->current_node_count - 1))
+		return ;
 	if (all->list_a->current_node_count < 3)
 		handle_swap(all, 'a');
-	else if(all->list_a->current_node_count == 5)
+	else if (all->list_a->current_node_count == 5)
 		handle_five(all);
 	else
-		top_a_to_b(all, 0, all->list_a->current_node_count-1);
+		top_a_to_b(all, 0, all->list_a->current_node_count - 1);
 }
 
-void display(t_list *pList)
+void	display(t_list *pList)
 {
-	if(pList->current_node_count == 0 )
+	if (pList->current_node_count == 0 )
 	{
-			printf("빈배열\n");
-			return;
+		printf("빈배열\n");
+		return;
 	}
 		t_listnode *pPreNode = 0;
 
@@ -110,10 +111,10 @@ void display(t_list *pList)
 		//printf("headnode data: %d\n",pList->headerNode.data);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_all  *all;
-	int i;
+	t_all	*all;
+	int		i;
 
 	all = (t_all *)malloc(sizeof(t_all));
 	init(all);

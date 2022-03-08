@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 19:22:29 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:43:08 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	handle_b_sort(t_all *all, int start_index, int end_index, char type)
 	{
 		while (i++ <= end_index - start_index)
 			rr_ab(all, all->list_b, 'b');
-			if (i == 1 && get_node(all->list_b, 0) > get_node(all->list_b, 1))
-				s_ab(all, all->list_b, 'b');
+		if (i == 1 && get_node(all->list_b, 0) > get_node(all->list_b, 1))
+			s_ab(all, all->list_b, 'b');
 	}
 	if (end_index - start_index == 0)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 20:21:42 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:47:52 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	rr(t_all *all_list, t_list *a_list, t_list *b_list, char target)
 		add_command(all_list->list_command, command_count, "rr");
 	return ;
 }
-//마지막 원소는 첫번째 원소가 된다.
 
 void	rr_ab(t_all *all_list, t_list *t_list, char target)
 {
@@ -63,7 +62,7 @@ void	rr_ab(t_all *all_list, t_list *t_list, char target)
 	return ;
 }
 
-void	rrr(t_all *all_list, t_list *a_list, t_list *b_list,char target)
+void	rrr(t_all *all_list, t_list *a_list, t_list *b_list, char target)
 {
 	int			command_count;
 

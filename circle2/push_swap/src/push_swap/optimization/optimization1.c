@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 19:30:29 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:45:39 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	handle_only_three_tb(t_all *all, int start_index, int end_index)
 {
 	int	pivot_index;
 
-	pivot_index = find_pivot(start_index,end_index,SMALL);
+	pivot_index = find_pivot(start_index, end_index, SMALL);
 	if (is_descending(all->list_b, start_index, end_index))
 		return ;
-	if (get_node(all->list_b,1)->data == all->arr[pivot_index - 1])
+	if (get_node(all->list_b, 1)->data == all->arr[pivot_index - 1])
 		rr_ab(all, all->list_b, 'b');
 	else if (get_node(all->list_b, 0)->data == all->arr[pivot_index - 1])
 		r_ab(all, all->list_b, 'b');

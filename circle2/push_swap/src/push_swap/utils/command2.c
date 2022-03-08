@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 20:25:42 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:48:13 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	ss(t_all *all_list, t_list *a_list, t_list *b_list, char target)
 	return ;
 }
 
-void	p_ab(t_all *all_list, t_list *start_list, t_list *target_list, char target)
+void	p_ab(t_all *all_list, t_list *start_list, t_list *target_list,
+		char target)
 {
 	int			command_count;
 	t_listnode	*p_tempnode;

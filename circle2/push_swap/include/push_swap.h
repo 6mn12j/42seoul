@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 19:39:17 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:55:53 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,33 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_commandNodeType
+typedef struct s_command_node_type
 {
 	char						*data;
-	struct s_commandNodeType	*p_left;
-	struct s_commandNodeType	*p_right;
-}			t_command;
+	struct s_command_node_type	*p_left;
+	struct s_command_node_type	*p_right;
+}				t_command;
 
-typedef struct s_commandType
+typedef struct s_command_type
 {
 	int			current_node_count;
 	t_command	header_node;
 }			t_commandlist;
 
-typedef struct s_listNodeType
+typedef struct s_list_node_type
 {
 	int						data;
-	struct s_listNodeType	*p_left;
-	struct s_listNodeType	*p_right;
+	struct s_list_node_type	*p_left;
+	struct s_list_node_type	*p_right;
 }			t_listnode;
 
-typedef struct s_listType
+typedef struct s_list_type
 {
 	int			current_node_count;
 	t_listnode	header_node;
 }			t_list;
 
-typedef struct s_allType
+typedef struct s_all_type
 {
 	t_list			*list_a;
 	t_list			*list_b;
@@ -105,6 +105,7 @@ int			main(int argc, char *argv[]);
 void 		error(void);
 void 		handle_argument(char *argv, t_all *all_list);
 int	find_pivot(int start_index, int end_index, int type);
+int	reverse_find_pivot(int start_index, int end_index, int type);
 
 void	handle_three_tb(t_all *all, int start_index, int end_index);
 void	handle_three_ta(t_all *all, int start_index, int end_index);

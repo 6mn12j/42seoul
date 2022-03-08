@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 20:08:41 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:42:04 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,30 +86,25 @@ void	bottom_a_to_b(t_all *all, int start_index, int end_index)
 {
 	int	i;
 	int	temp;
-	int	small_index;
-	int	big_index;
 
 	if (all->list_a->current_node_count == end_index - start_index + 1)
 	{
 		top_a_to_b(all, start_index, end_index);
 		return ;
 	}
-	small_index = find_pivot(start_index, end_index, SMALL);
-	big_index = find_pivot(start_index, end_index, BIG);
-	i = 0;
 	if (end_index - start_index < 3)
 		return (handle_a_sort(all, start_index, end_index, 'b'));
 	i = 0;
 	while (i++ <= end_index - start_index)
 	{
 		temp = get_node(all->list_a, all->list_a->current_node_count - 1)->data;
-		if (temp >= all->arr[big_index])
+		if (temp >= all->arr[find_pivot(start_index, end_index, BIG)])
 			rr_ab(all, all->list_a, 'a');
 		else
 		{
 			rr_ab(all, all->list_a, 'a');
 			p_ab(all, all->list_a, all->list_b, 'b');
-			if (temp >= all->arr[small_index])
+			if (temp >= all->arr[find_pivot(start_index, end_index, SMALL)])
 				r_ab(all, all->list_b, 'b');
 		}
 	}

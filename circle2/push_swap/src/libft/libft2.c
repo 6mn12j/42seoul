@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   libft2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/02/27 05:18:29 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:49:20 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (s1[j - 1] && ft_strrchr(set, s1[j - 1]) && i < j - 1)
 		j--;
-	if (!(temp = malloc(sizeof(char) * (j - i + 1))))
+	temp = malloc(sizeof(char) * (j - i + 1));
+	if (!temp)
 		return (NULL);
 	ft_strlcpy(temp, &s1[i], j - i + 1);
 	return (temp);

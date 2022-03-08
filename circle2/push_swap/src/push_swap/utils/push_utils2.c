@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimization2.c                                    :+:      :+:    :+:   */
+/*   push_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/09 03:45:51 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/09 03:46:57 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include"push_swap.h"
 
-void	handle_five(t_all *all)
+int	reverse_find_pivot(int start_index, int end_index, int type)
 {
-	int	temp;
-	int	i;
+	int	small_index;
+	int	big_index;
 
-	i = 0;
-	while (i++ < 5)
-	{
-		temp = get_node(all->list_a, 0)->data;
-		if (temp >= all->arr[2])
-			r_ab(all, all->list_a, 'a');
-		else
-			p_ab(all, all->list_a, all->list_b, 'b');
-	}
-	handle_only_three_ta(all, 2, 4);
-	handle_swap(all, 'b');
-	p_ab(all, all->list_b, all->list_a, 'a');
-	p_ab(all, all->list_b, all->list_a, 'a');
-	return ;
+	if (end_index - start_index == 0)
+		return (start_index);
+	if (end_index - start_index < 2)
+		return (start_index + 1);
+	small_index = start_index + ((end_index - start_index) + 1) / 3;
+	big_index = end_index - small_index ;
+	if (type == SMALL)
+		return (small_index);
+	else if (type == BIG)
+		return (big_index);
+	return (0);
 }

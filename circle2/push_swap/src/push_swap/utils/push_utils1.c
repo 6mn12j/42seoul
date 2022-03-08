@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 18:00:03 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:10:45 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	find_pivot(int start_index, int end_index, int type)
 	if (end_index - start_index < 2)
 		return (start_index + 1);
 	small_index = start_index + ((end_index - start_index) + 1) / 3;
-	big_index = ((end_index - small_index + 1) / 2) + small_index ;
+	big_index = ((end_index - small_index) / 2) + small_index ;
 	if (type == SMALL)
 		return (small_index);
 	else if (type == BIG)

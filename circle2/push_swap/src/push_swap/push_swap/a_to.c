@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/08 19:44:39 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:08:41 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,6 @@ void	top_a_to_b(t_all *all, int start_index, int end_index)
 	return (a_top_recur(all, start_index, end_index));
 }
 
-void	first_top_a_to_b(t_all *all, int start_index, int end_index)
-{
-	int	i;
-	int	temp;
-	int	small_index;
-	int	big_index;
-
-	small_index = find_pivot(start_index, end_index, SMALL);
-	big_index = find_pivot(start_index, end_index, BIG);
-	if (end_index - start_index < 3)
-		return (handle_a_sort(all, start_index, end_index, 't'));
-	i = 0;
-	while (i++ <= end_index - start_index)
-	{
-		temp = get_node(all->list_a, 0)->data;
-		if (temp < all->arr[big_index])
-			p_ab(all, all->list_a, all->list_b, 'b');
-	}
-	return (a_first_top_recur(all, start_index, end_index));
-}
-
 void	a_top_recur(t_all *all, int start_index, int end_index)
 {
 	int	i;
@@ -102,21 +81,6 @@ void	a_top_recur(t_all *all, int start_index, int end_index)
 		p_ab(all, all->list_b, all->list_a, 'a');
 	return ;
 }
-void	a_first_top_recur(t_all *all, int start_index, int end_index)
-{
-	int	i;
-	int	small_index;
-	int	big_index;
-
-	small_index = find_pivot(start_index, end_index, SMALL);
-	big_index = find_pivot(start_index, end_index, BIG);
-	bottom_a_to_b(all, start_index, big_index - 1);
-	top_b_to_a(all, big_index, end_index);
-	i = 0;
-	while (i++ <= end_index - big_index)
-		p_ab(all, all->list_b, all->list_a, 'a');
-	return ;
-}
 
 void	bottom_a_to_b(t_all *all, int start_index, int end_index)
 {
@@ -125,6 +89,11 @@ void	bottom_a_to_b(t_all *all, int start_index, int end_index)
 	int	small_index;
 	int	big_index;
 
+	if (all->list_a->current_node_count == end_index - start_index + 1)
+	{
+		top_a_to_b(all, start_index, end_index);
+		return ;
+	}
 	small_index = find_pivot(start_index, end_index, SMALL);
 	big_index = find_pivot(start_index, end_index, BIG);
 	i = 0;

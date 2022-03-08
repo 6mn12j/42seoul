@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/07 15:23:38 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/08 20:21:42 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	rr_ab(t_all *all_list, t_list *t_list, char target)
 		add_command(all_list->list_command, command_count, "rra");
 	else if (target == 'b')
 		add_command(all_list->list_command, command_count, "rrb");
-
 	return ;
 }
 

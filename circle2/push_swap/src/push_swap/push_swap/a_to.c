@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/09 03:42:04 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:20:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ static void	handle_a_sort(t_all *all, int start_index, int end_index, char type)
 	return ;
 }
 
+/* A a3 B 2b1
+** 3 2 1
+*/
 void	top_a_to_b(t_all *all, int start_index, int end_index)
 {
 	int	i;
@@ -82,6 +85,9 @@ void	a_top_recur(t_all *all, int start_index, int end_index)
 	return ;
 }
 
+/* A 3a B 1b2
+** 3 2 1
+*/
 void	bottom_a_to_b(t_all *all, int start_index, int end_index)
 {
 	int	i;
@@ -98,11 +104,9 @@ void	bottom_a_to_b(t_all *all, int start_index, int end_index)
 	while (i++ <= end_index - start_index)
 	{
 		temp = get_node(all->list_a, all->list_a->current_node_count - 1)->data;
-		if (temp >= all->arr[find_pivot(start_index, end_index, BIG)])
-			rr_ab(all, all->list_a, 'a');
-		else
+		rr_ab(all, all->list_a, 'a');
+		if (temp < all->arr[find_pivot(start_index, end_index, BIG)])
 		{
-			rr_ab(all, all->list_a, 'a');
 			p_ab(all, all->list_a, all->list_b, 'b');
 			if (temp >= all->arr[find_pivot(start_index, end_index, SMALL)])
 				r_ab(all, all->list_b, 'b');

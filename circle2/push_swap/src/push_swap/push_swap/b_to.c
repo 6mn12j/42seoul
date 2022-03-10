@@ -6,12 +6,14 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/09 03:43:08 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:33:29 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* type -b(bottom) -t(top)
+**/
 static void	handle_b_sort(t_all *all, int start_index, int end_index, char type)
 {
 	int	i;
@@ -35,6 +37,9 @@ static void	handle_b_sort(t_all *all, int start_index, int end_index, char type)
 	return ;
 }
 
+/* A 2b1 B b3
+** 1 2 3
+*/
 void	top_b_to_a(t_all *all, int start_index, int end_index)
 {
 	int	i;
@@ -82,6 +87,9 @@ void	b_top_recur(t_all *all, int start_index, int end_index)
 	return ;
 }
 
+/*A 3a2 B 1b
+** 1 2 3
+*/
 void	bottom_b_to_a(t_all *all, int start_index, int end_index)
 {
 	int	i;
@@ -98,11 +106,9 @@ void	bottom_b_to_a(t_all *all, int start_index, int end_index)
 	while (i++ <= end_index - start_index)
 	{
 		temp = get_node(all->list_b, all->list_b->current_node_count - 1)->data;
-		if (temp < all->arr[small_index])
-			rr_ab(all, all->list_b, 'b');
-		else
+		rr_ab(all, all->list_b, 'b');
+		if (temp >= all->arr[small_index])
 		{
-			rr_ab(all, all->list_b, 'b');
 			p_ab(all, all->list_b, all->list_a, 'a');
 			if (temp < all->arr[big_index])
 				r_ab(all, all->list_a, 'a');

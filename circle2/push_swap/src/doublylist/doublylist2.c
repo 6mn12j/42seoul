@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 16:14:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:47:51 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	add_element(t_list *p_list, int position, t_listnode element)
 	int			i;
 
 	if (!p_list || position < 0 || p_list -> current_node_count < position)
-		return (-1);
+		return (0);
 	p_new_node = (t_listnode *)malloc(sizeof(t_listnode));
 	if (!p_new_node)
 		error();
@@ -36,7 +36,7 @@ int	add_element(t_list *p_list, int position, t_listnode element)
 	temp_node->p_right = p_new_node;
 	p_new_node->p_right->p_left = p_new_node;
 	p_list->current_node_count++;
-	return (0);
+	return (1);
 }
 
 t_list	*create_list(void)

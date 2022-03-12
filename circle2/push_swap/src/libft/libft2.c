@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/09 03:49:20 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:22:26 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*ft_strdup(const char *s1)
 	i = 0;
 	temp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!temp)
-		return (NULL);
+		error();
 	while (i < ft_strlen(s1))
 	{
 		temp[i] = ((char *)s1)[i];
@@ -67,7 +67,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		j--;
 	temp = malloc(sizeof(char) * (j - i + 1));
 	if (!temp)
-		return (NULL);
+		error();
 	ft_strlcpy(temp, &s1[i], j - i + 1);
 	return (temp);
 }

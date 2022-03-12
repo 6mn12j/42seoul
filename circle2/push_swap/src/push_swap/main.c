@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 04:28:37 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:22:42 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	arr_sort_and_is_duplicate(t_all *all)
 	i = 0;
 	temp = &(all->list_a->header_node);
 	all->arr = (int *)malloc(sizeof(int) * all->list_a->current_node_count);
+	if(!all->arr)
+		error();
 	while (i < all->list_a->current_node_count)
 	{
 		temp = temp->p_right;

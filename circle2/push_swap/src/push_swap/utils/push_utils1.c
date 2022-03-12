@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/11 04:41:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:20:43 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_argument(char *argv, t_all *all_list)
 	ft_atoi(test, all_list);
 }
 
-static	void	handle_add(t_all *all_list, int data)
+static	void	handle_add(t_all *all_list, long long data)
 {
 	int	current_count;
 
@@ -61,7 +61,7 @@ int	ft_atoi(const char *str, t_all *all_list)
 			result = (result * 10) + (str[i] - '0');
 			i++;
 		}
-		handle_add(all_list, (int)(sign * result));
+		handle_add(all_list, (long long)(sign * result));
 		if (str[i] && !is_space(str[i]))
 			error();
 	}

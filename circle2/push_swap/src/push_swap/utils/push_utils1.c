@@ -6,28 +6,28 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 20:20:43 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:31:49 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	handle_argument(char *argv, t_all *all_list)
+void	handle_argument(char *argv, t_all *all)
 {
 	char	*test;
 
 	test = ft_strtrim(argv, " ");
-	ft_atoi(test, all_list);
+	ft_atoi(test, all);
 }
 
-static	void	handle_add(t_all *all_list, long long data)
+static	void	handle_add(t_all *all, long long data)
 {
 	int	current_count;
 
-	current_count = all_list->list_a->current_node_count;
+	current_count = all->list_a->current_node_count;
 	if ((data < -2147483648) || (data > 2147483647))
 		error();
-	add_element(all_list->list_a, current_count, *make_list_node(data));
+	add_element(all->list_a, current_count, *make_list_node(data));
 }
 
 static int	find_sign(const char data)
@@ -39,7 +39,7 @@ static int	find_sign(const char data)
 	return (1);
 }
 
-int	ft_atoi(const char *str, t_all *all_list)
+int	ft_atoi(const char *str, t_all *all)
 {
 	int			i;
 	int			sign;
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str, t_all *all_list)
 		sign = 1;
 		result = 0;
 		while (is_space(str[i]))
-		i++;
+			i++;
 		if (str[i] == '-' || str[i] == '+')
 			sign = find_sign(str[i++]);
 		if (!is_digit(str[i]))
@@ -61,7 +61,7 @@ int	ft_atoi(const char *str, t_all *all_list)
 			result = (result * 10) + (str[i] - '0');
 			i++;
 		}
-		handle_add(all_list, (long long)(sign * result));
+		handle_add(all, (long long)(sign * result));
 		if (str[i] && !is_space(str[i]))
 			error();
 	}

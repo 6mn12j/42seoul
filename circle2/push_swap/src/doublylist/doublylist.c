@@ -29,15 +29,15 @@ t_listnode	*get_node(t_list *p_list, int position)
 	return (temp_node);
 }
 
-void	deletet_list(t_list *p_list)
+void	delete_list(t_list *p_list)
 {
-	cleart_list(p_list);
+	clear_list(p_list);
 	free(p_list);
 	p_list = 0;
 	return ;
 }
 
-void	cleart_list(t_list *p_list)
+void	clear_list(t_list *p_list)
 {
 	t_listnode	*p_del_node;
 	t_listnode	*temp_node;

@@ -6,25 +6,25 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 20:22:42 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 17:05:36 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	init(t_all *all_list)
+void	init(t_all *all)
 {
 	t_list			*list_a;
 	t_list			*list_b;
 	t_commandlist	*list_command;
 
-	all_list->arr = 0;
+	all->arr = 0;
 	list_a = create_list();
 	list_b = create_list();
 	list_command = create_command_list();
-	all_list->list_a = list_a;
-	all_list->list_b = list_b;
-	all_list->list_command = list_command;
+	all->list_a = list_a;
+	all->list_b = list_b;
+	all->list_command = list_command;
 	return ;
 }
 
@@ -62,7 +62,7 @@ int	arr_sort_and_is_duplicate(t_all *all)
 	i = 0;
 	temp = &(all->list_a->header_node);
 	all->arr = (int *)malloc(sizeof(int) * all->list_a->current_node_count);
-	if(!all->arr)
+	if (!all->arr)
 		error();
 	while (i < all->list_a->current_node_count)
 	{
@@ -91,7 +91,7 @@ void	start_push_swap(t_all *all)
 	else if (all->list_a->current_node_count == 5)
 		handle_five(all);
 	else
-		top_a_to_b(all, 0, all->list_a->current_node_count - 1);
+		top_a_sort(all, 0, all->list_a->current_node_count - 1);
 }
 
 int	main(int argc, char *argv[])
@@ -100,14 +100,16 @@ int	main(int argc, char *argv[])
 	int		i;
 
 	all = (t_all *)malloc(sizeof(t_all));
+	if (!all)
+		error();
 	init(all);
-	i = 1;
 	if (argc < 2)
 		error();
+	i = 1;
 	while (i < argc && argv[i])
 		handle_argument(argv[i++], all);
 	start_push_swap(all);
 	command_optimization(all->list_command);
 	display_command(all->list_command);
-	return (1);
+	exit (0);
 }

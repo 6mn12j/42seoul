@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/11 01:21:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 16:46:02 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handle_five(t_all *all)
 		else
 			p_ab(all, all->list_a, all->list_b, 'b');
 	}
-	handle_only_three_ta(all, 2, 4);
+	handle_only_3_ta(all, 2, 4);
 	handle_swap(all, 'b');
 	p_ab(all, all->list_b, all->list_a, 'a');
 	p_ab(all, all->list_b, all->list_a, 'a');

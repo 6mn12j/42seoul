@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 03:21:36 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 17:06:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	handle_a_fin(t_all *all, int start_index, int end_index, char type)
 	else if (end_index - start_index < 2)
 		handle_swap(all, 'a');
 	else if (all->list_a->current_node_count < 4)
-		handle_only_three_ta(all, start_index, end_index);
+		handle_only_3_ta(all, start_index, end_index);
 	else
 		handle_three_ta(all, start_index, end_index);
 	return ;
@@ -38,7 +38,7 @@ static void	handle_a_fin(t_all *all, int start_index, int end_index, char type)
 /* A a3 B 2b1
 ** 3 2 1
 */
-void	top_a_to_b(t_all *all, int start_index, int end_index)
+void	top_a_sort(t_all *all, int start_index, int end_index)
 {
 	int	i;
 	int	temp;
@@ -72,23 +72,23 @@ void	a_top_recur(t_all *all, int start_index, int end_index)
 
 	small_index = find_pivot(start_index, end_index, SMALL);
 	big_index = find_pivot(start_index, end_index, BIG);
-	bottom_a_to_b(all, big_index, end_index);
-	top_b_to_a(all, small_index, big_index - 1);
-	bottom_b_to_a(all, start_index, small_index - 1);
+	bottom_a_sort(all, big_index, end_index);
+	top_b_sort(all, small_index, big_index - 1);
+	bottom_b_sort(all, start_index, small_index - 1);
 	return ;
 }
 
 /* A 3a B 2b1
 ** 3 2 1
 */
-void	bottom_a_to_b(t_all *all, int start_index, int end_index)
+void	bottom_a_sort(t_all *all, int start_index, int end_index)
 {
 	int	i;
 	int	temp;
 
 	if (all->list_a->current_node_count == end_index - start_index + 1)
 	{
-		top_a_to_b(all, start_index, end_index);
+		top_a_sort(all, start_index, end_index);
 		return ;
 	}
 	if (end_index - start_index < 3)
@@ -115,8 +115,8 @@ void	a_bottom_recur(t_all *all, int start_index, int end_index)
 
 	small_index = find_pivot(start_index, end_index, SMALL);
 	big_index = find_pivot(start_index, end_index, BIG);
-	top_a_to_b(all, big_index, end_index);
-	top_b_to_a(all, small_index, big_index - 1);
-	bottom_b_to_a(all, start_index, small_index - 1);
+	top_a_sort(all, big_index, end_index);
+	top_b_sort(all, small_index, big_index - 1);
+	bottom_b_sort(all, start_index, small_index - 1);
 	return ;
 }

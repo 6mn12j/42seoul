@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 03:15:15 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 16:17:28 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	clean_rr(t_commandlist *list)
 		temp = temp->p_right;
 		i++;
 	}
+	return ;
 }
 
 static void	find_rr2(t_commandlist *list)

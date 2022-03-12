@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 04:33:25 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 17:06:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	handle_bottom(t_all *all, int start_index, int end_index)
 	if (i == 1 && get_node(all->list_b, 0) > get_node(all->list_b, 1))
 		s_ab(all, all->list_b, 'b');
 }
+
 static void	handle_b_fin(t_all *all, int start_index, int end_index, char type)
 {
 	int	i;
@@ -50,11 +51,10 @@ static void	handle_b_fin(t_all *all, int start_index, int end_index, char type)
 	return ;
 }
 
-
 /* A 3a2 B b1
 ** 3 2 1
 */
-void	top_b_to_a(t_all *all, int start_index, int end_index)
+void	top_b_sort(t_all *all, int start_index, int end_index)
 {
 	int	i;
 	int	temp;
@@ -88,16 +88,16 @@ void	b_top_recur(t_all *all, int start_index, int end_index)
 
 	small_index = find_pivot(start_index, end_index, SMALL);
 	big_index = find_pivot(start_index, end_index, BIG);
-	top_a_to_b(all, big_index, end_index);
-	bottom_a_to_b(all, small_index, big_index - 1);
-	bottom_b_to_a(all, start_index, small_index - 1);
+	top_a_sort(all, big_index, end_index);
+	bottom_a_sort(all, small_index, big_index - 1);
+	bottom_b_sort(all, start_index, small_index - 1);
 	return ;
 }
 
 /*A 3a2 B 1b
 ** 3 2 1
 */
-void	bottom_b_to_a(t_all *all, int start_index, int end_index)
+void	bottom_b_sort(t_all *all, int start_index, int end_index)
 {
 	int	i;
 	int	temp;

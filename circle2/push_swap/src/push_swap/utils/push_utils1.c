@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 21:37:15 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 21:41:40 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	handle_argument(char *argv, t_all *all)
 	char	*test;
 
 	test = ft_strtrim(argv, " ");
-	if(!*test)
+	if (!*test)
 		error();
 	ft_atoi(test, all);
 }

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimization2.c                                    :+:      :+:    :+:   */
+/*   b_to2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/11 01:21:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 03:25:58 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	handle_five(t_all *all)
+void	b_bottom_recur(t_all *all, int start_index, int end_index)
 {
-	int	temp;
-	int	i;
+	int	small_index;
+	int	big_index;
 
-	i = 0;
-	while (i++ < 5)
-	{
-		temp = get_node(all->list_a, 0)->data;
-		if (temp >= all->arr[2])
-			r_ab(all, all->list_a, 'a');
-		else
-			p_ab(all, all->list_a, all->list_b, 'b');
-	}
-	handle_only_three_ta(all, 2, 4);
-	handle_swap(all, 'b');
-	p_ab(all, all->list_b, all->list_a, 'a');
-	p_ab(all, all->list_b, all->list_a, 'a');
+	small_index = find_pivot(start_index, end_index, SMALL);
+	big_index = find_pivot(start_index, end_index, BIG);
+	top_a_to_b(all, big_index, end_index);
+	bottom_a_to_b(all, small_index, big_index - 1);
+	top_b_to_a(all, start_index, small_index -1);
 	return ;
 }

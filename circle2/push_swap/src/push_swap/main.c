@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/09 03:45:18 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/12 04:28:37 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	bubble_sort(int *arr, int cnt)
 	return ;
 }
 
-int	arr_sort_duplicate(t_all *all)
+int	arr_sort_and_is_duplicate(t_all *all)
 {
 	t_listnode	*temp;
 	int			i;
@@ -71,7 +71,7 @@ int	arr_sort_duplicate(t_all *all)
 	i = 0;
 	while (i < all->list_a->current_node_count - 1)
 	{
-		if (all->arr[i] == all->arr[i+1])
+		if (all->arr[i] == all->arr[i + 1])
 			return (1);
 		i++;
 	}
@@ -80,7 +80,7 @@ int	arr_sort_duplicate(t_all *all)
 
 void	start_push_swap(t_all *all)
 {
-	if (arr_sort_duplicate(all))
+	if (arr_sort_and_is_duplicate(all))
 		error();
 	if (is_ascending(all->list_a, 0, all->list_a->current_node_count - 1))
 		return ;
@@ -90,25 +90,6 @@ void	start_push_swap(t_all *all)
 		handle_five(all);
 	else
 		top_a_to_b(all, 0, all->list_a->current_node_count - 1);
-}
-
-void	display(t_list *pList)
-{
-	if (pList->current_node_count == 0 )
-	{
-		printf("빈배열\n");
-		return;
-	}
-		t_listnode *pPreNode = 0;
-
-		pPreNode = &(pList->header_node);
-		for (int i = 0 ; i <pList->current_node_count;i++){
-			pPreNode = pPreNode->p_right ;
-			printf("%d ",pPreNode->data);
-
-		}
-		printf("\n");
-		//printf("headnode data: %d\n",pList->headerNode.data);
 }
 
 int	main(int argc, char *argv[])
@@ -123,12 +104,8 @@ int	main(int argc, char *argv[])
 		error();
 	while (i < argc && argv[i])
 		handle_argument(argv[i++], all);
-
 	start_push_swap(all);
+	command_optimization(all->list_command);
 	display_command(all->list_command);
-	// display(all->list_a);
-	// display(all->list_b);
-
-	exit(0);
-	//system("leaks a.out");
+	return (1);
 }

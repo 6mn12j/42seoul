@@ -82,7 +82,23 @@ int	remove_element(t_list *p_list, int position)
 	return (1);
 }
 
-int	get_list_length(t_list *p_list)
+int	remove_command(t_commandlist *p_list, int position)
 {
-	return (p_list->current_node_count);
+	t_command	*temp_node;
+	t_command	*p_del_node;
+	int			i;
+
+	if (!p_list || position < 0 || p_list -> current_node_count < position)
+		return (-1);
+	temp_node = &(p_list->header_node);
+	i = 0;
+	while (i++ < position)
+		temp_node = temp_node->p_right;
+	p_del_node = temp_node->p_right;
+	temp_node->p_right = p_del_node->p_right;
+	temp_node->p_right->p_left = temp_node;
+	free(p_del_node);
+	p_del_node = 0;
+	p_list -> current_node_count--;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/12 17:06:27 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 03:39:28 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <get_next_line.h>
 
 # define SMALL		1
 # define BIG		2
@@ -93,9 +94,12 @@ void			a_top_recur(t_all *all, int start_index, int end_index);
 void			b_bottom_recur(t_all *all, int start_index, int end_index);
 void			a_bottom_recur(t_all *all, int start_index, int end_index);
 int				find_pivot(int start_index, int end_index, int type);
+void			start_push_swap(t_all *all);
 void			handle_argument(char *argv, t_all *all);
 void			error(void);
-int				main(int argc, char *argv[]);
+void			init(t_all *all);
+void			bubble_sort(int *arr, int cnt);
+int				arr_sort_and_is_duplicate(t_all *all);
 void			handle_swap(t_all *all, char target);
 void			handle_three_tb(t_all *all, int start_index, int end_index);
 void			handle_three_ta(t_all *all, int start_index, int end_index);
@@ -103,5 +107,5 @@ void			handle_only_3_tb(t_all *all, int start_index, int end_index);
 void			handle_only_3_ta(t_all *all, int start_index, int end_index);
 void			handle_five(t_all *all);
 void			command_optimization(t_commandlist *list);
-
+int				get_next_line(int fd, char **line);
 #endif

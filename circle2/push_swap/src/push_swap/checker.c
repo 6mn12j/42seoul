@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 05:34:43 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:11:41 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	handle_command(t_all *all, char *command)
 		p_ab(all, all->list_a, all->list_b, 'b');
 	else if (ft_strncmp(command, "ss", 2))
 		ss(all, all->list_a, all->list_b, 's');
-	else if (ft_strncmp(command, "rr", 2))
-		rr(all, all->list_a, all->list_b, 'r');
 	else if (ft_strncmp(command, "rrr", 3))
 		rrr(all, all->list_a, all->list_b, 'r');
+	else if (ft_strncmp(command, "rr", 2))
+		rr(all, all->list_a, all->list_b, 'r');
 	else
 		error();
 	return ;

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:10:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 17:59:00 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:37:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	my_read_line(char **backup, char **line, int fd, char *buf)
 
 	temp = backup[fd];
 	i = my_strchr(backup[fd], '\n');
-	if (i  == -1)
+	if (i == -1)
 		handle_fin_line(backup, temp, line, fd);
 	if (backup[fd])
 	{
@@ -80,8 +80,8 @@ int	get_next_line(int fd, char **line)
 	char		*temp;
 	int			nbytes;
 
-	buf = malloc(sizeof(char) * (3 + 1));
-	if (fd < 0 || fd > 256 || !line || 3 < 1)
+	buf = malloc(sizeof(char) * 4);
+	if (fd < 0 || fd > 256 || !line)
 		return (my_free(buf) * -1);
 	if (!backup[fd])
 		backup[fd] = my_strdup("");
@@ -94,11 +94,9 @@ int	get_next_line(int fd, char **line)
 		my_free(temp);
 		if (my_strchr(backup[fd], '\n') != -1)
 			return (my_read_line(backup, line, fd, buf));
+		nbytes = read(fd, buf, 3);
 	}
 	if (nbytes < 0)
-	{
-		my_free(buf);
-		return (-my_free(backup[fd]));
-	}
+		exit(0);
 	return (my_free(buf) * my_read_line(backup, line, fd, buf));
 }

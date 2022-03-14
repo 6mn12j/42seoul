@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 17:37:39 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:59:34 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	my_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!str)
@@ -29,7 +29,7 @@ size_t	my_strlen(const char *str)
 
 size_t	my_strlcpy(char *dest, char const *src, size_t size)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!dest || !src)
@@ -54,11 +54,12 @@ char	*my_strdup(const char *s1)
 
 	len = my_strlen(s1);
 	i = 0;
-	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
+	temp = (char *)malloc(sizeof(char) * (len + 1));
+	if (!temp)
 		return (NULL);
 	while (i < len)
 	{
-		temp[i] = ((char*)s1)[i];
+		temp[i] = ((char *)s1)[i];
 		i++;
 	}
 	temp[i] = 0;
@@ -75,7 +76,8 @@ char	*my_strjoin(char const *s1, char const *s2)
 		return (0);
 	s1_len = my_strlen(s1);
 	s2_len = my_strlen(s2);
-	if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!temp)
 		return (0);
 	my_strlcpy(temp, s1, s1_len + 1);
 	my_strlcpy(&temp[s1_len], s2, s2_len + 1);

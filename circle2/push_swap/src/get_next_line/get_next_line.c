@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:10:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 17:39:41 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:59:00 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ int	get_next_line(int fd, char **line)
 			return (my_read_line(backup, line, fd, buf));
 	}
 	if (nbytes < 0)
-		exit(0);
+	{
+		my_free(buf);
+		return (-my_free(backup[fd]));
+	}
 	return (my_free(buf) * my_read_line(backup, line, fd, buf));
 }

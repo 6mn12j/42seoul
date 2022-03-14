@@ -6,11 +6,14 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 03:15:39 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:30:19 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
+
+
 
 int	main(int argc, char *argv[])
 {

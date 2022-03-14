@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 05:47:13 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:28:12 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	r_ab(t_all *all, t_list *t_list, char target)
 	int			command_count;
 
 	command_count = all->list_command->current_node_count;
-	if (command_count == 0)
+	if (!t_list->current_node_count)
 		return ;
 	i = 0;
 	temp = &(t_list->header_node);
@@ -52,7 +52,7 @@ void	rr_ab(t_all *all, t_list *t_list, char target)
 	int			command_count;
 
 	command_count = all->list_command->current_node_count;
-	if (command_count == 0)
+	if (!t_list->current_node_count)
 		return ;
 	i = 0;
 	temp = &(t_list->header_node);

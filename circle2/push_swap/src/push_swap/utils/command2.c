@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 05:43:47 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:28:25 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	s_ab(t_all *all, t_list *t_list, char target)
 	p_firstnode = get_node(t_list, 0);
 	p_secondnode = get_node(t_list, 1);
 	command_count = all->list_command->current_node_count;
-	if (t_list->current_node_count == 0)
+	if (!t_list->current_node_count)
 		return ;
 	if (!p_firstnode || !p_secondnode)
 		error();

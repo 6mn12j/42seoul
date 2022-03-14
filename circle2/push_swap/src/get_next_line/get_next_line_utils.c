@@ -6,13 +6,13 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2021/05/24 14:23:13 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:37:39 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		my_strlen(const char *str)
+size_t	my_strlen(const char *str)
 {
 	size_t i;
 
@@ -27,7 +27,7 @@ size_t		my_strlen(const char *str)
 	return (i);
 }
 
-size_t		my_strlcpy(char *dest, char const *src, size_t size)
+size_t	my_strlcpy(char *dest, char const *src, size_t size)
 {
 	size_t i;
 
@@ -46,7 +46,7 @@ size_t		my_strlcpy(char *dest, char const *src, size_t size)
 	return (i);
 }
 
-char		*my_strdup(const char *s1)
+char	*my_strdup(const char *s1)
 {
 	char		*temp;
 	size_t		i;
@@ -65,7 +65,7 @@ char		*my_strdup(const char *s1)
 	return (temp);
 }
 
-char		*my_strjoin(char const *s1, char const *s2)
+char	*my_strjoin(char const *s1, char const *s2)
 {
 	size_t			s1_len;
 	size_t			s2_len;
@@ -82,7 +82,7 @@ char		*my_strjoin(char const *s1, char const *s2)
 	return (temp);
 }
 
-char		*my_substr(char const *s, unsigned int start, size_t len)
+char	*my_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*temp;
 	size_t	i;

@@ -6,13 +6,13 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:10:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 03:59:43 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:39:41 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/get_next_line.h"
 
-static int		my_strchr(const char *s, int c)
+static int	my_strchr(const char *s, int c)
 {
 	unsigned char	target;
 	int				i;
@@ -30,14 +30,14 @@ static int		my_strchr(const char *s, int c)
 	return (-1);
 }
 
-static int		my_free(char *str)
+static int	my_free(char *str)
 {
 	free(str);
 	str = 0;
 	return (1);
 }
 
-static int		handle_fin_line(char **backup, char *temp, char **line, int fd)
+static int	handle_fin_line(char **backup, char *temp, char **line, int fd)
 {
 	*line = my_strdup(backup[fd]);
 	my_free(temp);
@@ -45,13 +45,14 @@ static int		handle_fin_line(char **backup, char *temp, char **line, int fd)
 	return (0);
 }
 
-static int		my_read_line(char **backup, char **line, int fd, char *buf)
+static int	my_read_line(char **backup, char **line, int fd, char *buf)
 {
 	char	*temp;
 	int		i;
 
 	temp = backup[fd];
-	if ((i = my_strchr(backup[fd], '\n')) == -1)
+	i = my_strchr(backup[fd], '\n');
+	if (i  == -1)
 		handle_fin_line(backup, temp, line, fd);
 	if (backup[fd])
 	{
@@ -72,19 +73,20 @@ static int		my_read_line(char **backup, char **line, int fd, char *buf)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char	*backup[OPEN_MAX + 1];
+	static char	*backup[256 + 1];
 	char		*buf;
 	char		*temp;
 	int			nbytes;
 
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (fd < 0 || fd > OPEN_MAX || !line || BUFFER_SIZE < 1)
+	buf = malloc(sizeof(char) * (3 + 1));
+	if (fd < 0 || fd > 256 || !line || 3 < 1)
 		return (my_free(buf) * -1);
 	if (!backup[fd])
 		backup[fd] = my_strdup("");
-	while ((nbytes = read(fd, buf, BUFFER_SIZE)) > 0)
+	nbytes = read(fd, buf, 3);
+	while (nbytes > 0)
 	{
 		buf[nbytes] = 0;
 		temp = backup[fd];
@@ -94,9 +96,6 @@ int				get_next_line(int fd, char **line)
 			return (my_read_line(backup, line, fd, buf));
 	}
 	if (nbytes < 0)
-	{
-		my_free(buf);
-		return (-my_free(backup[fd]));
-	}
+		exit(0);
 	return (my_free(buf) * my_read_line(backup, line, fd, buf));
 }

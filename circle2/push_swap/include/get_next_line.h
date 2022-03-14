@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 02:27:44 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:38:17 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,4 @@ char		*my_substr(char const *s, unsigned int start, size_t len);
 size_t		my_strlcpy(char *dest, char const *src, size_t size);
 size_t		my_strlen(const char *str);
 int			get_next_line(int fd, char **line);
-#endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 3
-#endif
-
-#ifndef OPEN_MAX
-# define OPEN_MAX 256
 #endif

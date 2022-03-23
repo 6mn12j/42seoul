@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 15:08:59 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/14 23:21:13 by minjupar         ###   ########.fr       */
+/*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
+/*   Updated: 2022/03/23 04:25:41 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "../include/so_long.h"
 
-int	main(int argc, char *argv[])
+void	error()
 {
-	t_all	*all;
-	int		i;
+	printf("Error\n");
+	exit(1);
+}
 
-	all = (t_all *)malloc(sizeof(t_all));
-	if (!all)
-		error();
-	init(all);
-	if (argc < 2)
-		exit (0);
-	i = 1;
-	while (i < argc && argv[i])
-		handle_argument(argv[i++], all);
-	start_push_swap(all);
-	command_optimization(all->list_command);
-	display_command(all->list_command);
-	exit (0);
+void	not_square()
+{
+	printf("Error is not square\n");
+	exit(1);
 }

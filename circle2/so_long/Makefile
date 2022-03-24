@@ -4,9 +4,12 @@ MLX = -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framewo
 NAME = so_long
 
 SRCS = src/main.c \
+		src/key.c \
+		src/map.c \
+		src/init.c \
+		src/draw.c \
+		src/error.c \
 		src/get_next_line/get_next_line.c \
-		src/init.c src/draw.c src/error.c \
-		src/map.c
 
 OBJS = $(SRCS:.c=.o)
 

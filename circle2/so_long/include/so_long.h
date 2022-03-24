@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 05:26:16 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/24 22:40:50 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,31 @@
 # include <stdio.h>
 # include "./get_next_line.h"
 
-#define X_EVENT_KEY_PRESS 2     // mlx_hook 함수의 두 번째 인자
+# define X_EVENT_KEY_PRESS 2     // mlx_hook 함수의 두 번째 인자
 # define KEY_W 13 //'W'
 # define KEY_A 0 //'A'
 # define KEY_S 1 //'S'
 # define KEY_D 2//'D'
 # define KEY_ESC 53 //'ESC'
-# define RED_BUTTON 17 //'종료 버튼'
+# define ON_DESTROY 17 //'종료 버튼'
 # define TILE 60
 
-//플레이어(가만히, 뛰는거)  벽 길 먹는거 탈출구
-typedef struct img
+# define NOT_SQUARE -1
+# define NOT_P 0
+# define DUP_P 1
+# define NOT_C 2
+# define NOT_E 3
+# define NOT_WALL 4
+# define NOT_ARGUMENT 5
+
+typedef struct s_img
 {
 	void		*img_ptr;
 	int			bpp;
-	int			size_line;
+	int			size_l;
 	int			endian;
 	int			*data;
-}t_img;
+}	t_img;
 
 typedef struct s_player
 {
@@ -47,12 +54,12 @@ typedef struct s_player
 	t_img			img;
 }	t_player;
 
-typedef struct s_collection
+typedef struct s_cion
 {
 	int				cnt;
 	t_img			img;
 
-}	t_collection;
+}	t_cion;
 
 typedef struct s_wall
 {
@@ -66,14 +73,15 @@ typedef struct s_tile
 
 typedef struct s_exit
 {
-	int				is_touch;
+	int				y;
+	int				x;
 	t_img			img;
 
 }	t_exit;
 
 typedef struct s_img_size
 {
-	int 			width;
+	int				width;
 	int				height;
 }t_img_size;
 
@@ -90,17 +98,18 @@ typedef struct s_mlx
 	t_exit			exit;
 	t_wall			wall;
 	t_player		player;
-	t_collection	collections;
+	t_cion			collect;
 }	t_mlx;
 
+int		close_game(t_mlx *mlx);
+int		key_hook(int keycode, t_mlx *mlx);
 int		valid_map(t_mlx *mlx);
-void	fill_map(t_mlx *mlx, int fd);
-int		get_map_width_col_valid(int fd, t_mlx *mlx);
-void	handle_draw(t_mlx *mlx);
-void	handle_init(t_mlx *mlx);
+void	fill_map(t_mlx *mlx);
+void	re_fillmap(t_mlx *mlx);
+void	map_parse(t_mlx *mlx, int fd);
+void	open_map_file(t_mlx *mlx, char*file);
 void	error(void);
-void	not_square(void);
-
-
-
+void	handle_error(int flag);
+void	init(t_mlx *mlx);
+void	mlx_win_init(t_mlx *mlx);
 #endif

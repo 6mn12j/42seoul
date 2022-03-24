@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/23 01:32:26 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/24 21:51:03 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-char *gnl(int fd,int width);
-char		*my_strdup(const char *s1);
-char		*my_strjoin(char const *s1, char const *s2);
-char		*my_substr(char const *s, unsigned int start, size_t len);
-size_t		my_strlcpy(char *dest, char const *src, size_t size);
-size_t		my_strlen(const char *str);
-int			get_next_line(int fd, char **line);
+char		*gnl(int fd, int width);
 
 #endif

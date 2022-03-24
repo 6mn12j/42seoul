@@ -6,27 +6,28 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 05:40:22 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/24 22:06:29 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-
 static int	valid_value(char c)
 {
-	if (c == '1' || c == '0' || c =='C' || c == 'P' || c == 'E')
+	if (c == '1' || c == '0' || c == 'C' || c == 'P' || c == 'E')
 		return (1);
 	return (0);
 }
 
-int		valid_map(t_mlx *mlx)
+int	valid_map(t_mlx *mlx)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
+	if (mlx->collect.cnt == 0)
+		handle_error(NOT_C);
 	while (i < mlx->map_height)
 	{
 		j = 0;
@@ -36,10 +37,10 @@ int		valid_map(t_mlx *mlx)
 				j == 0 || j == mlx->map_width - 1)
 			{
 				if (mlx-> map[i][j] != '1')
-					error();
+					handle_error(NOT_WALL);
 			}
 			if (!valid_value(mlx->map[i][j]))
-				error();
+					handle_error(NOT_WALL);
 			j++;
 		}
 		i++;
@@ -47,21 +48,17 @@ int		valid_map(t_mlx *mlx)
 	return (1);
 }
 
-int		get_map_width_col_valid(int fd, t_mlx *mlx)
+static int	get_map_size(int fd, t_mlx *mlx)
 {
 	int		map_col;
 	char	buf;
 
 	map_col = 0;
-	//TODO init으로 분리
-	mlx->map_width = 0;
-	mlx->map_height = 0;
 	while (read(fd, &buf, 1) == 1)
 	{
 		map_col++;
 		if (buf == '\n')
 		{
-			printf("%d %d\n",mlx->map_width, map_col-1);
 			if (mlx->map_width != 0 && mlx->map_width != map_col - 1)
 				return (0);
 			mlx->map_height ++;
@@ -73,49 +70,30 @@ int		get_map_width_col_valid(int fd, t_mlx *mlx)
 	return (1);
 }
 
-static void	draw_row(t_mlx *mlx, char *line, int row)
+void	re_fillmap(t_mlx *mlx)
 {
+	t_player	player;
+
+	player = mlx->player;
+	mlx->map[player.y][player.x] = 'P';
+	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	fill_map(mlx);
+}
+
+void	open_map_file(t_mlx *mlx, char*file)
+{
+	int		fd;
 	int		i;
 
 	i = 0;
-	mlx->map[row] = (char *)malloc(sizeof(char) * mlx->map_width);
-	while (line[i])
-	{
-		if (line[i] == 'P')
-		{
-			if (mlx->player.x)
-				error();
-			mlx->player.x = i;
-			mlx->player.y = row;
-		}
-		else if (line[i] == 'C')
-			mlx->collections.cnt++;
-
-		mlx->map[row][i] = line[i];
-		i++;
-	}
-}
-
-void	fill_map(t_mlx *mlx, int fd)
-{
-	char	*line;
-	int		row;
-
-	row = 0;
-	mlx->map = (char **)malloc(sizeof(char *) * mlx->map_height);
-	if (!mlx->map)
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		error();
-	mlx->collections.cnt = 0;
-
-	line = gnl(fd, mlx->map_width);
-	while (line)
-	{
-		draw_row(mlx, line, row);
-		free(line);
-		line = gnl(fd, mlx->map_width);
-		row++;
-	}
-	if (mlx->player.x  == 0)
+	if (!get_map_size(fd, mlx))
+		handle_error(NOT_SQUARE);
+	fd = open(file, O_RDONLY);
+	map_parse(mlx, fd);
+	if (!valid_map(mlx))
 		error();
+	return ;
 }
-

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 17:35:56 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:48:38 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,15 @@ int	valid_map(t_mlx *mlx)
 				j == 0 || j == mlx->map_width - 1)
 			{
 				if (mlx-> map[i][j] != '1')
-					handle_error(NOT_WALL);
+				{
+					printf("1 %d %d %d %d\n",i,j,mlx->map_height,mlx->map_width);
+						handle_error(NOT_WALL);
+				}
 			}
 			if (!valid_value(mlx->map[i][j]))
-				handle_error(NOT_WALL);
+			{printf("2\n");
+					handle_error(NOT_WALL);
+			}
 			j++;
 		}
 		i++;
@@ -57,13 +62,16 @@ static int	get_map_size(int fd, t_mlx *mlx)
 		map_col++;
 		if (buf == '\n')
 		{
-			if (mlx->map_width != 0 && mlx->map_width != map_col - 1)
+			if (mlx->map_width != 0 && mlx->map_width != map_col-1)
 				return (0);
 			mlx->map_height ++;
 			mlx->map_width = --map_col;
 			map_col = 0;
 		}
 	}
+	if (mlx->map_width != 0 && mlx->map_width != map_col)
+		return (0);
+	mlx->map_height++;
 	close(fd);
 	return (1);
 }
@@ -90,8 +98,13 @@ void	open_map_file(t_mlx *mlx, char*file)
 	if (!get_map_size(fd, mlx))
 		handle_error(NOT_SQUARE);
 	fd = open(file, O_RDONLY);
+//	printf("hehre\n");
 	map_parse(mlx, fd);
+		//printf("hehre2\n");
+
 	if (!valid_map(mlx))
 		error();
+			printf("hehre\n");
+
 	return ;
 }

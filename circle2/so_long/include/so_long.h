@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 17:40:39 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 23:50:51 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define ON_DESTROY 17 //'종료 버튼'
 # define TILE 60
 
-# define NOT_SQUARE -1
-# define NOT_WALL 4
+# define NOT_SQUARE 1
+# define NOT_VALID 2
+# define NOT_WALL 3
 
 typedef struct s_img
 {

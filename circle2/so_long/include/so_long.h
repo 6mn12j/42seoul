@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 15:56:32 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:32:19 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_mlx
 	char			**map;
 	int				map_width;
 	int				map_height;
+	int				fd;
 	t_img			img;
 	t_img_size		img_size;
 	t_tile			tile;
@@ -112,4 +113,5 @@ void	error(void);
 void	handle_error(int flag);
 void	init(t_mlx *mlx);
 void	mlx_win_init(t_mlx *mlx);
+void	img_init(t_mlx *mlx);
 #endif

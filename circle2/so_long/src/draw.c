@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 22:19:24 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:32:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	map_parse(t_mlx *mlx, int fd)
 		line = gnl(fd, mlx->map_width);
 		row++;
 	}
+	free(line);
 	if (mlx->player.x == 0)
 		handle_error(NOT_P);
 	if (mlx->exit.x == 0)

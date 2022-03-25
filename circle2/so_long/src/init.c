@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 22:53:12 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:14:55 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	mlx_win_init(t_mlx *mlx)
 	return ;
 }
 
-static void	img_init(t_mlx *mlx)
+void	img_init(t_mlx *mlx)
 {
 	mlx ->img_size.width = TILE;
 	mlx ->img_size.height = TILE;
@@ -72,7 +72,6 @@ static void	map_init(t_mlx *mlx)
 void	init(t_mlx *mlx)
 {
 	map_init(mlx);
-	img_init(mlx);
 	player_init(mlx);
 	return ;
 }

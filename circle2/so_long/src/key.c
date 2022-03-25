@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 18:49:58 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:15:04 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	move_player(t_mlx *mlx, int move_x, int move_y)
 	if (mlx->map[player->y + move_y][player->x + move_x] == '1')
 		return ;
 	else if (mlx->map[player->y + move_y][player->x + move_x] == 'C')
-			mlx->collect.cnt--;
+		mlx->collect.cnt--;
 	else if (mlx->map[player->y + move_y][player->x + move_x] == 'E')
 	{
 		if (mlx->collect.cnt == 0)

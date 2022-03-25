@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 22:06:29 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:30:48 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	valid_map(t_mlx *mlx)
 					handle_error(NOT_WALL);
 			}
 			if (!valid_value(mlx->map[i][j]))
-					handle_error(NOT_WALL);
+				handle_error(NOT_WALL);
 			j++;
 		}
 		i++;

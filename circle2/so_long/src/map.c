@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 16:30:48 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:35:56 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	valid_map(t_mlx *mlx)
 
 	i = 0;
 	j = 0;
-	if (mlx->collect.cnt == 0)
-		handle_error(NOT_C);
 	while (i < mlx->map_height)
 	{
 		j = 0;

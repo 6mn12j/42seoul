@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 16:32:19 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:40:39 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,7 @@
 # define TILE 60
 
 # define NOT_SQUARE -1
-# define NOT_P 0
-# define DUP_P 1
-# define NOT_C 2
-# define NOT_E 3
 # define NOT_WALL 4
-# define NOT_ARGUMENT 5
 
 typedef struct s_img
 {
@@ -49,6 +44,7 @@ typedef struct s_player
 {
 	int				x;
 	int				y;
+	int				cnt;
 	char			prev;
 	int				step;
 	t_img			img;
@@ -75,6 +71,7 @@ typedef struct s_exit
 {
 	int				y;
 	int				x;
+	int				cnt;
 	t_img			img;
 
 }	t_exit;
@@ -110,6 +107,8 @@ void	re_fillmap(t_mlx *mlx);
 void	map_parse(t_mlx *mlx, int fd);
 void	open_map_file(t_mlx *mlx, char*file);
 void	error(void);
+void	valid_check(t_mlx *mlx);
+void	handle_valid(t_mlx *mlx);
 void	handle_error(int flag);
 void	init(t_mlx *mlx);
 void	mlx_win_init(t_mlx *mlx);

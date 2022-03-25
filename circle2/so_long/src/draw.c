@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 16:32:27 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:40:18 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ static void	draw_row(t_mlx *mlx, char *line, int row)
 	{
 		if (line[i] == 'P')
 		{
-			if (mlx->player.x)
-				handle_error(DUP_P);
 			mlx->player.x = i;
 			mlx->player.y = row;
+			mlx->player.cnt++;
 		}
 		else if (line[i] == 'C')
 			mlx->collect.cnt++;
@@ -68,6 +67,7 @@ static void	draw_row(t_mlx *mlx, char *line, int row)
 		{
 			mlx->exit.y = i;
 			mlx->exit.x = row;
+			mlx->exit.cnt++;
 		}
 		mlx->map[row][i] = line[i];
 		i++;
@@ -84,6 +84,8 @@ void	map_parse(t_mlx *mlx, int fd)
 	if (!mlx->map)
 		error();
 	mlx->collect.cnt = 0;
+	mlx->player.cnt = 0;
+	mlx->exit.cnt = 0;
 	line = gnl(fd, mlx->map_width);
 	while (line)
 	{
@@ -93,8 +95,5 @@ void	map_parse(t_mlx *mlx, int fd)
 		row++;
 	}
 	free(line);
-	if (mlx->player.x == 0)
-		handle_error(NOT_P);
-	if (mlx->exit.x == 0)
-		handle_error(NOT_E);
+	handle_valid(mlx);
 }

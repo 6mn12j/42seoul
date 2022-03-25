@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/25 16:31:52 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:40:15 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,31 @@ void	handle_error(int flag)
 	printf("Error\n");
 	if (flag == NOT_SQUARE)
 		printf("not square \n");
-	else if (flag == NOT_P)
-		printf("no player\n");
-	else if (flag == DUP_P)
-		printf("duplicate player\n");
-	else if (flag == NOT_C)
-		printf("no collect\n");
-	else if (flag == NOT_E)
-		printf("no exit\n");
 	else if (flag == NOT_WALL)
-		printf("ot valid map\n");
-	else if (flag == NOT_ARGUMENT)
-		printf("Argument Error\n");
+		printf("not valid map\n");
 	exit(EXIT_FAILURE);
+}
+
+void	handle_valid(t_mlx *mlx)
+{
+	if (mlx->player.cnt != 1 )
+		valid_check(mlx);
+	if (mlx->collect.cnt <= 0)
+		valid_check(mlx);
+	if (mlx->exit.cnt <= 0)
+		valid_check(mlx);
+}
+
+void	valid_check(t_mlx *mlx)
+{
+	printf("Error\n");
+	if (mlx->player.cnt == 0)
+		printf("no player\n");
+	if (mlx->player.cnt > 1)
+		printf("duplicate player\n");
+	if (mlx->collect.cnt == 0)
+		printf("no collect\n");
+	if (mlx->exit.cnt == 0)
+		printf("no exit\n");
+	exit(EXIT_SUCCESS);
 }

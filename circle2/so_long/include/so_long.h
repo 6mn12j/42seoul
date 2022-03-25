@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 19:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/24 22:40:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/25 15:56:32 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ typedef struct s_player
 	t_img			img;
 }	t_player;
 
-typedef struct s_cion
+typedef struct s_collect
 {
 	int				cnt;
 	t_img			img;
 
-}	t_cion;
+}	t_collect;
 
 typedef struct s_wall
 {
@@ -98,7 +98,7 @@ typedef struct s_mlx
 	t_exit			exit;
 	t_wall			wall;
 	t_player		player;
-	t_cion			collect;
+	t_collect		collect;
 }	t_mlx;
 
 int		close_game(t_mlx *mlx);

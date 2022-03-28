@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX = -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+MLX = -I ./minilibx_opengl_20191021 -L ./minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit
 NAME = so_long
 
 SRCS = src/main.c \

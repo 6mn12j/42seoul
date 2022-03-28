@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 13:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/03/26 00:48:52 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/03/28 00:58:12 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	get_map_size(int fd, t_mlx *mlx)
 		map_col++;
 		if (buf == '\n')
 		{
+			if (map_col == 1 && mlx->map_width == 0)
+				return (0);
 			if (mlx->map_width != 0 && mlx->map_width != map_col - 1)
 				return (0);
 			mlx->map_height ++;
@@ -83,9 +85,7 @@ void	re_fillmap(t_mlx *mlx)
 void	open_map_file(t_mlx *mlx, char*file)
 {
 	int		fd;
-	int		i;
 
-	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		error();

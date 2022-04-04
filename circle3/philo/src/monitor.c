@@ -6,13 +6,13 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:15:32 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 04:10:39 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	*die_monitor(void *arg)
+void	*is_die(void *arg)
 {
 	t_philo		*philo;
 	int			i;
@@ -27,7 +27,7 @@ void	*die_monitor(void *arg)
 			if (philo->time_die <= get_time())
 			{
 				pthread_mutex_lock(&philo->info->print_mutex);
-				printf("[%ldms] %d %s\n", get_time(), philo->id,"is Die");
+				printf("[%ldms] %d %s\n", get_time(), philo->id, "is Die");
 				philo->info->is_finished = TRUE;
 				return (NULL);
 			}
@@ -38,7 +38,7 @@ void	*die_monitor(void *arg)
 	return (NULL);
 }
 
-void	*must_eat_monitor(void *arg)
+void	*is_must_eat(void *arg)
 {
 	t_info		*info;
 

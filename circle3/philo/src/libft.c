@@ -6,13 +6,13 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:36:31 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 04:01:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	is_digit(int num)
+int	ft_isdigit(int num)
 {
 	if (num >= '0' && num <= '9')
 		return (1);
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 	}
 	else if (temp[i] == '+')
 		i++;
-	while (is_digit(temp[i]))
+	while (ft_isdigit(temp[i]))
 	{
 		result = (result * 10) + (temp[i++] - '0');
 		if (sign * result < -2147483648)

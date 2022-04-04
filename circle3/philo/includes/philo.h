@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:18:50 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 04:33:14 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_philo
 	int		current_eat_cnt;
 	time_t	time_die;
 	t_th	thread;
-	t_th	die_monitor;
+	t_th	is_die;
 	t_info	*info;
 	t_mutex	fork;
 	t_mutex	*left_fork;
@@ -51,14 +51,17 @@ typedef struct s_info
 	time_t	time_to_die;
 	time_t	time_to_eat;
 	time_t	time_to_sleep;
-	t_th	must_eat_monitor;
+	t_th	is_must_eat;
 	t_mutex	print_mutex;
 	t_philo	*philos;
 
 }				t_info;
 
+int		ft_isdigit(int num);
 int		ft_atoi(const char *str);
+int		ft_error(char *str, t_info *info);
 void	ft_printf(char *str, t_philo *philo, time_t now);
+int		ft_check_valid(int argc, char *argv[]);
 
 time_t	get_time(void);
 void	time_flow(time_t start_time, time_t target_time);
@@ -67,12 +70,8 @@ int		init_philo(t_info *info);
 int		init_info(int argc, char **argv, t_info *info);
 
 void	*philo_routine(void *arg);
-void	*putdown(t_philo *philo);
-void	*pickup(t_philo *philo);
-void	*eating(t_philo *philo);
-void	*thinking(t_philo *philo);
-void	*sleeping(t_philo *philo);
-void	*die_monitor(void *arg);
-void	*must_eat_monitor(void *arg);
+
+void	*is_die(void *arg);
+void	*is_must_eat(void *arg);
 
 #endif

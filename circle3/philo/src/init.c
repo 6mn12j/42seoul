@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:20:33 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 04:22:00 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	init_philo(t_info *info)
 	philo = (t_philo *)malloc(sizeof(t_philo) * info->philo_num);
 	info->philos = philo;
 	if (!philo)
-	{
-		printf("%s\n", "philo malloc 실패");
-		return (0);
-	}
+		ft_error("philo malloc 실패", info);
 	i = -1;
 	while (++i < info->philo_num)
 	{
@@ -36,15 +33,12 @@ int	init_philo(t_info *info)
 		if (pthread_mutex_init(philo[i].left_fork, NULL) == -1 || \
 			pthread_mutex_init(philo[i].right_fork, NULL) == -1 || \
 			pthread_mutex_init(&philo[i].eating, NULL) == -1)
-		{
-			printf("%s\n", "뮤텍스 초기화 실패.");
-			return (0);
-		}
+			ft_error("뮤텍스 초기화 실패", info);
 	}
 	return (1);
 }
 
-int init_info(int argc, char **argv, t_info *info)
+int	init_info(int argc, char **argv, t_info *info)
 {
 	info->philo_num = ft_atoi(argv[1]);
 	info->time_to_die = ft_atoi(argv[2]);
@@ -60,10 +54,7 @@ int init_info(int argc, char **argv, t_info *info)
 		info->must_eat = -1;
 	info->is_finished = FALSE;
 	info->fin_eat_cnt = 0;
-	if(	pthread_mutex_init(&info->print_mutex, NULL) == -1)
-	{
-		printf("%s\n","뮤텍스 초기화 실패.");
-		return (0);
-	}
+	if (pthread_mutex_init(&info->print_mutex, NULL) == -1)
+		ft_error("뮤텍스 초기화 실패", info);
 	return (1);
 }

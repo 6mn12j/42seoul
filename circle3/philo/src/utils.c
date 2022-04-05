@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 04:35:22 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:31:34 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ static int	check_argument(char *str)
 {
 	int	i;
 
-	i = 0;
-	if (!ft_isdigit(str[i]))
+	i = -1;
+	while (str[++i])
 	{
-		printf("argument 에러 정수만 가능합니다\n");
-		return (0);
+		if (!ft_isdigit(str[i]))
+		{
+			printf("argument 에러 정수만 가능합니다\n");
+			return (0);
+		}
 	}
 	return (1);
 }
@@ -48,4 +51,19 @@ int	ft_check_valid(int argc, char *argv[])
 	if (argc == 6)
 		return (check_argument(argv[5]));
 	return (1);
+}
+
+void	ft_free(t_info *info)
+{
+	int	i;
+
+	i = -1;
+	while (++i < info->philo_num)
+	{
+		pthread_mutex_destroy(&info->philos[i].fork);
+		pthread_mutex_destroy(&info->philos[i].eating);
+	}
+	pthread_mutex_destroy(&info->print_mutex);
+	free(info->philos);
+	info->philos = 0;
 }

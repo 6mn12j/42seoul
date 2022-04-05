@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:53:54 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:25:16 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	routine = pickup;
 	if (philo->id % 2 == 1)
-		usleep(philo->info->time_to_eat * 1000);
+		usleep(philo->info->time_to_eat * 500);
 	while (!philo->info->is_finished)
 		routine = routine(philo);
 	return (NULL);

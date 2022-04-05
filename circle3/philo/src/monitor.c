@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 15:27:16 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:22:27 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ void	*is_die(void *arg)
 			if (philo->time_die <= get_time())
 			{
 				pthread_mutex_lock(&philo->info->print_mutex);
-				printf("[%ldms] %d %s\n", get_time(), philo->id, "is Die");
+				if (philo->info->is_finished)
+					break ;
 				philo->info->is_finished = TRUE;
+				printf("[%ldms] %d %s\n", get_time(), philo->id, "is Die");
 				ft_free(philo->info);
-				return (NULL);
+				break ;
 			}
 			pthread_mutex_unlock(&philo->eating);
 			usleep(500);

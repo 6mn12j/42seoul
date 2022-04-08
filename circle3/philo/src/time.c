@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 03:55:03 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:51:13 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	time_flow(time_t start_time, time_t target_time)
 {
 	while (1)
 	{
-		usleep(target_time / 2);
+		usleep(300);
 		if (get_time() >= start_time + target_time)
 			return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 15:30:07 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:50:47 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static int	check_make_thread(t_info *info)
 		if (!philo->is_die)
 			flag = ft_error("is_die 스레드가 생성 되지 않았습니다.", info);
 	}
-	if (!info->is_must_eat)
+	if (info->must_eat != -1)
+	{
+		if (!info->is_must_eat)
 		flag = ft_error("is_must_eat 스레드가 생성 되지 않았습니다.", info);
+	}
 	if (!flag)
 		return (0);
 	return (1);
@@ -62,6 +65,8 @@ static void	ft_wait(t_info *info)
 {
 	while (!info->is_finished)
 		usleep(500);
+	usleep(1000);
+	ft_free(info);
 	return ;
 }
 
@@ -69,6 +74,11 @@ int	main(int argc, char *argv[])
 {
 	t_info	info;
 
+	if (argc < 5 || argc > 6)
+	{
+		printf("Argument Error\n");
+		return (0);
+	}
 	if (!ft_check_valid(argc, argv))
 		return (1);
 	if (argc == 5 || argc == 6)
@@ -81,5 +91,8 @@ int	main(int argc, char *argv[])
 		if (!sit_info(&info))
 			return (ft_error("sit_info Error", &info));
 		ft_wait(&info);
+		usleep(5000);
+		return (0);
 	}
+	return (0);
 }

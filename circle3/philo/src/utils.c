@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 15:31:34 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:51:30 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	ft_error(char *str, t_info *info)
 {
-	free(info->philos);
-	info->philos = 0;
+	if (info->philos)
+		free(info->philos);
+	info->philos = NULL;
 	printf("%s\n", str);
 	return (0);
 }
 
-void	ft_printf(char *str, t_philo *philo, time_t now)
+void	ft_printf(char *str, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->info->print_mutex);
-	printf("[%ldms] %d %s\n", now, philo->id, str);
+	if (philo->info->is_finished)
+		return ;
+	printf("[%ldms] %d %s\n", get_time(), philo->id, str);
 	pthread_mutex_unlock(&philo->info->print_mutex);
 }
 
@@ -60,10 +63,14 @@ void	ft_free(t_info *info)
 	i = -1;
 	while (++i < info->philo_num)
 	{
+		pthread_mutex_unlock(&info->philos[i].fork);
+		pthread_mutex_unlock(&info->philos[i].eating);
 		pthread_mutex_destroy(&info->philos[i].fork);
 		pthread_mutex_destroy(&info->philos[i].eating);
 	}
+	pthread_mutex_unlock(&info->print_mutex);
 	pthread_mutex_destroy(&info->print_mutex);
-	free(info->philos);
-	info->philos = 0;
+	if (info->philos)
+		free(info->philos);
+	info->philos = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/08 15:51:09 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/04/26 02:43:10 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	*eating(t_philo *philo)
 		philo->info->fin_eat_cnt++;
 	philo->time_die = get_time() + philo->info->time_to_die;
 	ft_printf("is eating", philo);
-	time_flow(get_time(), philo->info->time_to_eat);
 	pthread_mutex_unlock(&philo->eating);
+	time_flow(get_time(), philo->info->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	return (sleeping);

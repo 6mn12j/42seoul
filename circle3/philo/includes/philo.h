@@ -6,7 +6,7 @@
 /*   By: minjupar <minjupar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 17:13:40 by minjupar          #+#    #+#             */
-/*   Updated: 2022/04/05 15:18:00 by minjupar         ###   ########.fr       */
+/*   Updated: 2022/05/01 03:25:52 by minjupar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		ft_isdigit(int num);
 void	ft_free(t_info *info);
 int		ft_atoi(const char *str);
 int		ft_error(char *str, t_info *info);
-void	ft_printf(char *str, t_philo *philo, time_t now);
+void	ft_printf(char *str, t_philo *philo);
 int		ft_check_valid(int argc, char *argv[]);
 
 time_t	get_time(void);

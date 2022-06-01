@@ -12,5 +12,5 @@ int main(int argc, char **argv) {
 
     for (int i = 0; message[i]; i++)
         message[i] = toupper(message[i]);
-    std::cout << message;
+    std::cout << message << std::endl;
 }

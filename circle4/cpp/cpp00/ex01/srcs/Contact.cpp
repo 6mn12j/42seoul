@@ -8,41 +8,32 @@
 
 #include "Contact.hpp"
 
-Contact::Contact()
-{
-    std::cout << "contact 생성\n";
-}
+Contact::Contact() { this->isUsed = false; }
 
-Contact::~Contact()
-{
-    std::cout << "contact 소멸\n";
-}
+Contact::~Contact() {}
 
 std::string Contact::getFirstName() { return this->firstName; }
 std::string Contact::getLastName() { return this->lastName; }
 std::string Contact::getNickName() { return this->nickName; }
+std::string Contact::getDarkSecret() { return this->darkSecret; }
 
-void Contact::setFirstName(std::string firstName)
-{
+std::string Contact::getPhoneNumber() { return this->phoneNumber; }
+bool Contact::getIsUsed() { return this->isUsed; }
+
+void Contact::setFirstName(std::string firstName) {
     this->firstName = firstName;
 }
 
-void Contact::setLastName(std::string lastName)
-{
-    this->lastName = lastName;
-}
+void Contact::setLastName(std::string lastName) { this->lastName = lastName; }
 
-void Contact::setNickName(std::string nickName)
-{
-    this->nickName = nickName;
-}
+void Contact::setNickName(std::string nickName) { this->nickName = nickName; }
 
-void Contact::setDarkSecret(std::string darkSecret)
-{
+void Contact::setDarkSecret(std::string darkSecret) {
     this->darkSecret = darkSecret;
 }
 
-void Contact::setPhoneNumber(std::string phoneNumber)
-{
+void Contact::setPhoneNumber(std::string phoneNumber) {
     this->phoneNumber = phoneNumber;
 }
+
+void Contact::setIsUsed(bool value) { this->isUsed = value; }

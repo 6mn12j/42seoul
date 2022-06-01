@@ -12,6 +12,7 @@ private:
   std::string nickName;
   std::string darkSecret;
   std::string phoneNumber;
+  bool isUsed;
 
 public:
   std::string getFirstName();
@@ -23,11 +24,14 @@ public:
   std::string getNickName();
   void setNickName(std::string nickName);
 
-  std::string getDarkName();
+  std::string getDarkSecret();
   void setDarkSecret(std::string dark_name);
 
   std::string getPhoneNumber();
   void setPhoneNumber(std::string phoneNumber);
+
+  bool getIsUsed();
+  void setIsUsed(bool value);
 
   Contact();
   ~Contact();

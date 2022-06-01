@@ -3,8 +3,9 @@
 
 #include "Contact.hpp"
 #include <string>
-
-#define MAX_PHONEBOOK 3
+#include <iomanip>
+#include <limits>
+#define MAX_PHONEBOOK 8
 
 class PhoneBook
 {
@@ -15,12 +16,13 @@ private:
 
 public:
   int getCnt();
+  bool isEmpty();
+  bool checkValidIndex(int index);
   void printPhoneBook();
   void saveContact(std::string firstName, std::string lastName,
                    std::string nickName, std::string phoneNumber,
                    std::string darkSecret);
-  void SEARCH(int index, std::string first_name, std::string last_name,
-              std::string nick_name);
+  void searchContact(int targetIndex);
   PhoneBook();
   ~PhoneBook();
 };

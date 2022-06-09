@@ -1,11 +1,12 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -I./ -std=c++98
-NAME = zombie
+NAME = Zombie
 
 SRCS =  ./main.cpp \
 		./Zombie.cpp \
 		./newZombie.cpp \
 		./randomChump.cpp \
+		./zombieHorde.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

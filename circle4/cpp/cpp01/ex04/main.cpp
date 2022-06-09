@@ -32,16 +32,13 @@ void sed(std::ifstream &readFile, std::ofstream &writeFile, std::string s1,
         std::string str;
         getline(readFile, str);
         result += changeString(str, s1, s2);
-
         result += "\n";
     }
-    std::cout << result;
     writeFile << result;
     return;
 }
 
 int main(int argc, char *argv[]) {
-    // ex04 filename s1 s1
     if (argc != 4) {
         std::cout << "Input is not enough" << std::endl;
         return 0;

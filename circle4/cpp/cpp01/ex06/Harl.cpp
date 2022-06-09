@@ -43,7 +43,20 @@ void Harl::complain(std::string level) {
         if (strArr[i] == level)
             caseValue = i;
     }
-    if (caseValue == -1)
-        return;
-    (this->*(func[caseValue]))();
+	switch(caseValue)
+	{
+		case:0
+			(this->*(func[0]))();
+		case:1
+			(this->*(func[0]))();
+		case:2
+			(this->*(func[0]))();
+		case:3
+			(this->*(func[0]))();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
+
+	}
+
 }

@@ -31,7 +31,6 @@ void handleSED(std::ifstream &readFile, std::ofstream &writeFile,
 }
 
 int main(int argc, char *argv[]) {
-    // ex04 filename s1 s1
     if (argc != 4) {
         std::cout << "Input is not enough" << std::endl;
         return 0;

@@ -1,5 +1,5 @@
 #include "Weapon.hpp"
-
+#include <iostream>
 Weapon::Weapon() { this->type = "fist"; }
 Weapon::Weapon(std::string type) { this->type = type; }
 Weapon::~Weapon() {}

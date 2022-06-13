@@ -3,40 +3,30 @@
 #include <iostream>
 #include <string>
 
-std::string changeString(std::string str, std::string s1, std::string s2) {
-    int length = 0;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == s1[0]) {
-            int j = i;
-            length = 0;
-            while (str[j] == s1[length] && str[j]) {
-                length++;
-                j++;
+void handleSED(std::ifstream &readFile, std::ofstream &writeFile,
+               std::string s1, std::string s2) {
+
+    std::string line;
+    std::string::size_type next = 0;
+    while (getline(readFile, line)) {
+
+        next = line.find(s1);
+        if (next == std::string::npos)
+            writeFile << line;
+        else {
+            writeFile << line.substr(0, next) << s2;
+            std::string nextStr = line.substr(next + s1.length());
+            next = nextStr.find(s1);
+            while (next != std::string::npos) { // 123 123 aa
+                writeFile << nextStr.substr(0, next) << s2;
+                nextStr = nextStr.substr(next + s1.length());
+                next = nextStr.find(s1);
             }
-            if (length == s1.length()) {
-                std::string temp1 = str.substr(0, i);
-                std::string temp2 = str.substr(i + s1.length());
-                return temp1 + s2 + temp2;
-            }
+            writeFile << nextStr;
         }
+        writeFile << std::endl;
     }
-    return str;
-}
 
-void sed(std::ifstream &readFile, std::ofstream &writeFile, std::string s1,
-         std::string s2) {
-
-    std::string result = "";
-    while (!readFile.eof()) {
-        int i = 0;
-        std::string str;
-        getline(readFile, str);
-        result += changeString(str, s1, s2);
-
-        result += "\n";
-    }
-    std::cout << result;
-    writeFile << result;
     return;
 }
 
@@ -63,7 +53,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    sed(readFile, writeFile, argv[2], argv[3]);
+    handleSED(readFile, writeFile, argv[2], argv[3]);
     readFile.close();
     writeFile.close();
     return 1;

@@ -45,13 +45,13 @@ void Harl::complain(std::string level) {
     }
 	switch(caseValue)
 	{
-		case:0
+		case 0:
 			(this->*(func[0]))();
-		case:1
+		case 1:
 			(this->*(func[0]))();
-		case:2
+		case 2:
 			(this->*(func[0]))();
-		case:3
+		case 3:
 			(this->*(func[0]))();
 			break;
 		default:

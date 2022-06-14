@@ -17,7 +17,7 @@ void handleSED(std::ifstream &readFile, std::ofstream &writeFile,
             writeFile << line.substr(0, next) << s2;
             std::string nextStr = line.substr(next + s1.length());
             next = nextStr.find(s1);
-            while (next != std::string::npos) { // 123 123 aa
+            while (next != std::string::npos) {
                 writeFile << nextStr.substr(0, next) << s2;
                 nextStr = nextStr.substr(next + s1.length());
                 next = nextStr.find(s1);

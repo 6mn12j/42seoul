@@ -19,6 +19,7 @@ public:
 	int toInt(void) const;
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
+
 	Fixed &operator=(const Fixed &source);
 	bool operator>(const Fixed &fixedValue);
 	bool operator<(const Fixed &fixedValue);

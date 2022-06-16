@@ -27,6 +27,7 @@ float Fixed::toFloat(void) const
 {
 	return ((float)this->fixedPointNum / (float)(1 << fractionalBits));
 }
+
 int Fixed::toInt(void) const
 {
 	return (int)roundf(this->fixedPointNum / (1 << fractionalBits));
@@ -50,7 +51,6 @@ Fixed::~Fixed()
 
 std::ostream &operator<<(std::ostream &ostream, const Fixed &source)
 {
-	//고정 -> 부동으로 보여줘라
 	return ostream << source.toFloat();
 }
 

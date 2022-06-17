@@ -69,20 +69,29 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->hitPoints <= 0)
+	if (amount == INT_MAX)
 	{
-		std::cout << "No hit Points" << std::endl;
+		std::cout << "amount is big" << std::endl;
 		return;
 	}
 
 	this->hitPoints -= amount;
-
+	if (this->hitPoints < 0)
+	{
+		this->hitPoints = 0;
+	}
 	std::cout << "ClapTrap " << this->name;
 	std::cout << " take damage " << amount << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (amount == INT_MAX)
+	{
+		std::cout << "amount is big" << std::endl;
+		return;
+	}
+
 	if (!canAnything())
 		return;
 	this->energyPoints--;

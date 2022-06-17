@@ -12,12 +12,12 @@ protected:
 	int attackDamage;
 
 public:
-	ClapTrap(void);
+	ClapTrap();
 	ClapTrap(std::string initialName);
 	ClapTrap(const ClapTrap &);
 	~ClapTrap();
 
-	std::string getName(void) const;
+	std::string getName() const;
 	int getHitPoints(void) const;
 	int getEnergyPoints(void) const;
 	int getAttackDamage(void) const;

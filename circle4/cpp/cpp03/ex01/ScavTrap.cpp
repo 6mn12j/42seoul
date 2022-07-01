@@ -2,7 +2,7 @@
 
 ScavTrap::ScavTrap()
 {
-	std::cout << this->getName() << " ScavTrap defatult Constructor " << std::endl;
+	std::cout << this->getName() << " ScavTrap default Constructor " << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string initialName)

@@ -16,7 +16,7 @@ int main(void)
 	}
 
 	{
-		// 기본 HP인 10 만큼 공격 받아서 HitPoints가 0이됨.
+		// 데미지를 받고 회복
 		std::cout << "-------------- case 2 ---------------" << std::endl;
 
 		ClapTrap trap1("trap1");
@@ -34,7 +34,7 @@ int main(void)
 	}
 
 	{
-		// 10번 공격해서 trap1 이 에너지를 다 잃고 1만큼 회복 못함.
+		// 10번 공격해서 trap1 이 에너지를 다 잃고 1만큼 회복 못함, 못때림.
 		std::cout << "-------------- case 3 ---------------" << std::endl;
 
 		ClapTrap trap1("trap1");
@@ -49,7 +49,7 @@ int main(void)
 	}
 
 	{
-		// 9번 공격해서 trap1 이 에너지를 다 잃고 1만큼 회복 함.
+		// 9번 공격해서 trap1 이 에너지를 에너지를 잃고 1만큼 회복 한 후엔 에너지가 없어서 못 때림.
 		std::cout << "-------------- case 3 ---------------" << std::endl;
 
 		ClapTrap trap1("trap1");

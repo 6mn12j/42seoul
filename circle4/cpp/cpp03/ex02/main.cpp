@@ -17,7 +17,7 @@ int main(void)
 	}
 
 	{
-		// 기본 HP인 100 만큼 공격 받아서 HitPoints가 0이됨.
+		// 데미지를 받고 회복
 		std::cout << "-------------- case 2 ---------------" << std::endl;
 
 		FragTrap trap1("trap1");

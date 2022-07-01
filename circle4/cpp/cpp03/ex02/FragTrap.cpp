@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap()
 {
-	std::cout << this->getName() << " FragTrap defatult Constructor " << std::endl;
+	std::cout << this->getName() << " FragTrap default Constructor " << std::endl;
 }
 
 FragTrap::FragTrap(std::string initialName)

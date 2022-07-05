@@ -8,8 +8,8 @@ Cat::Cat()
 
 Cat::Cat(const Cat &ref)
 {
-	*this = ref;
 	std::cout << "Cat copy constructor \n";
+	*this = ref;
 }
 
 Cat::~Cat()

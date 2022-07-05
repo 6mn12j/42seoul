@@ -8,8 +8,8 @@ Dog::Dog()
 
 Dog::Dog(const Dog &ref)
 {
-	*this = ref;
 	std::cout << "Dog copy constructor \n";
+	*this = ref;
 }
 
 Dog::~Dog()

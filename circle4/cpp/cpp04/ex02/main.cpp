@@ -7,6 +7,7 @@ int main()
 {
 	{
 		std::cout << "\nCase 1-----------------------------------\n";
+		// const Animal *animal = new Animal();
 		const Animal *dog = new Dog();
 		const Animal *cat = new Cat();
 

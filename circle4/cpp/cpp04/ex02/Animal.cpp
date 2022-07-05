@@ -8,8 +8,8 @@ Animal::Animal(void)
 
 Animal::Animal(const Animal &ref)
 {
-	std::cout << "Animal copy constructor \n";
 	*this = ref;
+	std::cout << "Animal copy constructor \n";
 }
 
 Animal::~Animal(void)
@@ -23,14 +23,4 @@ Animal &Animal::operator=(const Animal &ref)
 		return *this;
 	this->type = ref.type;
 	return *this;
-}
-
-std::string Animal::getType(void) const
-{
-	return this->type;
-}
-
-void Animal::makeSound(void) const
-{
-	std::cout << "I'm Animal\n";
 }

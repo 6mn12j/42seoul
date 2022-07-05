@@ -8,7 +8,7 @@
 int main()
 {
 	{
-		std::cout << "Case 1 -----------------------\n";
+		std::cout << "\nCase 1 -----------------------\n";
 		const Animal *meta = new Animal();
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();
@@ -25,7 +25,7 @@ int main()
 	}
 
 	{
-		std::cout << "Case 2 -----------------------\n";
+		std::cout << "\nCase 2 -----------------------\n";
 		const WrongAnimal *meta = new WrongAnimal();
 		const WrongAnimal *i = new WrongCat();
 		std::cout << i->getType() << " " << std::endl;
@@ -35,5 +35,19 @@ int main()
 
 		delete meta;
 		delete i;
+	}
+
+	{
+		std::cout << "\nCase 3 -----------------------\n";
+		const Cat *cat = new Cat();
+		const Dog *dog = new Dog();
+		std::cout << cat->getType() << " " << std::endl;
+		std::cout << dog->getType() << " " << std::endl;
+
+		cat->makeSound(); // will output the cat sound!
+		dog->makeSound();
+
+		delete cat;
+		delete dog;
 	}
 }

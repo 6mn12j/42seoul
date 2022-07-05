@@ -14,10 +14,10 @@ public:
 	Animal(void);
 	Animal(const Animal &);
 	virtual ~Animal(void);
-	virtual Animal &operator=(const Animal &);
+	Animal &operator=(const Animal &);
 
-	virtual std::string getType(void) const = 0;
 	virtual void makeSound(void) const = 0;
+	std::string getType(void) const;
 };
 
 #endif

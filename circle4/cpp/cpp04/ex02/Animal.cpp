@@ -24,3 +24,8 @@ Animal &Animal::operator=(const Animal &ref)
 	this->type = ref.type;
 	return *this;
 }
+
+std::string Animal::getType(void) const
+{
+	return this->type;
+}

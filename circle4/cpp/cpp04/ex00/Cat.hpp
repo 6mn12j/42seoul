@@ -12,7 +12,6 @@ public:
 	Cat &operator=(const Cat &);
 
 	void makeSound(void) const;
-	std::string getType(void) const;
 };
 
 #endif

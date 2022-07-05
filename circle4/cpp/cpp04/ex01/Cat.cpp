@@ -35,11 +35,6 @@ void Cat::makeSound(void) const
 	std::cout << "I'm Cat 야옹....\n";
 }
 
-std::string Cat::getType(void) const
-{
-	return this->type;
-}
-
 void Cat::setIdea(unsigned int index, std::string idea) const
 {
 	this->brain->setIdea(index, idea);

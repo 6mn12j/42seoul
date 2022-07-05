@@ -7,17 +7,12 @@ int main()
 {
 	{
 		std::cout << "\nCase 1-----------------------------------\n";
-		const Animal *dog = new Dog();
-		const Animal *cat = new Cat();
 
 		Animal *animals[10];
 		for (int i = 0; i < 5; i++)
 			animals[i] = new Dog();
 		for (int i = 5; i < 10; i++)
 			animals[i] = new Cat();
-
-		delete dog; // should not create a leak
-		delete cat;
 
 		std::stringstream tempStream;
 

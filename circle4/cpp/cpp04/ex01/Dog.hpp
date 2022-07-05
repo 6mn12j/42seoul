@@ -15,7 +15,6 @@ public:
 	Dog(const Dog &);
 	Dog &operator=(const Dog &);
 
-	std::string getType(void) const;
 	void makeSound(void) const;
 
 	void setIdea(unsigned int, std::string idea) const;

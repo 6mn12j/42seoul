@@ -16,7 +16,6 @@ public:
 	Cat &operator=(const Cat &);
 
 	void makeSound(void) const;
-	std::string getType(void) const;
 	void setIdea(unsigned int index, std::string idea) const;
 	void printIdea(unsigned int index) const;
 };

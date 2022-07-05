@@ -16,6 +16,7 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &source)
 {
+	std::cout << this->name << "ClapTrap Copy Constructor " << std::endl;
 	*this = source;
 }
 
@@ -69,7 +70,7 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (amount == INT_MAX)
+	if (amount > INT_MAX)
 	{
 		std::cout << "amount is big" << std::endl;
 		return;
@@ -86,7 +87,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (amount == INT_MAX)
+	if (amount + this->hitPoints > INT_MAX)
 	{
 		std::cout << "amount is big" << std::endl;
 		return;
@@ -94,6 +95,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 	if (!canAnything())
 		return;
+
 	this->energyPoints--;
 
 	this->hitPoints += amount;

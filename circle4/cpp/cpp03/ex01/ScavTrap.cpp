@@ -20,6 +20,8 @@ ScavTrap::ScavTrap(std::string initialName)
 
 ScavTrap::ScavTrap(const ScavTrap &source)
 {
+	std::cout << this->getName() << " ScavTrap Copy Constructor " << std::endl;
+
 	*this = source;
 }
 
@@ -30,6 +32,8 @@ ScavTrap::~ScavTrap()
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &source)
 {
+	if (this == &source)
+		return *this;
 	this->name = source.name;
 	this->hitPoints = source.hitPoints;
 	this->energyPoints = source.energyPoints;

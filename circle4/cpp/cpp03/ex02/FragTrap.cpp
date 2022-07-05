@@ -20,6 +20,7 @@ FragTrap::FragTrap(std::string initialName)
 
 FragTrap::FragTrap(const FragTrap &source)
 {
+	std::cout << this->getName() << " FragTrap Copy Constructor " << std::endl;
 	*this = source;
 }
 
@@ -30,6 +31,8 @@ FragTrap::~FragTrap()
 
 FragTrap &FragTrap::operator=(const FragTrap &source)
 {
+	if (this == &source)
+		return *this;
 	this->name = source.name;
 	this->hitPoints = source.hitPoints;
 	this->energyPoints = source.energyPoints;

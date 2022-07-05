@@ -2,6 +2,10 @@
 
 FragTrap::FragTrap()
 {
+	this->name = "undefined";
+	this->hitPoints = 100;
+	this->energyPoints = 100;
+	this->attackDamage = 30;
 	std::cout << this->getName() << " FragTrap default Constructor " << std::endl;
 }
 

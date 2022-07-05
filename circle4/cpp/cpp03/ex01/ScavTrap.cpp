@@ -2,6 +2,10 @@
 
 ScavTrap::ScavTrap()
 {
+	this->name = "undefined";
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
 	std::cout << this->getName() << " ScavTrap default Constructor " << std::endl;
 }
 

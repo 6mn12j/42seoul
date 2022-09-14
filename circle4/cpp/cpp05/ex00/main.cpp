@@ -17,7 +17,6 @@ int main(void) {
     std::cout << std::endl;
     try {
         Bureaucrat minjupar("minjupar", 2);
-
         std::cout << minjupar;
         minjupar.gradeIncrement();
         std::cout << minjupar;
@@ -30,33 +29,5 @@ int main(void) {
     }
 
     std::cout << std::endl;
-    try {
-        Bureaucrat minjupar("minjupar", -1);
 
-        std::cout << minjupar;
-        minjupar.gradeIncrement();
-        std::cout << minjupar;
-        minjupar.gradeIncrement();
-        std::cout << minjupar;
-        std::cout << "case 3 종료" << std::endl;
-    } catch (std::exception &e) {
-        std::cout << "예외발생" << e.what();
-        std::cout << "case 3 예외 종료" << std::endl;
-    }
-    std::cout << std::endl;
-
-    try {
-        Bureaucrat minjupar("minjupar", 20);
-
-        std::cout << minjupar;
-        minjupar.gradeIncrement();
-        std::cout << minjupar;
-        minjupar.gradeDecrement();
-        std::cout << minjupar;
-        std::cout << "case 4 종료" << std::endl;
-    } catch (std::exception &e) {
-        std::cout << "예외발생" << e.what();
-        std::cout << "case 4 예외 종료" << std::endl;
-    }
-    std::cout << std::endl;
 }

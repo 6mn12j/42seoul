@@ -1,12 +1,9 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : name("undefined"), grade(150) {
-    std::cout << "Bureaucrat Default Constructor" << std::endl;
-}
+Bureaucrat::Bureaucrat(void) : name("undefined"), grade(150) {}
 
 Bureaucrat::Bureaucrat(const Bureaucrat &ref) : name(ref.name) {
     *this = ref;
-    std::cout << "Bureaucrat copy constructor \n";
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
@@ -17,11 +14,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
         this->grade = 1;
     else
         this->grade = grade;
-
-    std::cout << "Bureaucrat Name Grade Constructor" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat(void) { std::cout << "Bureaucrat destructor\n"; }
+Bureaucrat::~Bureaucrat(void) {}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref) {
     if (&ref == this)
@@ -51,12 +46,13 @@ void Bureaucrat::gradeIncrement() {
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
-    return "GradeTooHighException\n";
+    return "Bureaucrat Grade Too High\n";
 }
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw() {
-    return "GradeTooLowException\n";
+      return "Bureaucrat Grade Too Low\n";
 }
+
 
 std::ostream &operator<<(std::ostream &outstreame, const Bureaucrat &ref) {
     outstreame << ref.getName();
@@ -67,19 +63,9 @@ std::ostream &operator<<(std::ostream &outstreame, const Bureaucrat &ref) {
 }
 
 void Bureaucrat::signForm(Form &form) {
-
-    // form 보다 bureaucrat 의 권한이 더 낮을때
-    if (this->grade > form.getRequiredSignedGrade()) {
-        std::cout << this->name << " couldn't sign " << form.getName()
-                  << "because too Low" << std::endl;
-        return;
-    }
-    //이미 사인 되어 있을때
-    if (form.getIsSigned()) {
-        std::cout << this->name << " couldn't sign " << form.getName()
-                  << "because signed" << std::endl;
-        return;
-    }
-
-    form.beSigned(*this);
+    try{
+		form.beSigned(*this);
+	}catch(std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
 }

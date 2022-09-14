@@ -24,7 +24,6 @@ Form::Form(const Form &ref)
     *this = ref;
 }
 
-
 Form &Form::operator=(const Form &ref) {
     if (&ref == this)
         return *this;
@@ -37,20 +36,21 @@ std::string Form::getName() const { return this->name; }
 int Form::getRequiredExecuteGrade() const { return this->requiredExecuteGrade; }
 int Form::getRequiredSignedGrade() const { return this->requiredSignedGrade; }
 bool Form::getIsSigned() const { return this->isSigned; }
-std::string Form::getType()const{
-	return this->type;
-}
+std::string Form::getType() const { return this->type; }
 
 std::ostream &operator<<(std::ostream &outstream, const Form &ref) {
+    outstream << " name: ";
     outstream << ref.getName();
     outstream << ", ";
-    outstream << "form require excute grade ";
+    outstream << " excute grade: ";
     outstream << ref.getRequiredExecuteGrade();
-    outstream << " form require sign grade ";
+    outstream << ", ";
+    outstream << " sign grade: ";
     outstream << ref.getRequiredSignedGrade();
-	outstream << " form type = ";
-	outstream << ref.getType();
-    outstream << " form isSigned = ";
+    outstream << " form type: ";
+    outstream << ", ";
+    outstream << ref.getType();
+    outstream << " form isSigned: ";
     outstream << ref.getIsSigned() << std::endl;
     return outstream;
 }

@@ -37,9 +37,9 @@ int main(void) {
 		Form form10("form10",10,10);
 		Form form1("form1",1,1);
 
-		form20.beSigned(minjupar);
-		form10.beSigned(minjupar);
-		form1.beSigned(minjupar);
+		minjupar.signForm(form20);
+		minjupar.signForm(form10);
+		minjupar.signForm(form1);
 		std::cout << "case 3 종료" << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "예외발생" << e.what();
@@ -52,8 +52,9 @@ int main(void) {
 		Bureaucrat minjupar("minjupar",1);
 		Form form10("form10",10,10);
 
-		form10.beSigned(polabear);
-		form10.beSigned(minjupar);
+
+		polabear.signForm(form10);
+		minjupar.signForm(form10);
 		std::cout << "case 4 종료" << std::endl;
 	} catch (std::exception &e) {
 		std::cout << "예외발생" << e.what();

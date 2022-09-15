@@ -6,7 +6,8 @@ Form::Form(void)
 
 Form::Form(std::string name)
     : type("Form"), name(name), requiredExecuteGrade(150), requiredSignedGrade(150),
-      isSigned(false) {}
+      isSigned(false) {
+	  }
 
 Form::Form(std::string type, std::string name, int requiredExecuteGrade, int requiredSignedGrade):type(type),name(name),requiredExecuteGrade(requiredExecuteGrade), requiredSignedGrade(requiredSignedGrade)
 {
@@ -42,7 +43,7 @@ std::ostream &operator<<(std::ostream &outstream, const Form &ref) {
     outstream << " name: ";
     outstream << ref.getName();
     outstream << ", ";
-    outstream << " excute grade: ";
+    outstream << " Execute grade: ";
     outstream << ref.getRequiredExecuteGrade();
     outstream << ", ";
     outstream << " sign grade: ";
@@ -56,9 +57,9 @@ std::ostream &operator<<(std::ostream &outstream, const Form &ref) {
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {
-    if (bureaucrat.getGrade() > this->requiredSignedGrade)
+    if (bureaucrat.getGrade() > this->getRequiredSignedGrade())
         throw Bureaucrat::GradeTooLowException();
-	if (this->isSigned)
+	else if (this->getIsSigned())
 		throw IsSingedException();
 
     this->isSigned = true;
@@ -72,7 +73,7 @@ void Form::execute(Bureaucrat const &executor) const
 	else if (!this->getIsSigned())
 		throw Form::NoSignExecption();
 	else
-		std::cout << "Excute" << std::endl;
+		std::cout << "Execute" << std::endl;
 }
 
 const char *Form::GradeTooHighException::what(void) const throw() {

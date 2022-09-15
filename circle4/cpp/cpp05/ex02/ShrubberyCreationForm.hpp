@@ -14,7 +14,7 @@ class ShrubberyCreationForm : public Form {
 	~ShrubberyCreationForm();
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& ref);
 
-	void execute(const Bureaucrat& ref) const throw(Form::NoSignExecption,Form::GradeTooHighException);;
+	void execute(const Bureaucrat& bureaucrat) const throw(Form::NoSignExecption,Form::GradeTooHighException);;
 
 };
 

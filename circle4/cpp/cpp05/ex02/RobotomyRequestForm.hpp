@@ -15,7 +15,7 @@ class RobotomyRequestForm : public Form {
 	~RobotomyRequestForm();
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& ref);
 
-	void execute(const Bureaucrat& ref) const throw(Form::NoSignExecption,Form::GradeTooHighException);
+	void execute(const Bureaucrat& bureaucrat) const throw(Form::NoSignExecption,Form::GradeTooHighException);
 
 };
 

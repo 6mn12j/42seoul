@@ -7,7 +7,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string name): Form("Robotomy
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm&ref):Form(ref){}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &ref) {
-    Form::operator=(ref);
+	Form::operator=(ref);
 	return *this;
 }
 RobotomyRequestForm::~RobotomyRequestForm(void){}
@@ -15,7 +15,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void){}
 std::ostream &operator<<(std::ostream &outstream, const RobotomyRequestForm &ref){
 	outstream << ref.getName();
    	outstream << ", ";
-    outstream << "form require excute grade ";
+    outstream << "form require Execute grade ";
     outstream << ref.getRequiredExecuteGrade();
     outstream << " form require sign grade ";
     outstream << ref.getRequiredSignedGrade();
@@ -26,13 +26,13 @@ std::ostream &operator<<(std::ostream &outstream, const RobotomyRequestForm &ref
     return outstream;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat& ref) const throw(Form::NoSignExecption,Form::GradeTooHighException) {
+void RobotomyRequestForm::execute(const Bureaucrat& bureaucrat) const throw(Form::NoSignExecption,Form::GradeTooHighException) {
 	if (!this->getIsSigned())
 		throw Form::NoSignExecption();
-	else if (this->getRequiredExecuteGrade() < ref.getGrade())
+	else if (this->getRequiredExecuteGrade() < bureaucrat.getGrade())
 		throw Form::GradeTooHighException();
 	else{
-		std::cout << ref.getName() << " executed " << this->getName() <<" " << this->getType();
+		std::cout << bureaucrat.getName() << " executed " << this->getName() <<" " << this->getType();
 		std::cout << "Makeeeiiinnnggg..." << std::endl;
 		srand(time(NULL));
 		if (rand() % 2 == 1)

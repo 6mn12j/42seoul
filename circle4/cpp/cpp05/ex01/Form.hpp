@@ -22,12 +22,13 @@ class Form {
     ~Form(void);
     Form(const Form &);
 	Form &operator=(const Form &);
-    void beSigned(Bureaucrat &bureaucrat);
 
     std::string getName() const;
     int getRequiredExecuteGrade() const;
     int getRequiredSignedGrade() const;
     bool getIsSigned() const;
+
+	void beSigned(Bureaucrat &bureaucrat);
 
 	class GradeTooLowException : public std::exception {
       public:

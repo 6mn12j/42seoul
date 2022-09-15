@@ -5,7 +5,7 @@
 
 class Form;
 
-class PresidentialPardonForm :  public Form {
+class PresidentialPardonForm : public Form {
 	public:
 	PresidentialPardonForm(void);
 	PresidentialPardonForm(const std::string name);

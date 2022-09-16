@@ -44,7 +44,7 @@ std::string Form::getType() const { return this->type; }
 
 std::ostream &operator<<(std::ostream &outstream, const Form &ref)
 {
-    outstream << " name: ";
+    outstream << "name: ";
     outstream << ref.getName();
     outstream << ", ";
     outstream << " Execute grade: ";

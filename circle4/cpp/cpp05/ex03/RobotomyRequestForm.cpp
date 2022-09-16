@@ -24,12 +24,12 @@ std::ostream &operator<<(std::ostream &outstream, const RobotomyRequestForm &ref
 	outstream << ref.getRequiredSignedGrade();
 	outstream << " form type: ";
 	outstream << ref.getType();
-	outstream << " form isSigned: ";
-	outstream << ref.getIsSigned() << std::endl;
+    outstream <<  " form isSigned: ";
+    outstream << std::boolalpha<< ref.getIsSigned() << std::endl;
 	return outstream;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const throw(Form::NoSignExecption, Form::GradeTooHighException)
+void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
 {
 	if (!this->getIsSigned())
 		throw Form::NoSignExecption();

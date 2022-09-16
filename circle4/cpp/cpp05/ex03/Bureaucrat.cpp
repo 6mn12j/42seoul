@@ -65,7 +65,7 @@ std::ostream &operator<<(std::ostream &outstream, const Bureaucrat &ref)
     outstream << ref.getName();
     outstream << ", ";
     outstream << "bureaucrat grade ";
-    outstream << ref.getGrade() << std::endl;
+    outstream << ref.getGrade();
     return outstream;
 }
 
@@ -78,7 +78,7 @@ void Bureaucrat::signForm(Form &form)
     catch (std::exception &e)
     {
         std::cout << this->getName() << " couldn’t sign " << form.getName() << " because ";
-        std::cout << e.what() << std::endl;
+        std::cout << e.what();
     }
 }
 void Bureaucrat::executeForm(Form const &form)
@@ -90,6 +90,6 @@ void Bureaucrat::executeForm(Form const &form)
     catch (std::exception &e)
     {
         std::cout << this->getName() << " couldn’t execute " << form.getName() << " because ";
-        std::cout << e.what() << std::endl;
+        std::cout << e.what();
     }
 }

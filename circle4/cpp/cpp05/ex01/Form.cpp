@@ -40,23 +40,24 @@ bool Form::getIsSigned() const { return this->isSigned; }
 
 std::ostream &operator<<(std::ostream &outstream, const Form &ref)
 {
+	outstream << "name: ";
     outstream << ref.getName();
     outstream << ", ";
     outstream << "form require Execute grade ";
     outstream << ref.getRequiredExecuteGrade();
     outstream << " form require sign grade ";
     outstream << ref.getRequiredSignedGrade();
-    outstream << " form isSigned = ";
-    outstream << ref.getIsSigned() << std::endl;
+    outstream <<  " form isSigned: ";
+    outstream << std::boolalpha<< ref.getIsSigned() << std::endl;
     return outstream;
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
+  	if (this->getIsSigned())
+        throw IsSingedException();
     if (bureaucrat.getGrade() > this->getRequiredSignedGrade())
         throw Bureaucrat::GradeTooLowException();
-    else if (this->getIsSigned())
-        throw IsSingedException();
 
     this->isSigned = true;
     std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;

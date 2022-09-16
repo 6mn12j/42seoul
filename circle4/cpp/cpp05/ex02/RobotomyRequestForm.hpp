@@ -2,8 +2,8 @@
 # define ROBOTOMYREQUEST_HPP
 
 #include "Form.hpp"
-#include<cstdlib> //rand(), srand()
-#include<ctime> //time()
+#include <cstdlib> //rand(), srand()
+#include <ctime> //time()
 
 class Form;
 
@@ -15,7 +15,7 @@ class RobotomyRequestForm : public Form {
 	~RobotomyRequestForm();
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& ref);
 
-	void execute(const Bureaucrat& bureaucrat) const throw(Form::NoSignExecption,Form::GradeTooHighException);
+	void execute(const Bureaucrat& bureaucrat) const;
 
 };
 

@@ -17,20 +17,21 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
 std::ostream &operator<<(std::ostream &outstream, const PresidentialPardonForm &ref)
 {
+	outstream << "name: ";
 	outstream << ref.getName();
 	outstream << ", ";
 	outstream << "form require Execute grade ";
 	outstream << ref.getRequiredExecuteGrade();
 	outstream << " form require sign grade ";
 	outstream << ref.getRequiredSignedGrade();
-	outstream << " form type = ";
+	outstream << " form type: ";
 	outstream << ref.getType();
-	outstream << " form isSigned = ";
-	outstream << ref.getIsSigned() << std::endl;
+    outstream << std::boolalpha << " form isSigned: ";
+    outstream  << ref.getIsSigned() << std::endl;
 	return outstream;
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const throw(Form::NoSignExecption, Form::GradeTooHighException)
+void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const
 {
 	if (!this->getIsSigned())
 		throw Form::NoSignExecption();

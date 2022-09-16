@@ -8,20 +8,13 @@
 int main(void)
 {
 
-	{
-		Intern someRandomIntern;
-		Form *rrf;
-		Form *invalid;
-		try
-		{
-			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-			invalid = someRandomIntern.makeForm("no match name", "Bender1");
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
+	Intern intern;
+
+	Form *form = intern.makeForm("robotomy request", "Bender");
+
+	std::cout << *form << std::endl;
+
+	delete form;
 
 	{
 		Intern someRandomIntern;

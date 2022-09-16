@@ -4,12 +4,14 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-int main(void) {
+int main(void)
+{
 
 	std::cout << std::endl;
 
-	try{
-		Bureaucrat polabear("polabear",100);
+	try
+	{
+		Bureaucrat polabear("polabear", 100);
 
 		PresidentialPardonForm presidentailForm;
 		ShrubberyCreationForm shrubberyForm;
@@ -27,14 +29,11 @@ int main(void) {
 		polabear.executeForm(shrubberyForm);
 		polabear.executeForm(robotomForm);
 
-		std::cout << "case 5 종료" << std::endl;
-
-	} catch (std::exception &e)
+		std::cout << "case  종료" << std::endl;
+	}
+	catch (std::exception &e)
 	{
 		std::cout << "예외발생" << e.what();
-		std::cout << "case 5 예외 종료" << std::endl;
+		std::cout << "case  예외 종료" << std::endl;
 	}
-
-
-
 }

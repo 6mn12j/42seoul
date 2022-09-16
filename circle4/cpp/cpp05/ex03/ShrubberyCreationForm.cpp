@@ -15,15 +15,16 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 std::ostream &operator<<(std::ostream &outstream, const ShrubberyCreationForm &ref)
 {
+	outstream << "name: ";
 	outstream << ref.getName();
 	outstream << ", ";
 	outstream << "form require Execute grade ";
 	outstream << ref.getRequiredExecuteGrade();
 	outstream << " form require sign grade ";
 	outstream << ref.getRequiredSignedGrade();
-	outstream << " form type = ";
+	outstream << " form type: ";
 	outstream << ref.getType();
-	outstream << " form isSigned = ";
+	outstream << " form isSigned: ";
 	outstream << ref.getIsSigned() << std::endl;
 	return outstream;
 }

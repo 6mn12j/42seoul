@@ -55,17 +55,18 @@ std::ostream &operator<<(std::ostream &outstream, const Form &ref)
     outstream << " form type: ";
     outstream << ", ";
     outstream << ref.getType();
-    outstream << " form isSigned: ";
-    outstream << ref.getIsSigned() << std::endl;
+    outstream <<  " form isSigned: ";
+    outstream << std::boolalpha<< ref.getIsSigned() << std::endl;
     return outstream;
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
+	if (this->getIsSigned())
+        throw IsSingedException();
     if (bureaucrat.getGrade() > this->getRequiredSignedGrade())
         throw Bureaucrat::GradeTooLowException();
-    if (this->getIsSigned())
-        throw IsSingedException();
+
 
     this->isSigned = true;
     std::cout << bureaucrat.getName() << " signed " << this->name << std::endl;

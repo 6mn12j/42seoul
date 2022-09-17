@@ -24,12 +24,12 @@ std::ostream &operator<<(std::ostream &outstream, const ShrubberyCreationForm &r
 	outstream << ref.getRequiredSignedGrade();
 	outstream << " form type: ";
 	outstream << ref.getType();
-	outstream << " form isSigned: ";
-	outstream << ref.getIsSigned() << std::endl;
+    outstream <<  " form isSigned: ";
+    outstream << std::boolalpha<< ref.getIsSigned() << std::endl;
 	return outstream;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const throw(Form::NoSignExecption, Form::GradeTooHighException)
+void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const
 {
 	if (!this->getIsSigned())
 		throw Form::NoSignExecption();
@@ -54,6 +54,6 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const throw(Fo
 		of << "         |  |\n";
 		of << "  ______/____\\____" << std::endl;
 		of.close();
-		std::cout << bureaucrat.getName() << " executed " << this->getName() << " " << this->getType();
+		std::cout << bureaucrat.getName() << " executed " << this->getName() << " " << this->getType() << std::endl;
 	}
 }

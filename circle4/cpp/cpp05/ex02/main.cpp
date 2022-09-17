@@ -7,9 +7,6 @@
 int main(void)
 {
 
-	std::cout << std::endl;
-
-	try
 	{
 		Bureaucrat polabear("polabear", 100);
 
@@ -17,23 +14,32 @@ int main(void)
 		ShrubberyCreationForm shrubberyForm;
 		RobotomyRequestForm robotomForm;
 
-		polabear.executeForm(presidentailForm);
-		polabear.executeForm(shrubberyForm);
-		polabear.executeForm(robotomForm);
-
 		polabear.signForm(presidentailForm);
-		polabear.signForm(shrubberyForm);
-		polabear.signForm(robotomForm);
-
 		polabear.executeForm(presidentailForm);
-		polabear.executeForm(shrubberyForm);
-		polabear.executeForm(robotomForm);
 
-		std::cout << "case  종료" << std::endl;
+		polabear.signForm(shrubberyForm);
+		polabear.executeForm(shrubberyForm);
+
+		polabear.signForm(robotomForm);
+		polabear.executeForm(robotomForm);
 	}
-	catch (std::exception &e)
+		std::cout << std::endl;
+
 	{
-		std::cout << "예외발생" << e.what();
-		std::cout << "case  예외 종료" << std::endl;
+		Bureaucrat minjupar("minjupar", 100);
+
+		PresidentialPardonForm presidentailForm;
+		ShrubberyCreationForm shrubberyForm2("shrubberyForm2");
+		RobotomyRequestForm robotomForm;
+
+		minjupar.signForm(presidentailForm);
+		minjupar.executeForm(presidentailForm);
+
+		minjupar.signForm(shrubberyForm2);
+		minjupar.executeForm(shrubberyForm2);
+
+		minjupar.signForm(robotomForm);
+		minjupar.executeForm(robotomForm);
 	}
+
 }

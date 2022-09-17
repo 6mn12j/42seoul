@@ -62,6 +62,7 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 
 std::ostream &operator<<(std::ostream &outstream, const Bureaucrat &ref)
 {
+	outstream << "name: ";
     outstream << ref.getName();
     outstream << ", ";
     outstream << "bureaucrat grade ";

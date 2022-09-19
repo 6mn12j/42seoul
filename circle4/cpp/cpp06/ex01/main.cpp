@@ -27,7 +27,7 @@ int main(void)
 	std::cout << "a: " << a.name << std::endl;
 
 	ptr = serialize(&a);
-	std::cout << ptr << ptr << std::endl;
+	std::cout << "ptr: " << ptr << std::endl;
 
 	b = deserialize(ptr);
 	std::cout << "b: " << b->name << std::endl;

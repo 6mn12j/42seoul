@@ -17,10 +17,11 @@ int main() {
   std::cout << "---------- const int ----------" << std::endl;
   try {
  	Array<int> arrayInt(LEN);
+	const Array<int> arrayIntCopy(arrayInt);
+
 	for (int i = 0; i < LEN; i++)
     	arrayInt[i] = i + 1;
 
-	const Array<int> arrayIntCopy(arrayInt);
 
 	for (int i = 0; i < LEN; i++)
       std::cout << arrayInt[i] << " ";

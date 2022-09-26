@@ -37,6 +37,8 @@ template <typename T>
 Array<T>::Array(unsigned int n)
 {
 	this->array = new T[n];
+	for(unsigned int i = 0 ; i < n ; i ++)
+		this->array[i] = 0;
 	this->len = n;
 }
 

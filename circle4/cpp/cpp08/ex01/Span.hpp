@@ -7,34 +7,28 @@
 #include <vector>
 #include <limits>
 
-class Span{
+class Span
+{
 private:
 	unsigned int n;
 	std::vector<int> span;
-
 
 public:
 	Span(void);
 	Span(unsigned int n);
 	Span(const Span &);
 	~Span(void);
-	Span &operator=(const Span&);
-
+	Span &operator=(const Span &);
 
 	void addNumber(int n);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
-	class StoreValueException : public std::exception{
-		public:
-			const char *what(void) const throw();
-	};
-
-	class SizeException : public std::exception{
-		public:
-			const char *what(void) const throw();
+	class SizeException : public std::exception
+	{
+	public:
+		const char *what(void) const throw();
 	};
 };
-
 
 #endif

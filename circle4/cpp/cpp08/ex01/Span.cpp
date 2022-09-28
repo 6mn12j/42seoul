@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-Span::Span(void):n(0)
+Span::Span(void) : n(0)
 {
 	// std::cout << "Default Constucrot\n";
 }
@@ -17,9 +17,9 @@ Span::Span(const Span &ref)
 	*this = ref;
 }
 
-Span &Span::operator=(const Span& ref)
+Span &Span::operator=(const Span &ref)
 {
-	if(this == &ref)
+	if (this == &ref)
 		return *this;
 	this->n = ref.n;
 	this->span = ref.span;
@@ -28,7 +28,6 @@ Span &Span::operator=(const Span& ref)
 
 Span::~Span()
 {
-
 }
 
 void Span::addNumber(int n)
@@ -48,7 +47,7 @@ unsigned int Span::shortestSpan()
 	int prev;
 
 	std::sort(this->span.begin(), this->span.end());
-	for(std::vector<int>::iterator iter = this->span.begin(); iter != this->span.end(); iter++)
+	for (std::vector<int>::iterator iter = this->span.begin(); iter != this->span.end(); iter++)
 	{
 		if (iter == this->span.begin())
 		{
@@ -72,16 +71,11 @@ unsigned int Span::longestSpan()
 		throw SizeException();
 
 	int max = *max_element(this->span.begin(), this->span.end());
-	int min = *min_element(this->span.begin(),this->span.end());
+	int min = *min_element(this->span.begin(), this->span.end());
 	return (max - min);
-}
-
-const char *Span::StoreValueException::what(void) const throw()
-{
-    return "Already elements stored \n";
 }
 
 const char *Span::SizeException::what(void) const throw()
 {
-    return "Vector size is not enough\n";
+	return "Vector size is not enough\n";
 }

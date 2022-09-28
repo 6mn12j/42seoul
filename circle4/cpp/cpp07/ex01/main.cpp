@@ -23,5 +23,12 @@ int main(void)
 		iter(array, sizeof(array) / sizeof(std::string), ftPrint);
 	}
 
+	std::cout << std::endl;
+
+	{
+		const std::string array[] = {"a", "b", "c", "d", "e"};
+		iter(array, sizeof(array) / sizeof(std::string), ftPrint);
+	}
+
 	return 0;
 }

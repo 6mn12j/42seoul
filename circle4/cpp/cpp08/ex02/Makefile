@@ -4,14 +4,14 @@ NAME = ex02
 
 SRCS =  ./main.cpp \
 
-
+HEADER = ./MutantStack.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 .PHONY: all
 all:  $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp

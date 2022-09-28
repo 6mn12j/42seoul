@@ -5,13 +5,14 @@ NAME = ex01
 SRCS =  ./main.cpp \
 		./Span.cpp \
 
+HEADER = ./Span.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 .PHONY: all
 all:  $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp

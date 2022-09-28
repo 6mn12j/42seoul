@@ -4,13 +4,14 @@ NAME = ex00
 
 SRCS =  ./main.cpp \
 
-
 OBJS = $(SRCS:.cpp=.o)
+
+HEADER = ./easyfind.hpp
 
 .PHONY: all
 all:  $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp

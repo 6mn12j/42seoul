@@ -4,7 +4,23 @@
 #define LEN 5
 int main()
 {
-  std::cout << "---------- int ----------" << std::endl;
+
+  try
+  {
+    std::cout
+        << "---------- Empty ----------" << std::endl;
+    Array<int> empty;
+    std::cout << "empty size : " << empty.size() << std::endl;
+
+    empty[0]; // ERROR!
+  }
+  catch (std::exception &e)
+  {
+    std::cout << e.what() << std::endl;
+  }
+
+  std::cout
+      << "---------- int ----------" << std::endl;
   try
   {
     Array<int> arrayInt(LEN);
@@ -18,6 +34,7 @@ int main()
   {
     std::cerr << e.what() << std::endl;
   }
+
   std::cout << "---------- const int ----------" << std::endl;
   try
   {
@@ -26,7 +43,6 @@ int main()
 
     for (int i = 0; i < LEN; i++)
       arrayInt[i] = i + 1;
-
     for (int i = 0; i < LEN; i++)
       std::cout << arrayInt[i] << " ";
     std::cout << std::endl;

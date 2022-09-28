@@ -1,4 +1,4 @@
-CC = c++
+CXX = c++
 CFLAGS = -Wall -Wextra -Werror -I./ -std=c++98
 NAME = ex02
 
@@ -7,14 +7,16 @@ SRCS =  ./main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
+HEADER =  ./Array.hpp
+
 .PHONY: all
 all:  $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
+	$(CXX) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:

@@ -7,10 +7,12 @@ SRCS =  ./main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
+HEADER = ./whatevet.hpp
+
 .PHONY: all
 all:  $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp

@@ -75,6 +75,23 @@ unsigned int Span::longestSpan()
 	return (max - min);
 }
 
+unsigned int Span::size()
+{
+	return this->n;
+}
+
+void Span::randomNumbers()
+{
+	if (this->n <= 1)
+		throw SizeException();
+	srand(time(NULL));
+	std::vector<int> temp(this->n);
+	for (std::vector<int>::iterator iter = temp.begin(); iter != temp.end(); iter++)
+		*iter = rand();
+	std::sort(temp.begin(), temp.end());
+	this->span = temp;
+}
+
 const char *Span::SizeException::what(void) const throw()
 {
 	return "Vector size is not enough\n";

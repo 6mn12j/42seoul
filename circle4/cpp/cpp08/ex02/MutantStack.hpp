@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include <stack>
-
+#include <vector>
 template <typename T>
 class MutantStack :public std::stack<T>
 {

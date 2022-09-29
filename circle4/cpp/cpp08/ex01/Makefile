@@ -1,5 +1,5 @@
 CXX = c++
-CPPFLAGS = -Wall -Wextra -Werror -I./ -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -pedantic -I./ -std=c++98
 NAME = ex01
 
 SRCS =  ./main.cpp \
@@ -24,7 +24,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	rm -rf $(NAME) 
+	rm -rf $(NAME)
 
 .PHONY: re
 re: fclean all

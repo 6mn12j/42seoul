@@ -21,11 +21,13 @@ public:
 	Span &operator=(const Span &);
 
 	unsigned int size();
+
 	void addNumber(int n);
+	void addNumber();
+
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
-	void randomNumbers();
 
 	class SizeException : public std::exception
 	{

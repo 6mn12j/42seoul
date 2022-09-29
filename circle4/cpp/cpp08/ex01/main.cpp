@@ -23,8 +23,8 @@ int main()
 	try
 	{
 		std::cout << "--------Random Case --------\n";
-		Span sp = Span(1000);
-		sp.randomNumbers();
+		Span sp = Span(10000);
+		sp.addNumber();
 
 		std::cout << "size: " << sp.size() << std::endl;
 		std::cout << sp.shortestSpan() << std::endl;
@@ -38,8 +38,8 @@ int main()
 	try
 	{
 		std::cout << "--------Random Case --------\n";
-		Span sp = Span(5000);
-		sp.randomNumbers();
+		Span sp = Span(50000);
+		sp.addNumber();
 
 		std::cout << "size: " << sp.size() << std::endl;
 		std::cout << sp.shortestSpan() << std::endl;

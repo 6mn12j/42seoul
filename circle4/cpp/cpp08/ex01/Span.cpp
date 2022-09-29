@@ -37,13 +37,26 @@ void Span::addNumber(int n)
 	this->span.push_back(n);
 }
 
+void Span::addNumber()
+{
+	if (this->n <= 1)
+		throw SizeException();
+	srand(time(NULL));
+	std::vector<int> temp(this->n);
+	for (std::vector<int>::iterator iter = temp.begin(); iter != temp.end(); iter++)
+		*iter = rand();
+	std::sort(temp.begin(), temp.end());
+	this->span = temp;
+
+}
+
 unsigned int Span::shortestSpan()
 {
 
 	if (this->span.size() < 2)
 		throw SizeException();
 
-	long long result = INT_MAX;
+	long result = UINT_MAX;
 	int prev;
 
 	std::sort(this->span.begin(), this->span.end());
@@ -80,17 +93,7 @@ unsigned int Span::size()
 	return this->n;
 }
 
-void Span::randomNumbers()
-{
-	if (this->n <= 1)
-		throw SizeException();
-	srand(time(NULL));
-	std::vector<int> temp(this->n);
-	for (std::vector<int>::iterator iter = temp.begin(); iter != temp.end(); iter++)
-		*iter = rand();
-	std::sort(temp.begin(), temp.end());
-	this->span = temp;
-}
+
 
 const char *Span::SizeException::what(void) const throw()
 {

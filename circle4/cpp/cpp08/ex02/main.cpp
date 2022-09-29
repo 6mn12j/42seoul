@@ -3,7 +3,7 @@
 int main()
 {
 	{
-		std::cout << "--------------- Base case ---------------n";
+		std::cout << "--------------- Base case ---------------\n";
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
@@ -19,16 +19,17 @@ int main()
 		MutantStack<int>::iterator ite = mstack.end();
 		++it;
 		--it;
-		while (it != ite) {
+		while (it != ite)
+		{
 			std::cout << *it << std::endl;
-		++it; }
+			++it;
+		}
 		std::stack<int> s(mstack);
 	}
 
-
 	{
 
-		std::cout << "--------------- Case 2 ---------------\n";
+		std::cout << "----------------- Case2 -----------------\n";
 
 		MutantStack<int> mstack;
 
@@ -36,15 +37,14 @@ int main()
 			mstack.push(i + 1);
 		{
 			MutantStack<int>::iterator begin = mstack.begin();
-			std::cout <<"begin: " <<  *begin << std::endl;
+			std::cout << "begin: " << *begin << std::endl;
 			MutantStack<int>::iterator end = mstack.end();
 			std::cout << "end: " << *(--end) << std::endl;
 			MutantStack<int>::reverse_iterator rbegin = mstack.rbegin();
-			std::cout <<"rbegin: " <<  *rbegin << std::endl;
+			std::cout << "rbegin: " << *rbegin << std::endl;
 			MutantStack<int>::reverse_iterator rend = mstack.rend();
 			std::cout << "rend: " << *(--rend) << std::endl;
 		}
-
 	}
 	return 0;
 }

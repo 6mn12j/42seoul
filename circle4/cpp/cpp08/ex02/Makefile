@@ -1,5 +1,5 @@
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -I./ -std=c++98
+CXX = c++
+CPPFLAGS = -Wall -Wextra -Werror -I./ -std=c++98
 NAME = ex02
 
 SRCS =  ./main.cpp \
@@ -9,13 +9,13 @@ HEADER = ./MutantStack.hpp
 OBJS = $(SRCS:.cpp=.o)
 
 .PHONY: all
-all:  $(NAME)
+all:  $(NAME) $(HEADER)
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
@@ -23,7 +23,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	rm -rf $(NAME) $(OBJS)
+	rm -rf $(NAME) 
 
 .PHONY: re
 re: fclean all
